@@ -245,3 +245,86 @@
     touchpadSupport: true,
   });
 })();
+
+/*****************************************************************************
+ * МОДИФИКАЦИЯ 03. SMART-HEADER
+ * Связанные стили: ./modifications.css, секция «МОДИФИКАЦИЯ 03».
+ * Разметка: класс .uc-smart-header на header; следующий элемент — main.
+ * Скрытие вниз при scrollY >= 150; показ вверх при scrollY >= 100.
+ * В зоне scrollY <= 50 и при фокусе внутри шапка всегда видна.
+ * Пороги взяты из кода пользователя и означают координаты страницы, не путь.
+ * lastScroll обновляется и возле верха, чтобы верно определять направление.
+ * Отступ main сохраняет место шапки, учитывает мобильную высоту и загрузку шрифта.
+ * Внешних зависимостей нет; совместимо с SmoothScroll и нативным скроллом.
+ * Очистка: window.SmartHeader.destroy(); запуск: window.SmartHeader.init().
+ *****************************************************************************/
+(() => {
+  'use strict';
+  window.SmartHeader?.destroy();
+  let cleanup = null;
+
+  function init() {
+    if (cleanup) return;
+    const menu = document.querySelector('.uc-smart-header');
+    if (!menu) return;
+    const controller = new AbortController();
+    const { signal } = controller;
+    const content = menu.nextElementSibling;
+    const hideThreshold = 150;
+    const showThreshold = 100;
+    const previousOffset = content?.style.getPropertyValue('--smart-header-height') || '';
+    let lastScroll = Math.max(0, window.scrollY);
+    let frame = 0;
+    menu.classList.add('show-fixed-zero');
+
+    function measure() {
+      content?.style.setProperty('--smart-header-height', `${menu.getBoundingClientRect().height}px`);
+    }
+
+    function update() {
+      frame = 0;
+      const currentScroll = Math.max(0, window.scrollY);
+      const isScrollingUp = currentScroll < lastScroll;
+      if (currentScroll <= 50 || menu.contains(document.activeElement)) {
+        menu.classList.add('show-fixed-zero');
+      } else if (currentScroll > lastScroll && currentScroll >= hideThreshold) {
+        menu.classList.remove('show-fixed-zero');
+      } else if (isScrollingUp && currentScroll >= showThreshold) {
+        menu.classList.add('show-fixed-zero');
+      }
+      lastScroll = currentScroll;
+    }
+
+    function onScroll() {
+      if (!frame) frame = requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', onScroll, { signal, passive: true });
+    window.addEventListener('resize', measure, { signal, passive: true });
+    menu.addEventListener('focusin', () => menu.classList.add('show-fixed-zero'), { signal });
+    const observer = new ResizeObserver(measure);
+    observer.observe(menu);
+    measure();
+    cleanup = () => {
+      controller.abort();
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+      menu.classList.add('show-fixed-zero');
+      if (previousOffset) content?.style.setProperty('--smart-header-height', previousOffset);
+      else content?.style.removeProperty('--smart-header-height');
+      cleanup = null;
+    };
+  }
+
+  function destroy() {
+    document.removeEventListener('DOMContentLoaded', init);
+    cleanup?.();
+  }
+
+  window.SmartHeader = { init, destroy };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
