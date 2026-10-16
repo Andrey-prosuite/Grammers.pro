@@ -1,0 +1,13 @@
+{% from "components/text-lines.njk" import textLines %}
+<section class="metrics container">
+  <h2>{{ textLines(metrics.title) }}</h2>
+  <dl class="metrics__list">
+    {% for item in metrics.items %}
+    <div class="metrics__item">
+      <dt>{{ textLines(item.label) }}</dt>
+      <dd class="metrics__value">{{ item.value }}</dd>
+      <dd class="metrics__text">{{ item.text }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+</section>

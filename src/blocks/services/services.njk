@@ -1,0 +1,8 @@
+<section class="services container" id="services">
+  <h2>{{ services.title }}</h2>
+  <ul>
+    {% for service in services.items %}
+    <li><a href="#contact">{{ service }}<img src="./images/brand/arrow.svg" width="30" height="27" alt="" loading="lazy"></a></li>
+    {% endfor %}
+  </ul>
+</section>

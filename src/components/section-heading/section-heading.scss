@@ -1,0 +1,22 @@
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--grid-gap);
+  align-items: start;
+
+  &__label {
+    max-width: 13rem;
+    color: var(--color-accent);
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  @media (max-width: 959px) {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    &__label {
+      max-width: none;
+      font-size: 18px;
+    }
+  }
+}

@@ -1,13 +1,102 @@
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--color-text); background: var(--color-background); }
-img, svg, video { display: block; max-width: 100%; }
-img, video { height: auto; }
-button, input, textarea, select { font: inherit; }
-a { color: inherit; }
-[hidden] { display: none !important; }
-:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 4px; }
-.skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 100; padding: 0.75rem; background: var(--color-background); transform: translateY(-200%); }
-.skip-link:focus { transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+}
+h1,
+h2,
+h3,
+p,
+figure,
+dl,
+dd {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-weight: 500;
+}
+h2 {
+  font-size: 42px;
+  line-height: 1.15;
+  letter-spacing: -0.4px;
+}
+h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button,
+input,
+textarea,
+fieldset {
+  min-width: 0;
+}
+input,
+textarea {
+  max-width: 100%;
+}
+button {
+  color: inherit;
+}
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 5px;
+}
+[id] {
+  scroll-margin-top: 24px;
+}
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 10;
+  padding: 10px 16px;
+  background: #fff;
+  clip-path: inset(100%);
+}
+.skip-link:focus {
+  clip-path: none;
+}
+
+@media (max-width: 959px) {
+  h2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 479px) {
+  body {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 28px;
+    letter-spacing: -0.3px;
+  }
+  h3 {
+    font-size: 20px;
+  }
 }

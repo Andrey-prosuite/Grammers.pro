@@ -1,0 +1,13 @@
+{% from "components/section-heading/section-heading.njk" import sectionHeading %}
+<section class="approach container">
+  {{ sectionHeading(approach.label, approach.title) }}
+  <p class="approach__intro">{{ approach.text }}</p>
+  <div class="approach__cards">
+    {% for card in approach.cards %}
+    <article class="approach__card approach__card-{{ card.variant }}">
+      <h3>{{ card.title }}</h3>
+      <p>{{ card.text }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>

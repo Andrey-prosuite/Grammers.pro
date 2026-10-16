@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "title": "Главная by Andrey",
+    "description": "Создаем сайты, которые помогают брендам развиваться в веб"
+  },
+  "navigation": [
+    {
+      "label": "Кейсы",
+      "href": "https://grammers.pro/cases"
+    },
+    {
+      "label": "Услуги",
+      "href": "#services"
+    },
+    {
+      "label": "Блог",
+      "href": "https://grammers.pro/blog"
+    },
+    {
+      "label": "О нас",
+      "href": "https://grammers.pro/o_nas"
+    }
+  ],
+  "hero": {
+    "year": "2023-2024",
+    "award": "Разработчик №1\nв \"Рейтинге рунета\" и \"CMS-Magazine\"\n(номинация \"Разработка на NestJS\")",
+    "title": "Мы - Grammers. \nСтудия разработки сайтов",
+    "text": "Делаем сайты для производителей и продаж. B2B, E-commerce, бренды.",
+    "cta": "Напишите нам"
+  },
+  "clients": [
+    {
+      "name": "Brodeks",
+      "image": "clients/clients01.png"
+    },
+    {
+      "name": "СДЭК",
+      "image": "clients/clients02.png"
+    },
+    {
+      "name": "ЭкоНива",
+      "image": "clients/clients03.png"
+    },
+    {
+      "name": "iModern",
+      "image": "clients/clients04.png"
+    },
+    {
+      "name": "Пензспецавтомаш",
+      "image": "clients/clients05.png"
+    },
+    {
+      "name": "УГМК",
+      "image": "clients/clients06.png"
+    },
+    {
+      "name": "AG-Technologies",
+      "image": "clients/clients07.png"
+    },
+    {
+      "name": "Aliaxis",
+      "image": "clients/clients08.png"
+    },
+    {
+      "name": "Technopark Automation",
+      "image": "clients/clients09.png"
+    },
+    {
+      "name": "Studio Flor",
+      "image": "clients/clients11.png"
+    },
+    {
+      "name": "ItalianPizza",
+      "image": "clients/clients12.png"
+    },
+    {
+      "name": "Afinara",
+      "image": "clients/clients13.png"
+    },
+    {
+      "name": "ЗСТЭМИ-2",
+      "image": "clients/clients15.png"
+    },
+    {
+      "name": "Tesoro",
+      "image": "clients/clients16.png"
+    },
+    {
+      "name": "Omnicomm",
+      "image": "clients/clients14.png"
+    }
+  ],
+  "approach": {
+    "label": "{ Подход }",
+    "title": "Создаем проекты, которые одинаково хорошо чувствуют себя в поиске и в глазах ваших клиентов.",
+    "text": "Используем несколько подходов к разработке, которые соответствуют разным задачам",
+    "cards": [
+      {
+        "title": "SEO-first",
+        "text": "Всё делается с упором на максимальную SEO-оптимизацию: продуманная структура, четкое следование рекоменадциям Яндекс и Google, чистый код для лучшего ранжирования в поиске.",
+        "variant": "seo"
+      },
+      {
+        "title": "Marketing-first",
+        "text": "Фокус на маркетинговой эффективности: раскрытие ценности бренда для целевой аудитории, разработка карты пути клиента, A/B тестирование, оптимизация конверсии в заказ.",
+        "variant": "marketing"
+      },
+      {
+        "title": "Design-first",
+        "text": "Приоритет визуальной составляющей: креативный дизайн, анимации, уникальные взаимодействия, которые создают запоминающийся пользовательский опыт.",
+        "variant": "design"
+      }
+    ]
+  },
+  "benefits": {
+    "label": "Почему клиенты выбирают нас",
+    "title": "Создаем сбалансированные решения:\nдизайн, маркетинг и SEO помогают друг другу в продажах",
+    "cards": [
+      {
+        "title": "Делаем дизайн, \nпонятный рынку.",
+        "text": "Ищем визуальные решения, способные работать на широкую аудиторию. Наш дизайн опирается на маркетинговые задачи и не шокирует массового потребителя экспериментами. Посетители сразу считывают: кто вы, чем занимаетесь и почему вам можно доверять."
+      },
+      {
+        "title": "Открываем возможности для роста трафика",
+        "text": "Прежде чем рисовать интерфейс, мы исследуем — что ищут ваши клиенты и строим архитектуру сайта вокруг того, как люди ищут. Категории, фильтры, названия разделов, логика перелинковки — все это рождается из SEO-анализа, а не из эстетических соображений. И закладывается на этапе проектирования."
+      }
+    ],
+    "cta": "О нас"
+  },
+  "projects": {
+    "title": "Сделано в grammers",
+    "items": [
+      {
+        "title": "Запустили интернет-магазин для бренда Brodeks",
+        "image": "projects/brodeks.webp",
+        "href": "https://grammers.pro/brodeks"
+      },
+      {
+        "title": "Сделали дизайн e-commerce проекта для рынка США (скоро оформим кейс)",
+        "image": "projects/us-ecommerce.webp",
+        "href": null
+      },
+      {
+        "title": "Создали мультибрендовый интернет-магазин ag-techologies.ru",
+        "image": "projects/ag-technologies.webp",
+        "href": "https://grammers.pro/agt_case"
+      },
+      {
+        "title": "Запустили каталог премиальных вечерних платьев из Арабских Эмиратов",
+        "image": "projects/rafaia.webp",
+        "href": "https://rafaia-couture.com/"
+      },
+      {
+        "title": "Сделали ремастеринг сайта доставки цветов в Москве",
+        "image": "projects/flowers.webp",
+        "href": "https://www.dostavka-tsvetov.com/"
+      },
+      {
+        "title": "Сделали редизайн интернет-магазина корпоративных подарков",
+        "image": "projects/amk.webp",
+        "href": "https://grammers.pro/amk-perspective"
+      }
+    ],
+    "cta": "Больше кейсов"
+  },
+  "metrics": {
+    "title": "Создаем сайты по-настоящему \nэффективными",
+    "items": [
+      {
+        "value": "+100%",
+        "label": "трафика",
+        "text": "увеличили посещаемость сайта для компании Бродекс"
+      },
+      {
+        "value": "+200%",
+        "label": "времени на \nсайте",
+        "text": "удержали пользователя на сайта в два раза дольше"
+      },
+      {
+        "value": "+24%",
+        "label": "конверсии",
+        "text": "увеличили конверсию сайта для компании Бродекс"
+      }
+    ]
+  },
+  "featured": {
+    "title": "Запустили мультибрендовый интернет-магазин спецодежды",
+    "items": [
+      "Продуманный UX|UI для b2b-продаж",
+      "Поддомены для ранжирования в регионах",
+      "Двухсторонняя интеграция с 1С",
+      "SEO-проектирование",
+      "Agile-методология разработки"
+    ],
+    "link": "ag-technologies.ru"
+  },
+  "awards": {
+    "title": "Финалисты профильных премий\nWorkspace Digital Awards и Рейтинг Рунета-2024",
+    "items": [
+      {
+        "image": "awards/nagr01.svg",
+        "alt": "1 место Рейтинг Рунета 2023 — разработка на NestJS"
+      },
+      {
+        "image": "awards/nagr02.svg",
+        "alt": "9 место Рейтинг Рунета 2023 — разработка сайтов в Екатеринбурге"
+      },
+      {
+        "image": "awards/nagr03.svg",
+        "alt": "1 место Рейтинг Рунета 2024 — разработка на NestJS"
+      },
+      {
+        "image": "awards/nagr04.svg",
+        "alt": "2 место Рейтинг Рунета 2024 — разработка интернет-магазинов на Битрикс в Екатеринбурге"
+      },
+      {
+        "image": "awards/nagr05.svg",
+        "alt": "Рейтинг Рунета — награда студии"
+      },
+      {
+        "image": "awards/nagr06.svg",
+        "alt": "Workspace Digital Awards — финалист"
+      },
+      {
+        "image": "awards/nagr07.svg",
+        "alt": "Workspace Digital Awards — награда студии"
+      }
+    ]
+  },
+  "credentials": {
+    "label": "Почему мы?",
+    "title": "Нас выбирают, когда требуется системный и ответственный подход к проекту",
+    "accreditation": "Аккредитованная IT Компания",
+    "primary": [
+      "Знаем как продавать в интернет",
+      "Аккредитованная IT-компания",
+      "Экспертиза 10+ лет"
+    ],
+    "ranks": [
+      "ТОП-1 в Рейтинге Рунета",
+      "Финалист Workspace Digital Awards 2024"
+    ],
+    "secondary": [
+      "Дружественные интерфейсы",
+      "Бутиковый подход к разработке",
+      "Доносим смыслы бренда",
+      "Наши сайты SEO оптимизированные",
+      "Партнёр 1C-Битрикс"
+    ]
+  },
+  "platforms": {
+    "title": "Используем популярные платформы",
+    "items": [
+      {
+        "title": "Сайты на Битрикс",
+        "image": "platforms/bitrix.svg"
+      },
+      {
+        "title": "Сайты на Тильде",
+        "image": "platforms/tilda.svg"
+      },
+      {
+        "title": "Сайты на Laravel",
+        "image": "platforms/laravel.svg"
+      },
+      {
+        "title": "Сайты на WordPress",
+        "image": "platforms/wordpress.svg"
+      },
+      {
+        "title": "Сайты на OpenCart",
+        "image": "platforms/opencart.svg"
+      }
+    ]
+  },
+  "services": {
+    "title": "Направления работы",
+    "items": [
+      "Разработка сайтов",
+      "Продуктовый веб-дизайн",
+      "SEO-проектирование",
+      "Поддержка и развитие проектов",
+      "ИИ, чат-боты"
+    ]
+  },
+  "contact": {
+    "title": "Начинаем работу с погружения,\nа не с предоплаты.",
+    "subtitle": "Обсудим задачу?",
+    "telegram": "Телеграм",
+    "max": "Макс",
+    "name": "Александр",
+    "role": "Менеджер проектов"
+  }
+}

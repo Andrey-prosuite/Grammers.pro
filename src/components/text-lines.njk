@@ -1,0 +1,1 @@
+{% macro textLines(text) %}{% for line in text.split('\n') %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}{% endmacro %}

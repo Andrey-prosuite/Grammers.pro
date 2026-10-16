@@ -1,11 +1,91 @@
 .hero {
-  padding-block: var(--section-space);
-  background: var(--hero-background, var(--color-surface));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--grid-gap);
 
-  &__inner { max-width: 56rem; }
-  &__eyebrow { margin-block-end: var(--space-4); color: var(--color-accent); }
-  &__title { margin: 0; font-size: clamp(2.25rem, 6vw, 4.5rem); line-height: 1.1; }
-  &__text { margin-block: var(--space-6) 0; max-width: 42rem; color: var(--color-muted); }
+  &__award {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 300px;
+    padding-bottom: 120px;
+    font-size: 15px;
+    line-height: 1.45;
 
-  &.hero-home { --hero-background: #eef3ff; }
+    figure {
+      flex: 0 0 112px;
+      text-align: center;
+    }
+    img {
+      margin-inline: auto;
+    }
+    p {
+      max-width: 275px;
+    }
+  }
+
+  h1 {
+    grid-column: 1 / -1;
+    font-size: clamp(48px, 5.98vw, 110px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+  }
+  &__text {
+    max-width: 978px;
+    margin-top: 30px;
+    font-size: 42px;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+  }
+  &__cta {
+    align-self: end;
+    min-width: 228px;
+  }
+
+  &.hero-home {
+    padding-bottom: 75px;
+  }
+
+  @media (max-width: 959px) {
+    grid-template-columns: 1fr;
+    &__award {
+      padding-top: 140px;
+      padding-bottom: 75px;
+    }
+    h1 {
+      font-size: clamp(40px, 7.5vw, 70px);
+      letter-spacing: -1.5px;
+    }
+    &__text {
+      font-size: 30px;
+    }
+    &__cta {
+      justify-self: start;
+      margin-top: 30px;
+    }
+    &.hero-home {
+      padding-bottom: 40px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    &__award {
+      padding-top: 70px;
+      padding-bottom: 60px;
+      gap: 12px;
+      font-size: 12px;
+    }
+    &__award figure {
+      flex-basis: 85px;
+    }
+    h1 {
+      font-size: 40px;
+      line-height: 1.02;
+    }
+    &__text {
+      margin-top: 24px;
+      font-size: 26px;
+    }
+  }
 }

@@ -2,14 +2,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  min-height: 2.75rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-small);
-  background: var(--color-accent);
+  min-height: 71px;
+  padding: 20px 36px;
+  border: 0;
+  border-radius: 26px;
+  background: var(--color-text);
   color: #fff;
-  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
   text-decoration: none;
+  cursor: pointer;
 
-  &:hover { background: var(--color-accent-hover); }
+  &:disabled {
+    cursor: default;
+    opacity: 1;
+  }
+  &.button-accent {
+    background: var(--color-accent);
+  }
 }

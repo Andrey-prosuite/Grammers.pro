@@ -1,0 +1,108 @@
+.featured-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 60px;
+  position: relative;
+  min-height: 1135px;
+  height: 1135px;
+  margin: 165px 20px 0;
+  padding: 100px 0 0 max(60px, calc((100vw - 1000px) / 2));
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  background: #f2f6f9;
+  color: #333;
+
+  &__content {
+    max-width: 424px;
+  }
+  h2 {
+    font-size: 39px;
+    line-height: 1.25;
+    letter-spacing: -1px;
+  }
+  ul {
+    margin: 40px 0 0;
+    padding-left: 26px;
+    list-style-type: square;
+    font-size: 20px;
+    line-height: 1.15;
+  }
+  li {
+    margin-top: 20px;
+    padding-left: 8px;
+  }
+  &__link {
+    display: inline-block;
+    margin-top: 32px;
+    font-size: 20px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  &__preview {
+    position: relative;
+    align-self: stretch;
+    margin-top: 150px;
+  }
+  &__desktop {
+    width: 758px;
+    max-width: none;
+    border-radius: 20px 20px 0 0;
+  }
+  &__phone {
+    position: absolute;
+    top: 150px;
+    left: 85%;
+    width: 260px;
+    max-width: none;
+  }
+
+  @media (max-width: 1199px) {
+    gap: 40px;
+    min-height: 900px;
+    height: 900px;
+    padding-left: 60px;
+    h2 {
+      font-size: 34px;
+    }
+  }
+
+  @media (max-width: 959px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: 0;
+    height: auto;
+    margin: var(--section-space) 20px 0;
+    padding: 50px 30px 0;
+    &__content {
+      max-width: 100%;
+    }
+    &__preview {
+      margin-top: 0;
+      max-height: 650px;
+      overflow: hidden;
+    }
+    &__desktop {
+      width: 100%;
+      max-width: 100%;
+    }
+    &__phone {
+      top: 70px;
+      left: auto;
+      right: 0;
+      width: 25%;
+    }
+  }
+
+  @media (max-width: 479px) {
+    padding: 40px 24px 0;
+    h2 {
+      font-size: 28px;
+    }
+    ul {
+      font-size: 16px;
+    }
+    &__preview {
+      max-height: 420px;
+    }
+  }
+}

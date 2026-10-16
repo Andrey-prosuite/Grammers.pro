@@ -1,9 +1,13 @@
-{% macro renderHero(data) %}
-<section class="hero hero-{{ data.variant }}" aria-labelledby="hero-{{ data.variant }}-title">
-  <div class="container hero__inner">
-    <p class="hero__eyebrow">{{ data.eyebrow }}</p>
-    <h1 class="hero__title" id="hero-{{ data.variant }}-title">{{ data.title }}</h1>
-    <p class="hero__text">{{ data.text }}</p>
+{% from "components/text-lines.njk" import textLines %}
+<section class="hero hero-home container" aria-labelledby="hero-title">
+  <div class="hero__award">
+    <figure>
+      <img src="./images/awards/developer.svg" width="73" height="73" alt="" fetchpriority="high">
+      <figcaption>{{ hero.year }}</figcaption>
+    </figure>
+    <p>{{ textLines(hero.award) }}</p>
   </div>
+  <h1 id="hero-title">{{ textLines(hero.title) }}</h1>
+  <p class="hero__text">{{ hero.text }}</p>
+  <a class="button hero__cta" href="#contact">{{ hero.cta }}</a>
 </section>
-{% endmacro %}
