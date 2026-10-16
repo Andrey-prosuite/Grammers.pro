@@ -1,0 +1,102 @@
+/*****************************************************************************
+ * МОДИФИКАЦИЯ 01. КУРСОР ВНУТРИ .go
+ * Связанный код: ./modifications.js, секция «МОДИФИКАЦИЯ 01».
+ * Подключение: <link rel="stylesheet" href="./Modifications/modifications.css">.
+ * Разметка: добавить класс .go любому нужному элементу.
+ * Источник параметров: Cuberto, Footer.v_lo1qnf.css, состояние курсора -icon.
+ * Круг: 10 единиц, масштаб 0 → 0.8 за 0.3 с, стандартная CSS-кривая ease.
+ * Стрелка: 2 единицы; прозрачность 0.4 с, масштаб и поворот 0.3 с.
+ * Единица соответствует rem референса, независимо от шрифта нашего документа.
+ * Настройки на .go: --go-cursor-unit, --go-cursor-color, --go-cursor-blend.
+ *****************************************************************************/
+.go-cursor-layer {
+  --go-cursor-unit: min(0.625vw, 10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: var(--go-cursor-blend, exclusion);
+}
+
+.go-cursor-layer__follower {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+
+.go-cursor-layer__follower::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--go-cursor-unit) * -5);
+  left: calc(var(--go-cursor-unit) * -5);
+  width: calc(var(--go-cursor-unit) * 10);
+  height: calc(var(--go-cursor-unit) * 10);
+  border-radius: 50%;
+  background: var(--go-cursor-color, #fff);
+  transform: scale(0);
+  transition: transform 0.3s ease, opacity 0.1s ease;
+}
+
+.go-cursor-layer.is-visible .go-cursor-layer__follower::before {
+  transform: scale(0.8);
+}
+
+.go-cursor-layer.is-visible.is-pressed .go-cursor-layer__follower::before {
+  transform: scale(0.7);
+}
+
+.go-cursor-layer__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.go-cursor-layer__arrow {
+  position: absolute;
+  top: calc(var(--go-cursor-unit) * -1.8);
+  left: calc(var(--go-cursor-unit) * -1.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--go-cursor-unit) * 3.6);
+  height: calc(var(--go-cursor-unit) * 3.6);
+  color: #000;
+  opacity: 0;
+  transform: scale(0) rotate(10deg);
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+.go-cursor-layer.is-visible .go-cursor-layer__arrow {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.go-cursor-layer__arrow svg {
+  display: block;
+  width: calc(var(--go-cursor-unit) * 2);
+  height: calc(var(--go-cursor-unit) * 2);
+}
+
+@media (max-width: 767px) {
+  .go-cursor-layer {
+    --go-cursor-unit: 2.66667vw;
+  }
+}
+
+@media (pointer: coarse) {
+  .go-cursor-layer {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .go-cursor-layer__follower::before,
+  .go-cursor-layer__arrow {
+    transition: none;
+  }
+}
