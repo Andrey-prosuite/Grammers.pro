@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Модификация .go — проверка курсора</title>
+  <link rel="stylesheet" href="go-cursor.css">
+  <style>
+    /* Оформление демостраницы; для самой модификации эти стили не нужны. */
+    @font-face { font-family: NTSomic; src: url('../fonts/NTSomic-Regular.woff2') format('woff2'); }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 40px 24px; font: 18px/1.5 NTSomic, sans-serif; background: #eee; color: #222; }
+    main { max-width: 1100px; margin: auto; }
+    h1 { font-size: clamp(32px, 5vw, 64px); line-height: 1.1; font-weight: 400; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+    .card { min-height: 260px; padding: 32px; border-radius: 28px; background: white; }
+    .dark { background: #222; color: white; }
+    .orange { background: #fd7d2f; }
+    .custom { --go-cursor-size: 110px; --go-cursor-color: #fd7d2f; --go-cursor-blend: normal; --go-cursor-opacity: .65; }
+    button { padding: 18px 24px; border: 1px solid; border-radius: 40px; font: inherit; background: transparent; color: inherit; }
+    :focus-visible { outline: 3px solid #3584ff; outline-offset: 5px; }
+    a { color: inherit; }
+  </style>
+  <script defer src="go-cursor.js"></script>
+</head>
+<body>
+  <main>
+    <h1>Курсор внутри .go</h1>
+    <p>Перемещайте мышь по карточкам. Быстрое движение растягивает круг; остановка возвращает форму. За границами элемента круг обрезается.</p>
+    <div class="grid">
+      <section class="card go"><h2>Светлая карточка</h2><p>Добавлен только класс .go.</p></section>
+      <section class="card dark go"><h2>Тёмная карточка</h2><p>Белый круг с режимом difference.</p></section>
+      <section class="card orange go"><h2>Вложенная кнопка</h2><button class="go custom" type="button">Нажмите меня</button></section>
+      <section class="card go custom"><h2>Свои настройки</h2><p>Круг 110 px, оранжевый, с прозрачностью 0,65.</p><a href="#instructions">Проверить ссылку</a></section>
+    </div>
+    <p id="instructions">На сенсорном экране эффект отключён. При уменьшении движения в настройках системы круг следует сразу, без деформации.</p>
+  </main>
+</body>
+</html>

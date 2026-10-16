@@ -1,0 +1,43 @@
+/*
+ * Модификация: круг внутри любого элемента с классом .go.
+ * Связанный JS: ./go-cursor.js — подключить обычным <script defer src="…">.
+ * Подключение CSS: <link rel="stylesheet" href="…/go-cursor.css">.
+ * Разметка: <a class="go" href="…">Ссылка</a>; дополнительные обёртки не нужны.
+ * Настройки на .go: --go-cursor-size: 80px; --go-cursor-color: #fff;
+ * --go-cursor-blend: difference; --go-cursor-opacity: 1.
+ * Для сплошного цвета использовать --go-cursor-blend: normal.
+ * Внешних зависимостей нет. Геометрия ограничивается прямоугольником элемента
+ * с его скруглениями; для повёрнутых и многострочных элементов нужна отдельная маска.
+ */
+.go-cursor-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  mix-blend-mode: var(--go-cursor-blend, difference);
+}
+
+.go-cursor-layer.is-visible {
+  opacity: var(--go-cursor-opacity, 1);
+}
+
+.go-cursor-layer__circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--go-cursor-size, 80px);
+  height: var(--go-cursor-size, 80px);
+  border-radius: 50%;
+  background: var(--go-cursor-color, #fff);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .go-cursor-layer {
+    transition: none;
+  }
+}
