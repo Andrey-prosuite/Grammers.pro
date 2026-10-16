@@ -1,5 +1,7 @@
 # Grammers.pro
 
+Контекст для нового чата: [`docs/HANDOFF.md`](docs/HANDOFF.md). Правила разработки: [`AGENTS.md`](AGENTS.md).
+
 Статическая главная по странице `https://grammers.pro/home-page`, восстановленная из предоставленного браузерного архива. Тексты сохранены. Шаблоны Nunjucks и SCSS собираются в обычные HTML и CSS: **в итоговой странице нет JavaScript**.
 
 ## Посмотреть без localhost
