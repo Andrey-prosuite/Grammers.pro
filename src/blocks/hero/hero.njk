@@ -1,0 +1,9 @@
+{% macro renderHero(data) %}
+<section class="hero hero-{{ data.variant }}" aria-labelledby="hero-{{ data.variant }}-title">
+  <div class="container hero__inner">
+    <p class="hero__eyebrow">{{ data.eyebrow }}</p>
+    <h1 class="hero__title" id="hero-{{ data.variant }}-title">{{ data.title }}</h1>
+    <p class="hero__text">{{ data.text }}</p>
+  </div>
+</section>
+{% endmacro %}

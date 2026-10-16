@@ -1,0 +1,17 @@
+.site-header {
+  border-block-end: 1px solid var(--color-border);
+  background: var(--color-background);
+
+  &__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); min-height: 5rem; padding-block: var(--space-4); }
+  &__brand { font-weight: 700; text-decoration: none; }
+  &__nav { display: flex; flex-wrap: wrap; gap: var(--space-6); }
+  &__link { text-underline-offset: 0.25em; }
+  &__toggle { display: none; padding: 0.5rem 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-small); background: var(--color-background); color: inherit; cursor: pointer; }
+
+  @media (max-width: 40rem) {
+    &__toggle:not([hidden]) { display: block; }
+    &__nav { width: 100%; }
+    &[data-enhanced] &__nav { display: none; }
+    &[data-enhanced][data-open] &__nav { display: flex; }
+  }
+}

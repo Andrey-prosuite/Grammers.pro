@@ -1,0 +1,11 @@
+<header class="site-header" data-site-header>
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="/">{{ site.name }}</a>
+    <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Меню</button>
+    <nav class="site-header__nav" id="primary-navigation" aria-label="Основная навигация">
+      {% for item in navigation %}
+        <a class="site-header__link" href="{{ item.href }}">{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

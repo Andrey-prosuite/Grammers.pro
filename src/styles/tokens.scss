@@ -1,0 +1,17 @@
+:root {
+  --color-background: #fff;
+  --color-surface: #f6f7f9;
+  --color-text: #172033;
+  --color-muted: #526079;
+  --color-border: #dce1e9;
+  --color-accent: #2456c7;
+  --color-accent-hover: #183d94;
+  --font-body: system-ui, sans-serif;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --radius-small: 0.5rem;
+  --container-width: 75rem;
+  --page-gutter: clamp(1rem, 4vw, 3rem);
+  --section-space: clamp(3rem, 8vw, 7rem);
+}

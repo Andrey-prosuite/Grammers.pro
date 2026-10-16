@@ -1,0 +1,11 @@
+.hero {
+  padding-block: var(--section-space);
+  background: var(--hero-background, var(--color-surface));
+
+  &__inner { max-width: 56rem; }
+  &__eyebrow { margin-block-end: var(--space-4); color: var(--color-accent); }
+  &__title { margin: 0; font-size: clamp(2.25rem, 6vw, 4.5rem); line-height: 1.1; }
+  &__text { margin-block: var(--space-6) 0; max-width: 42rem; color: var(--color-muted); }
+
+  &.hero-home { --hero-background: #eef3ff; }
+}
