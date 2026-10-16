@@ -154,3 +154,30 @@
     transition: none;
   }
 }
+
+/*****************************************************************************
+ * МОДИФИКАЦИЯ 04. НАВЕДЕНИЕ НА ПРЕВЬЮ ПРОЕКТА
+ * Связанный код: ./modifications.js, секция «МОДИФИКАЦИЯ 04».
+ * Эффект выполняется средствами CSS, дополнительных обработчиков не требует.
+ * Разметка: article.project-card с вложенным div.project-card__media.go.
+ * Источник: https://grammers.pro/custom.css, актуальное правило .case_holder.
+ * Точные параметры: scale(0.98), 0.75s cubic-bezier(0.16, 0.44, 0, 0.97).
+ * Уменьшается вся область превью, включая будущие вложенные контейнеры.
+ * Старый кружок «Смотреть» заменён модификацией go из секции 01.
+ *****************************************************************************/
+.project-card__media {
+  transition: transform 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card:hover .project-card__media,
+  .project-card:focus-within .project-card__media {
+    transform: scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__media {
+    transition: none;
+  }
+}
