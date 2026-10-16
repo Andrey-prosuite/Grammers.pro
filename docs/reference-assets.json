@@ -36,55 +36,67 @@
     "file": "images/projects/brodeks.webp",
     "original": "https://static.tildacdn.com/tild6664-3035-4831-a337-343430393736/image.webp",
     "saved_dimensions": [
-      20,
-      16
+      1680,
+      1396
     ],
-    "status": "low-resolution preview from browser archive; original required"
+    "status": "low-resolution preview from browser archive; original required",
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
   },
   {
     "file": "images/projects/us-ecommerce.webp",
     "original": "https://static.tildacdn.com/tild6566-3838-4136-b738-376463666637/image_71.webp",
     "saved_dimensions": [
-      20,
-      16
+      1299,
+      1080
     ],
-    "status": "low-resolution preview from browser archive; original required"
+    "status": "low-resolution preview from browser archive; original required",
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
   },
   {
     "file": "images/projects/ag-technologies.webp",
     "original": "https://static.tildacdn.com/tild6664-3733-4331-a135-323731643635/image_6.webp",
     "saved_dimensions": [
-      20,
-      16
+      1680,
+      1396
     ],
-    "status": "low-resolution preview from browser archive; original required"
+    "status": "low-resolution preview from browser archive; original required",
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
   },
   {
     "file": "images/projects/rafaia.webp",
     "original": "https://static.tildacdn.com/tild6466-3766-4335-a535-376130386335/image_1.webp",
     "saved_dimensions": [
-      20,
-      16
+      1680,
+      1396
     ],
-    "status": "low-resolution preview from browser archive; original required"
+    "status": "low-resolution preview from browser archive; original required",
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
   },
   {
     "file": "images/projects/flowers.webp",
     "original": "https://static.tildacdn.com/tild6538-3337-4537-b332-333030353731/image_4.webp",
     "saved_dimensions": [
-      20,
-      16
+      1680,
+      1396
     ],
-    "status": "low-resolution preview from browser archive; original required"
+    "status": "low-resolution preview from browser archive; original required",
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
   },
   {
     "file": "images/projects/amk.webp",
     "original": "https://static.tildacdn.com/tild3465-3161-4265-a334-616434396331/image_2.webp",
     "saved_dimensions": [
-      20,
-      16
+      1680,
+      1396
     ],
-    "status": "low-resolution preview from browser archive; original required"
+    "status": "low-resolution preview from browser archive; original required",
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
   },
   {
     "file": "images/projects/ag-desktop.jpg",
@@ -279,5 +291,45 @@
   {
     "file": "images/awards/nagr01.svg",
     "original": null
+  },
+  {
+    "file": "images/projects/uralterra.webp",
+    "original": "https://static.tildacdn.com/tild3231-3336-4063-b365-643536313837/image_5.webp",
+    "saved_dimensions": [
+      1680,
+      1396
+    ],
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
+  },
+  {
+    "file": "images/projects/stemi.webp",
+    "original": "https://static.tildacdn.com/tild3865-3164-4365-a638-663036343030/image_3.webp",
+    "saved_dimensions": [
+      1680,
+      1396
+    ],
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
+  },
+  {
+    "file": "images/projects/italianpizza.jpg",
+    "original": "https://static.tildacdn.com/tild3133-3235-4232-b834-343436653265/Rectangle_24.jpg",
+    "saved_dimensions": [
+      1680,
+      821
+    ],
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
+  },
+  {
+    "file": "images/projects/dcsbot.png",
+    "original": "https://static.tildacdn.com/tild3638-6636-4430-b064-316131636135/93431305-5be6-4155-9.png",
+    "saved_dimensions": [
+      1680,
+      695
+    ],
+    "source_page": "https://grammers.pro/cases",
+    "original_downloaded": true
   }
 ]

@@ -5,6 +5,11 @@ const modificationsScript = './Modifications/modifications.js';
 
 export default defineConfig({
   base: './',
+  build: {
+    rollupOptions: {
+      input: { home: 'index.html', cases: 'cases.html' },
+    },
+  },
   plugins: [{
     name: 'local-modifications',
     apply: 'build',
@@ -22,8 +27,11 @@ export default defineConfig({
           source: readFileSync(new URL(modificationsScript, import.meta.url), 'utf8'),
         });
         // В сборку возвращается тот же локальный скрипт, без внешних запросов.
-        const html = bundle['index.html'];
-        html.source = String(html.source).replace('</head>', `  <script defer src="${modificationsScript}"></script>\n  </head>`);
+        for (const asset of Object.values(bundle)) {
+          if (asset.type === 'asset' && asset.fileName.endsWith('.html')) {
+            asset.source = String(asset.source).replace('</head>', `  <script defer src="${modificationsScript}"></script>\n  </head>`);
+          }
+        }
       },
     },
   }],

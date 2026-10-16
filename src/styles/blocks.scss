@@ -381,12 +381,14 @@
   }
 
   @media (min-width: 1600px) {
+    --project-preview-height: 600px;
     &__item img {
       height: 600px;
     }
   }
 
   @media (max-width: 959px) {
+    --project-preview-height: 350px;
     &__grid {
       row-gap: 70px;
     }
@@ -1193,4 +1195,104 @@
       width: calc(100% - 40px);
     }
   }
+}
+
+/*****************************************************************************
+ * БЛОК: переиспользуемое превью проекта — project-card
+ *****************************************************************************/
+.project-card {
+  min-width: 0;
+
+  &__link {
+    display: block;
+  }
+  &__media {
+    width: 100%;
+    height: var(--project-preview-height, 500px);
+    border-radius: 15px;
+    background: var(--project-image) center / cover no-repeat;
+  }
+  &__title {
+    margin-top: 24px;
+    color: #000;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.2px;
+  }
+
+  @media (max-width: 959px) {
+    &__title { font-size: 20px; }
+  }
+  @media (max-width: 639px) {
+    &__media {
+      height: auto;
+      aspect-ratio: 5 / 6;
+    }
+    &__title { font-size: 22px; }
+  }
+}
+.project-card-brodeks { --project-image: url('./images/projects/brodeks.webp'); }
+.project-card-us-ecommerce { --project-image: url('./images/projects/us-ecommerce.webp'); }
+.project-card-ag-technologies { --project-image: url('./images/projects/ag-technologies.webp'); }
+.project-card-rafaia { --project-image: url('./images/projects/rafaia.webp'); }
+.project-card-flowers { --project-image: url('./images/projects/flowers.webp'); }
+.project-card-amk { --project-image: url('./images/projects/amk.webp'); }
+.project-card-uralterra { --project-image: url('./images/projects/uralterra.webp'); }
+.project-card-stemi { --project-image: url('./images/projects/stemi.webp'); }
+.project-card-italianpizza { --project-image: url('./images/projects/italianpizza.jpg'); }
+.project-card-dcsbot { --project-image: url('./images/projects/dcsbot.png'); }
+
+/*****************************************************************************
+ * БЛОК: список кейсов — case-list
+ *****************************************************************************/
+.case-list {
+  width: calc(100% - 160px);
+  padding-top: 70px;
+
+  h1 {
+    margin-bottom: 70px;
+    color: #000;
+    font-size: 70px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 160px 40px;
+  }
+
+  @media (min-width: 1640px) {
+    --project-preview-height: 720px;
+    &__grid { column-gap: 80px; }
+  }
+  @media (max-width: 1199px) {
+    --project-preview-height: 291px;
+    h1 { font-size: 56px; }
+    &__grid { column-gap: 32px; }
+  }
+  @media (max-width: 959px) {
+    width: calc(100% - 80px);
+    h1 { font-size: 48px; }
+    &__grid { grid-template-columns: 1fr; row-gap: 32px; }
+  }
+  @media (max-width: 639px) {
+    width: calc(100% - 40px);
+    padding-top: 20px;
+    h1 { margin-bottom: 30px; font-size: 42px; line-height: 1.1; }
+    &__grid { row-gap: 40px; }
+  }
+  @media (max-width: 479px) {
+    h1 { font-size: 36px; }
+  }
+}
+
+/*****************************************************************************
+ * БЛОК: признание студии — studio-recognition
+ *****************************************************************************/
+.studio-recognition {
+  padding-top: var(--section-space);
+  .credentials__accreditation { margin-top: 30px; }
 }
