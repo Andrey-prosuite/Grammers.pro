@@ -1,9 +1,0 @@
-{% from "components/text-lines.njk" import textLines %}
-<section class="awards">
-  <h2 class="container">{{ textLines(awards.title) }}</h2>
-  <section class="awards__list" aria-label="Награды студии" tabindex="0">
-    {% for award in awards.items %}
-    <img src="./images/{{ award.image }}" width="350" height="350" alt="{{ award.alt }}" loading="lazy" decoding="async">
-    {% endfor %}
-  </section>
-</section>

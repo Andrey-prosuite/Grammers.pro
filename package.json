@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "styles": "sass src/styles/main.scss styles.css --no-source-map",
+    "predev": "npm run styles",
+    "prebuild": "npm run styles",
+    "styles:watch": "npm run styles -- --watch"
   },
   "devDependencies": {
-    "nunjucks": "^3.2.4",
     "sass": "^1.105.2",
     "vite": "^7.3.1"
   },

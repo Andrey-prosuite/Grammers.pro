@@ -1,4 +1,280 @@
-{% extends "layouts/base.njk" %}
-{% block content %}
-  {% include "pages/home.njk" %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Создаем сайты, которые помогают брендам развиваться в веб">
+    <title>Главная by Andrey</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+<header class="site-header container">
+  <a class="site-header__brand" href="./" aria-label="Grammers.pro — главная">
+    <img src="./images/brand/logo.svg" width="180" height="37" alt="Grammers.pro">
+  </a>
+  <nav class="site-header__nav" aria-label="Основная навигация">
+    <a href="https://grammers.pro/cases">Кейсы</a>
+    <a href="#services">Услуги</a>
+    <a href="https://grammers.pro/blog">Блог</a>
+    <a href="https://grammers.pro/o_nas">О нас</a>
+  </nav>
+  <a class="site-header__phone" href="tel:+74951918031">+7&nbsp;495&nbsp;191&nbsp;80&nbsp;31</a>
+  <a class="site-header__telegram" href="https://t.me/grammers_pro" aria-label="Телеграм">
+    <img src="./images/brand/telegram.svg" width="45" height="45" alt="">
+  </a>
+  <a class="button site-header__brief" href="#contact">Заполнить бриф</a>
+</header>
+    <main id="main">
+<section class="hero hero-home container" aria-labelledby="hero-title">
+  <div class="hero__award">
+    <figure>
+      <img src="./images/awards/developer.svg" width="73" height="73" alt="" fetchpriority="high">
+      <figcaption>2023-2024</figcaption>
+    </figure>
+    <p>Разработчик №1<br>в &quot;Рейтинге рунета&quot; и &quot;CMS-Magazine&quot;<br>(номинация &quot;Разработка на NestJS&quot;)</p>
+  </div>
+  <h1 id="hero-title">Мы - Grammers. <br>Студия разработки сайтов</h1>
+  <p class="hero__text">Делаем сайты для производителей и продаж. B2B, E-commerce, бренды.</p>
+  <a class="button hero__cta" href="#contact">Напишите нам</a>
+</section>
+<section class="clients" aria-label="Клиенты студии" tabindex="0">
+  <img src="./images/clients/clients01.png" width="220" height="104" alt="Brodeks" decoding="async">
+  <img src="./images/clients/clients02.png" width="220" height="104" alt="СДЭК" decoding="async">
+  <img src="./images/clients/clients03.png" width="220" height="104" alt="ЭкоНива" decoding="async">
+  <img src="./images/clients/clients04.png" width="220" height="104" alt="iModern" decoding="async">
+  <img src="./images/clients/clients05.png" width="220" height="104" alt="Пензспецавтомаш" decoding="async">
+  <img src="./images/clients/clients06.png" width="220" height="104" alt="УГМК" decoding="async">
+  <img src="./images/clients/clients07.png" width="220" height="104" alt="AG-Technologies" decoding="async">
+  <img src="./images/clients/clients08.png" width="220" height="104" alt="Aliaxis" decoding="async">
+  <img src="./images/clients/clients09.png" width="220" height="104" alt="Technopark Automation" decoding="async">
+  <img src="./images/clients/clients11.png" width="220" height="104" alt="Studio Flor" decoding="async">
+  <img src="./images/clients/clients12.png" width="220" height="104" alt="ItalianPizza" decoding="async">
+  <img src="./images/clients/clients13.png" width="220" height="104" alt="Afinara" decoding="async">
+  <img src="./images/clients/clients15.png" width="220" height="104" alt="ЗСТЭМИ-2" decoding="async">
+  <img src="./images/clients/clients16.png" width="220" height="104" alt="Tesoro" decoding="async">
+  <img src="./images/clients/clients14.png" width="220" height="104" alt="Omnicomm" decoding="async">
+</section>
+<section class="approach container">
+  <header class="section-heading">
+  <p class="section-heading__label">{ Подход }</p>
+  <h2>Создаем проекты, которые одинаково хорошо чувствуют себя в поиске и в глазах ваших клиентов.</h2>
+</header>
+
+  <p class="approach__intro">Используем несколько подходов к разработке, которые соответствуют разным задачам</p>
+  <div class="approach__cards">
+    <article class="approach__card approach__card-seo">
+      <h3>SEO-first</h3>
+      <p>Всё делается с упором на максимальную SEO-оптимизацию: продуманная структура, четкое следование рекоменадциям Яндекс и Google, чистый код для лучшего ранжирования в поиске.</p>
+    </article>
+    <article class="approach__card approach__card-marketing">
+      <h3>Marketing-first</h3>
+      <p>Фокус на маркетинговой эффективности: раскрытие ценности бренда для целевой аудитории, разработка карты пути клиента, A/B тестирование, оптимизация конверсии в заказ.</p>
+    </article>
+    <article class="approach__card approach__card-design">
+      <h3>Design-first</h3>
+      <p>Приоритет визуальной составляющей: креативный дизайн, анимации, уникальные взаимодействия, которые создают запоминающийся пользовательский опыт.</p>
+    </article>
+  </div>
+</section>
+<section class="benefits container">
+  <header class="section-heading">
+  <p class="section-heading__label">Почему клиенты выбирают нас</p>
+  <h2>Создаем сбалансированные решения:<br>дизайн, маркетинг и SEO помогают друг другу в продажах</h2>
+</header>
+
+  <div class="benefits__content">
+    <article>
+      <h3>Делаем дизайн, <br>понятный рынку.</h3>
+      <p>Ищем визуальные решения, способные работать на широкую аудиторию. Наш дизайн опирается на маркетинговые задачи и не шокирует массового потребителя экспериментами. Посетители сразу считывают: кто вы, чем занимаетесь и почему вам можно доверять.</p>
+<a class="button" href="https://grammers.pro/o_nas">О нас</a>    </article>
+    <article>
+      <h3>Открываем возможности для роста трафика</h3>
+      <p>Прежде чем рисовать интерфейс, мы исследуем — что ищут ваши клиенты и строим архитектуру сайта вокруг того, как люди ищут. Категории, фильтры, названия разделов, логика перелинковки — все это рождается из SEO-анализа, а не из эстетических соображений. И закладывается на этапе проектирования.</p>
+    </article>
+  </div>
+</section>
+<section class="projects container" aria-labelledby="projects-title">
+  <h2 id="projects-title">Сделано в grammers</h2>
+  <div class="projects__grid">
+    <article class="projects__item">
+<a href="https://grammers.pro/brodeks">        <img src="./images/projects/brodeks.webp" width="860" height="720" alt="" loading="lazy" decoding="async">
+        <h3>Запустили интернет-магазин для бренда Brodeks</h3>
+</a>    </article>
+    <article class="projects__item">
+        <img src="./images/projects/us-ecommerce.webp" width="860" height="720" alt="" loading="lazy" decoding="async">
+        <h3>Сделали дизайн e-commerce проекта для рынка США (скоро оформим кейс)</h3>
+    </article>
+    <article class="projects__item">
+<a href="https://grammers.pro/agt_case">        <img src="./images/projects/ag-technologies.webp" width="860" height="720" alt="" loading="lazy" decoding="async">
+        <h3>Создали мультибрендовый интернет-магазин ag-techologies.ru</h3>
+</a>    </article>
+    <article class="projects__item">
+<a href="https://rafaia-couture.com/">        <img src="./images/projects/rafaia.webp" width="860" height="720" alt="" loading="lazy" decoding="async">
+        <h3>Запустили каталог премиальных вечерних платьев из Арабских Эмиратов</h3>
+</a>    </article>
+    <article class="projects__item">
+<a href="https://www.dostavka-tsvetov.com/">        <img src="./images/projects/flowers.webp" width="860" height="720" alt="" loading="lazy" decoding="async">
+        <h3>Сделали ремастеринг сайта доставки цветов в Москве</h3>
+</a>    </article>
+    <article class="projects__item">
+<a href="https://grammers.pro/amk-perspective">        <img src="./images/projects/amk.webp" width="860" height="720" alt="" loading="lazy" decoding="async">
+        <h3>Сделали редизайн интернет-магазина корпоративных подарков</h3>
+</a>    </article>
+  </div>
+  <a class="button projects__more" href="https://grammers.pro/cases">Больше кейсов</a>
+</section>
+<section class="metrics container">
+  <h2>Создаем сайты по-настоящему <br>эффективными</h2>
+  <dl class="metrics__list">
+    <div class="metrics__item">
+      <dt>трафика</dt>
+      <dd class="metrics__value">+100%</dd>
+      <dd class="metrics__text">увеличили посещаемость сайта для компании Бродекс</dd>
+    </div>
+    <div class="metrics__item">
+      <dt>времени на <br>сайте</dt>
+      <dd class="metrics__value">+200%</dd>
+      <dd class="metrics__text">удержали пользователя на сайта в два раза дольше</dd>
+    </div>
+    <div class="metrics__item">
+      <dt>конверсии</dt>
+      <dd class="metrics__value">+24%</dd>
+      <dd class="metrics__text">увеличили конверсию сайта для компании Бродекс</dd>
+    </div>
+  </dl>
+</section>
+<section class="featured-project" aria-labelledby="featured-project-title">
+  <div class="featured-project__content">
+    <h2 id="featured-project-title">Запустили мультибрендовый интернет-магазин спецодежды</h2>
+    <ul>
+<li>Продуманный UX|UI для b2b-продаж</li><li>Поддомены для ранжирования в регионах</li><li>Двухсторонняя интеграция с 1С</li><li>SEO-проектирование</li><li>Agile-методология разработки</li>    </ul>
+    <a class="featured-project__link" href="https://ag-technologies.ru/">ag-technologies.ru</a>
+  </div>
+  <figure class="featured-project__preview">
+    <img class="featured-project__desktop" src="./images/projects/ag-desktop.jpg" width="758" height="3913" alt="Интерфейс интернет-магазина ag-technologies.ru" loading="lazy" decoding="async">
+    <img class="featured-project__phone" src="./images/projects/ag-phone.svg" width="260" height="531" alt="" loading="lazy" decoding="async">
+  </figure>
+</section>
+<section class="awards">
+  <h2 class="container">Финалисты профильных премий<br>Workspace Digital Awards и Рейтинг Рунета-2024</h2>
+  <section class="awards__list" aria-label="Награды студии" tabindex="0">
+    <img src="./images/awards/nagr01.svg" width="350" height="350" alt="1 место Рейтинг Рунета 2023 — разработка на NestJS" loading="lazy" decoding="async">
+    <img src="./images/awards/nagr02.svg" width="350" height="350" alt="9 место Рейтинг Рунета 2023 — разработка сайтов в Екатеринбурге" loading="lazy" decoding="async">
+    <img src="./images/awards/nagr03.svg" width="350" height="350" alt="1 место Рейтинг Рунета 2024 — разработка на NestJS" loading="lazy" decoding="async">
+    <img src="./images/awards/nagr04.svg" width="350" height="350" alt="2 место Рейтинг Рунета 2024 — разработка интернет-магазинов на Битрикс в Екатеринбурге" loading="lazy" decoding="async">
+    <img src="./images/awards/nagr05.svg" width="350" height="350" alt="Рейтинг Рунета — награда студии" loading="lazy" decoding="async">
+    <img src="./images/awards/nagr06.svg" width="350" height="350" alt="Workspace Digital Awards — финалист" loading="lazy" decoding="async">
+    <img src="./images/awards/nagr07.svg" width="350" height="350" alt="Workspace Digital Awards — награда студии" loading="lazy" decoding="async">
+  </section>
+</section>
+<section class="credentials container">
+  <header class="section-heading">
+  <p class="section-heading__label">Почему мы?</p>
+  <h2>Нас выбирают, когда требуется системный и ответственный подход к проекту</h2>
+</header>
+
+  <div class="credentials__grid">
+    <ul class="credentials__primary">
+<li>Знаем как продавать в интернет</li><li>Аккредитованная IT-компания</li><li>Экспертиза 10+ лет</li>      <li class="credentials__ranks">
+<p>ТОП-1 в Рейтинге Рунета</p><p>Финалист Workspace Digital Awards 2024</p>      </li>
+    </ul>
+    <ul class="credentials__secondary">
+<li>Дружественные интерфейсы</li><li>Бутиковый подход к разработке</li><li>Доносим смыслы бренда</li><li>Наши сайты SEO оптимизированные</li><li>Партнёр 1C-Битрикс</li>    </ul>
+  </div>
+  <div class="credentials__accreditation">
+    <p>Аккредитованная IT Компания</p>
+    <img src="./images/brand/ministry.png" width="180" height="40" alt="Минцифры России" loading="lazy" decoding="async">
+    <img src="./images/brand/arda.svg" width="140" height="40" alt="ARDA" loading="lazy" decoding="async">
+  </div>
+</section>
+<section class="platforms container">
+  <h2>Используем популярные платформы</h2>
+  <ul class="platforms__list">
+    <li>
+      <img src="./images/platforms/bitrix.svg" width="80" height="80" alt="" loading="lazy" decoding="async">
+      <p>Сайты на Битрикс</p>
+    </li>
+    <li>
+      <img src="./images/platforms/tilda.svg" width="80" height="80" alt="" loading="lazy" decoding="async">
+      <p>Сайты на Тильде</p>
+    </li>
+    <li>
+      <img src="./images/platforms/laravel.svg" width="80" height="80" alt="" loading="lazy" decoding="async">
+      <p>Сайты на Laravel</p>
+    </li>
+    <li>
+      <img src="./images/platforms/wordpress.svg" width="80" height="80" alt="" loading="lazy" decoding="async">
+      <p>Сайты на WordPress</p>
+    </li>
+    <li>
+      <img src="./images/platforms/opencart.svg" width="80" height="80" alt="" loading="lazy" decoding="async">
+      <p>Сайты на OpenCart</p>
+    </li>
+  </ul>
+</section>
+<section class="services container" id="services">
+  <h2>Направления работы</h2>
+  <ul>
+    <li><a href="#contact">Разработка сайтов<img src="./images/brand/arrow.svg" width="30" height="27" alt="" loading="lazy"></a></li>
+    <li><a href="#contact">Продуктовый веб-дизайн<img src="./images/brand/arrow.svg" width="30" height="27" alt="" loading="lazy"></a></li>
+    <li><a href="#contact">SEO-проектирование<img src="./images/brand/arrow.svg" width="30" height="27" alt="" loading="lazy"></a></li>
+    <li><a href="#contact">Поддержка и развитие проектов<img src="./images/brand/arrow.svg" width="30" height="27" alt="" loading="lazy"></a></li>
+    <li><a href="#contact">ИИ, чат-боты<img src="./images/brand/arrow.svg" width="30" height="27" alt="" loading="lazy"></a></li>
+  </ul>
+</section>
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact__intro">
+    <h2 id="contact-title">Начинаем работу с погружения,<br>а не с предоплаты.</h2>
+    <p class="contact__question">Обсудим задачу?</p>
+    <div class="contact__messengers">
+      <a class="button" href="https://t.me/grammers_pro">Телеграм</a>
+      <button class="button" type="button" disabled>Макс</button>
+    </div>
+    <figure class="contact__manager">
+      <img src="./images/brand/alexander.webp" width="73" height="73" alt="" loading="lazy" decoding="async">
+      <figcaption>Александр<small>Менеджер проектов</small></figcaption>
+    </figure>
+  </div>
+  <form class="contact__form" aria-label="Обсудить проект">
+    <label for="project-title">Расскажите о своем проекте</label>
+    <input id="project-title" name="title" type="text" placeholder="Корпоративный сайт">
+    <fieldset class="contact__budget">
+      <legend>Бюджет</legend>
+      <label><input type="radio" name="budget" value="under-500"> &lt; 500 тыс.</label>
+      <label><input type="radio" name="budget" value="500-1000"> от 500 тыс. до 1 млн.</label>
+      <label><input type="radio" name="budget" value="1000-3000"> от 1 млн. до 3 млн.</label>
+      <label><input type="radio" name="budget" value="over-3000"> от 3 млн.</label>
+    </fieldset>
+    <label for="project-description">Описание проекта</label>
+    <textarea id="project-description" name="description" rows="3" placeholder=" тематика, цели, основные конкуренты"></textarea>
+    <div class="contact__details">
+      <input name="name" type="text" autocomplete="name" placeholder="Ваше имя" aria-label="Ваше имя">
+      <input name="email" type="email" autocomplete="email" placeholder="Ваш email" aria-label="Ваш email">
+      <input name="phone" type="tel" autocomplete="tel" placeholder="+7 (000) 000-00-00" aria-label="Телефон">
+    </div>
+    <input name="website" type="url" autocomplete="url" placeholder="Сайт" aria-label="Сайт">
+    <label class="contact__consent"><input type="checkbox" name="consent" required> Даю согласие на обработку персональных данных</label>
+    <button class="button" type="submit" disabled>Обсудить проект</button>
+  </form>
+</section>
+    </main>
+<footer class="site-footer">
+  <div class="site-footer__contact container">
+    <h2>Начнем проект?</h2>
+    <p><a href="#contact">Заполните бриф</a>, или&nbsp;напишите нам в <a href="https://t.me/grammers_pro">Телеграм</a></p>
+    <address>
+      <a href="tel:+74951918031">+7&nbsp;495&nbsp;191&#8209;80&#8209;31</a>
+      <a href="mailto:hello@grammers.pro">hello@grammers.pro</a>
+      <a class="button button-accent" href="#contact">Рассчитать стоимость</a>
+    </address>
+  </div>
+  <div class="site-footer__legal container">
+    <p>© 2021–26. ООО "МЕДИАТЕХ"</p>
+    <a href="https://grammers.pro/privacy">Политика конфиденциальности</a>
+    <a class="site-footer__social" href="https://dzen.ru/grammers" aria-label="Дзен"><img src="./images/brand/dzen.svg" width="38" height="38" alt="" loading="lazy"></a>
+  </div>
+  <img class="site-footer__wordmark" src="./images/brand/wordmark.svg" width="1682" height="261" alt="Grammers" loading="lazy" decoding="async">
+</footer>
+  </body>
+</html>
