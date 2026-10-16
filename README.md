@@ -11,7 +11,7 @@
 Требуется Node.js >= 22.12.0. Установка: `npm ci`.
 
 - `index.html` — единственный источник разметки и контента главной.
-- `src/blocks/<name>/<name>.scss` — стили независимых секций.
+- `src/styles/blocks.scss` — стили всех блоков, разделённые секциями-комментариями со звёздочками.
 - `src/components/` — стили повторяемых элементов.
 - [`Modifications/`](Modifications/README.md) — база эффектов: один `modifications.css` и один `modifications.js`, разделённые секциями. Курсор `.go` подключён на карточках кейсов.
 - `src/styles/main.scss` — подключение SCSS через `@use`.
