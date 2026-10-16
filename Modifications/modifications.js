@@ -207,3 +207,41 @@
     init();
   }
 })();
+
+/*****************************************************************************
+ * МОДИФИКАЦИЯ 02. ПЛАВНЫЙ СКРОЛЛ НА ВСЕХ СТРАНИЦАХ
+ * Связанные стили: ./modifications.css, секция «МОДИФИКАЦИЯ 02».
+ * Зависимость: SmoothScroll 1.4.10, CDN-скрипт с integrity перед этим файлом.
+ * Подключать оба скрипта с defer в общем head каждой страницы.
+ * Параметры заданы пользователем; время анимации 800 мс = 0.8 секунды.
+ * При недоступности CDN сохраняется обычный скролл без ошибки JS.
+ * При reduced motion библиотека отключается, остаётся системный скролл.
+ * Очистка обработчиков библиотеки: window.SmoothScroll.destroy().
+ *****************************************************************************/
+(() => {
+  'use strict';
+  if (typeof window.SmoothScroll !== 'function') return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.SmoothScroll.destroy();
+    return;
+  }
+
+  window.SmoothScroll({
+    // Время скролла: 800 мс = 0.8 секунды.
+    animationTime: 800,
+    // Размер шага в пикселях.
+    stepSize: 75,
+    // Интервал и предел ускорения.
+    accelerationDelta: 30,
+    accelerationMax: 2,
+    // Управление клавиатурой и шаг стрелок в пикселях.
+    keyboardSupport: true,
+    arrowScroll: 50,
+    // Параметры импульсного сглаживания.
+    pulseAlgorithm: true,
+    pulseScale: 4,
+    pulseNormalize: 1,
+    // Сохранён параметр из настройки пользователя; см. ограничения в README.
+    touchpadSupport: true,
+  });
+})();
