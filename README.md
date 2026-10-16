@@ -16,6 +16,7 @@
 - `src/styles/main.scss` — подключение SCSS через `@use`.
 - `styles.css` — скомпилированные стили для прямого открытия HTML; хранить в Git вместе с изменениями SCSS.
 - `images/` — локальные изображения.
+- `fonts/` — локальный NTSomic (400, 500, 600, 700), подключение в `src/styles/fonts.scss`.
 - `npm run styles` — обновить CSS после правок SCSS; `npm run styles:watch` — следить за изменениями.
 - `npm run dev` — необязательный сервер Vite; `npm run build` — сборка в `dist/`; `npm run preview` — проверка сборки.
 
