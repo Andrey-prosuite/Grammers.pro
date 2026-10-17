@@ -168,10 +168,34 @@
  * Масштаб по запросу пользователя: 0.95; переход all 0.75s
  * cubic-bezier(0.16, 0.44, 0, 0.97).
  * Уменьшается вся область превью, включая будущие вложенные контейнеры.
+ * При наведении, фокусе и мобильной эмуляции включается тонкая серая обводка.
  * Старый кружок «Смотреть» заменён модификацией go из секции 01.
  *****************************************************************************/
 .project-card__media {
   transition: all 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
+}
+
+.project-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border: 1px solid #e3e5e8;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
+}
+
+@media (min-width: 960px) and (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-card__media::after {
+    opacity: 1;
+  }
+}
+
+.project-card:focus-within .project-card__media::after,
+.project-preview[data-project-preview-active]::after {
+  opacity: 1;
 }
 
 @media (min-width: 960px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -182,7 +206,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-card__media {
+  .project-card__media,
+  .project-card__media::after {
     transition: none;
   }
 }
