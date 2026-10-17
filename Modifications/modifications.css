@@ -161,23 +161,167 @@
  * Эффект выполняется средствами CSS, дополнительных обработчиков не требует.
  * Разметка: article.project-card с вложенным div.project-card__media.go.
  * Источник: https://grammers.pro/custom.css, актуальное правило .case_holder.
- * Точные параметры: scale(0.98), 0.75s cubic-bezier(0.16, 0.44, 0, 0.97).
+ * Масштаб по запросу пользователя: 0.95; переход all 0.75s
+ * cubic-bezier(0.16, 0.44, 0, 0.97).
  * Уменьшается вся область превью, включая будущие вложенные контейнеры.
  * Старый кружок «Смотреть» заменён модификацией go из секции 01.
  *****************************************************************************/
 .project-card__media {
-  transition: transform 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
+  transition: all 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .project-card:hover .project-card__media,
   .project-card:focus-within .project-card__media {
-    transform: scale(0.98);
+    transform: scale(0.95);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .project-card__media {
     transition: none;
+  }
+}
+
+/*****************************************************************************
+ * МОДИФИКАЦИЯ 05. ЭКРАН САЙТА ВНУТРИ ПРЕВЬЮ ПРОЕКТА
+ * Связанный код: ./modifications.js, секция «МОДИФИКАЦИЯ 05» (без JS).
+ * Источник: https://djerin.ru/assets/css/home.css?v=202610151326.
+ * Подключение: класс project-preview на существующем контейнере изображения.
+ * Внутри: backdrop + veil + stage > screen > screenshot; логотипа нет.
+ * Фон берётся из --project-image, скриншот задаётся атрибутом src в HTML.
+ * Наведение ограничено превью; фокус обычной ссылки также открывает экран.
+ * Основа — референс; стартовая трансформация настроена пользователем, см. README.
+ * Зависимостей нет. Очистка: убрать класс project-preview и вложенные слои.
+ *****************************************************************************/
+.project-preview {
+  --project-preview-unit: 1px;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.project-preview__backdrop,
+.project-preview__veil,
+.project-preview__stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.project-preview__backdrop {
+  /* Наследуем уже разрешённый URL фона из основного CSS в корне сайта. */
+  background: inherit;
+}
+
+.project-preview__veil,
+.project-preview__stage {
+  z-index: 2;
+}
+
+.project-preview__veil {
+  background: rgba(8, 8, 7, 0.8);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.25, 0.1, 0.25, 1),
+              backdrop-filter 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-preview__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-preview__screen {
+  position: relative;
+  /* Размеры наследуются от карточки; запасные значения сохраняют автономность эффекта. */
+  width: var(--project-screen-width, 100%);
+  height: var(--project-screen-height, 100%);
+  max-width: var(--project-screen-max-width, 100%);
+  container-type: size;
+  border-radius: var(--project-screen-radius-start, 5px);
+  overflow: hidden;
+  background: #fff;
+  opacity: 0;
+  transform: perspective(1200px) translateY(0%) rotateX(7deg) scale(0.85);
+  transform-origin: 50% 100%;
+  transition: opacity 150ms cubic-bezier(0.25, 0, 0.25, 1),
+              transform 850ms cubic-bezier(0.2, 1, 0.36, 1),
+              border-radius 850ms cubic-bezier(0.2, 1, 0.36, 1);
+  box-shadow: 0 calc(20 * var(--project-preview-unit)) calc(50 * var(--project-preview-unit)) rgba(0, 0, 0, 0.35);
+}
+
+.project-preview__screenshot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  display: block;
+  translate: 0 0;
+  /* Возврат в начало скрыт: экран гаснет раньше задержанного сброса. */
+  transition: translate 0s linear 600ms;
+}
+
+@media (min-width: 1024px) {
+  .project-preview {
+    --project-preview-unit: calc(min(100vw, 1512px) / 1512);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .project-preview:hover .project-preview__veil {
+    opacity: 1;
+    backdrop-filter: blur(2px) sepia(0.6);
+  }
+  .project-preview:hover .project-preview__screen {
+    opacity: 1;
+    transform: none;
+    border-radius: var(--project-screen-radius-end, 25px);
+    transition: opacity 0.75s cubic-bezier(0.16, 0.44, 0, 0.97),
+                transform 0.75s cubic-bezier(0.16, 0.44, 0, 0.97),
+                border-radius 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
+  }
+  .project-preview:hover .project-preview__screenshot {
+    translate: 0 min(0px, calc(-100% + 100cqh));
+    /* Прокрутка начинается раньше завершения появления экрана за 750 мс. */
+    transition: translate 12s cubic-bezier(0.25, 0.1, 0.55, 1) 200ms;
+  }
+}
+
+.project-card__link:focus-visible .project-preview__veil,
+.project-preview:focus-visible .project-preview__veil {
+  opacity: 1;
+  backdrop-filter: blur(2px) sepia(0.6);
+}
+
+.project-card__link:focus-visible .project-preview__screen,
+.project-preview:focus-visible .project-preview__screen {
+  opacity: 1;
+  transform: none;
+  border-radius: var(--project-screen-radius-end, 25px);
+  transition: opacity 0.75s cubic-bezier(0.16, 0.44, 0, 0.97),
+              transform 0.75s cubic-bezier(0.16, 0.44, 0, 0.97),
+              border-radius 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
+}
+
+.project-card__link:focus-visible .project-preview__screenshot,
+.project-preview:focus-visible .project-preview__screenshot {
+  translate: 0 min(0px, calc(-100% + 100cqh));
+  transition: translate 12s cubic-bezier(0.25, 0.1, 0.55, 1) 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__media.project-preview .project-preview__backdrop,
+  .project-card__media.project-preview .project-preview__veil,
+  .project-card__media.project-preview .project-preview__screen,
+  .project-card__media.project-preview .project-preview__screenshot {
+    transition: none;
+  }
+  .project-card__media.project-preview .project-preview__backdrop,
+  .project-card__media.project-preview .project-preview__screen {
+    transform: none;
+  }
+  .project-card__media.project-preview .project-preview__screenshot {
+    translate: 0 0;
   }
 }

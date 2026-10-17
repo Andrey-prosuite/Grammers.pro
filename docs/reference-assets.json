@@ -331,5 +331,20 @@
     ],
     "source_page": "https://grammers.pro/cases",
     "original_downloaded": true
+  },
+  {
+    "file": "images/projects/brodeks-screen.webp",
+    "source": "user-provided screenshot",
+    "source_file": "screencapture-brodeks-ru-2026-10-18-04_50_50.png",
+    "source_dimensions": [
+      1920,
+      11888
+    ],
+    "saved_dimensions": [
+      900,
+      2400
+    ],
+    "processing": "Resize to 900px width with Lanczos, crop top 2400px, WebP quality 92",
+    "status": "User-provided Brodeks screenshot; temporarily used for all 16 project cards on home and cases at user request; replace individually later"
   }
 ]

@@ -1,8 +1,9 @@
 :root {
-  --color-background: #fff;
+  --LightGray: #f5f6f8;
+  --color-background: var(--LightGray);
   --color-text: #2c2c2c;
   --color-muted: #666;
-  --color-surface: #f5f6f8;
+  --color-surface: var(--LightGray);
   --color-border: #d7d7d7;
   --color-accent: #fd7d2f;
   --color-footer: #262931;

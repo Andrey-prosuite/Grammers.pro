@@ -28,10 +28,11 @@
   font-display: swap;
 }
 :root {
-  --color-background: #fff;
+  --LightGray: #f5f6f8;
+  --color-background: var(--LightGray);
   --color-text: #2c2c2c;
   --color-muted: #666;
-  --color-surface: #f5f6f8;
+  --color-surface: var(--LightGray);
   --color-border: #d7d7d7;
   --color-accent: #fd7d2f;
   --color-footer: #262931;
@@ -564,7 +565,7 @@ button {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   column-gap: var(--grid-gap);
-  row-gap: 180px;
+  row-gap: 80px;
 }
 .projects__item {
   grid-column: span 3;
@@ -581,18 +582,7 @@ button {
   min-width: 228px;
   margin: 180px auto 0;
 }
-@media (min-width: 1600px) {
-  .projects {
-    --project-preview-height: 600px;
-  }
-}
 @media (max-width: 959px) {
-  .projects {
-    --project-preview-height: 350px;
-  }
-  .projects__grid {
-    row-gap: 70px;
-  }
   .projects__more {
     margin-top: 70px;
   }
@@ -600,7 +590,7 @@ button {
 @media (max-width: 639px) {
   .projects__grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    column-gap: 40px;
   }
   .projects__item, .projects__item:nth-child(n) {
     grid-column: auto;
@@ -1371,7 +1361,22 @@ button {
  * БЛОК: переиспользуемое превью проекта — project-card
  *****************************************************************************/
 .project-card {
+  --project-screen-width: 100%;
+  --project-screen-height: 100%;
+  --project-screen-max-width: 100%;
+  --project-screen-radius-start: 5px;
+  --project-screen-radius-end: 25px;
   min-width: 0;
+}
+.project-card.project-card-featured {
+  --project-screen-width: calc(100% - 50px);
+  --project-screen-height: calc(100%);
+  --project-screen-max-width: 900px;
+  grid-column: 1/-1;
+}
+.project-card.project-card-featured .project-card__media {
+  height: 85vh;
+  aspect-ratio: auto;
 }
 .project-card__link {
   display: block;
@@ -1380,8 +1385,8 @@ button {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: var(--project-preview-height, 500px);
-  border-radius: 15px;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-card);
   background: var(--project-image) center/cover no-repeat;
 }
 .project-card__title {
@@ -1392,16 +1397,22 @@ button {
   line-height: 1.4;
   letter-spacing: -0.2px;
 }
+@media (min-width: 960px) {
+  .project-card.project-card-featured {
+    --project-screen-radius-start: 25px;
+    --project-screen-radius-end: 0px;
+  }
+}
 @media (max-width: 959px) {
   .project-card__title {
     font-size: 20px;
   }
+  .project-card.project-card-featured .project-card__media {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
 }
 @media (max-width: 639px) {
-  .project-card__media {
-    height: auto;
-    aspect-ratio: 5/6;
-  }
   .project-card__title {
     font-size: 22px;
   }
@@ -1465,20 +1476,14 @@ button {
 .case-list__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 160px 40px;
+  gap: 80px 40px;
 }
 @media (min-width: 1640px) {
-  .case-list {
-    --project-preview-height: 720px;
-  }
   .case-list__grid {
     column-gap: 80px;
   }
 }
 @media (max-width: 1199px) {
-  .case-list {
-    --project-preview-height: 291px;
-  }
   .case-list h1 {
     font-size: 56px;
   }
@@ -1495,7 +1500,6 @@ button {
   }
   .case-list__grid {
     grid-template-columns: 1fr;
-    row-gap: 32px;
   }
 }
 @media (max-width: 639px) {
@@ -1507,9 +1511,6 @@ button {
     margin-bottom: 30px;
     font-size: 42px;
     line-height: 1.1;
-  }
-  .case-list__grid {
-    row-gap: 40px;
   }
 }
 @media (max-width: 479px) {
