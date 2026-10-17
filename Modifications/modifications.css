@@ -7,7 +7,8 @@
  * Круг: 10 единиц, масштаб 0 → 0.8 за 0.3 с, стандартная CSS-кривая ease.
  * Стрелка: 2 единицы; прозрачность 0.4 с, масштаб и поворот 0.3 с.
  * Единица соответствует rem референса, независимо от шрифта нашего документа.
- * Настройки на .go: --go-cursor-unit, --go-cursor-color, --go-cursor-blend.
+ * Настройки на .go: --go-cursor-unit, --go-cursor-color.
+ * Инверсия временно отключена; исходные цвета и наложение сохранены в комментариях.
  *****************************************************************************/
 .go-cursor-layer {
   --go-cursor-unit: min(0.625vw, 10px);
@@ -17,7 +18,8 @@
   z-index: 2147483647;
   overflow: hidden;
   pointer-events: none;
-  mix-blend-mode: var(--go-cursor-blend, exclusion);
+  /* Инверсия референса: mix-blend-mode: var(--go-cursor-blend, exclusion); */
+  mix-blend-mode: normal;
 }
 
 .go-cursor-layer__follower {
@@ -37,7 +39,8 @@
   width: calc(var(--go-cursor-unit) * 10);
   height: calc(var(--go-cursor-unit) * 10);
   border-radius: 50%;
-  background: var(--go-cursor-color, #fff);
+  /* Цвет при инверсии: background: var(--go-cursor-color, #fff); */
+  background: var(--go-cursor-color, #242424);
   transform: scale(0);
   transition: transform 0.3s ease, opacity 0.1s ease;
 }
@@ -65,7 +68,8 @@
   justify-content: center;
   width: calc(var(--go-cursor-unit) * 3.6);
   height: calc(var(--go-cursor-unit) * 3.6);
-  color: #000;
+  /* Цвет стрелки при инверсии: color: #000; */
+  color: #fff;
   opacity: 0;
   transform: scale(0) rotate(10deg);
   transition: opacity 0.4s ease, transform 0.3s ease;
@@ -170,7 +174,7 @@
   transition: all 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
 }
 
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+@media (min-width: 960px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .project-card:hover .project-card__media,
   .project-card:focus-within .project-card__media {
     transform: scale(0.95);
@@ -185,14 +189,15 @@
 
 /*****************************************************************************
  * МОДИФИКАЦИЯ 05. ЭКРАН САЙТА ВНУТРИ ПРЕВЬЮ ПРОЕКТА
- * Связанный код: ./modifications.js, секция «МОДИФИКАЦИЯ 05» (без JS).
+ * Связанный код: ./modifications.js, секция «МОДИФИКАЦИЯ 05».
  * Источник: https://djerin.ru/assets/css/home.css?v=202610151326.
  * Подключение: класс project-preview на существующем контейнере изображения.
  * Внутри: backdrop + veil + stage > screen > screenshot; логотипа нет.
  * Фон берётся из --project-image, скриншот задаётся атрибутом src в HTML.
  * Наведение ограничено превью; фокус обычной ссылки также открывает экран.
+ * До 959px JS включает data-project-preview-active у ближайшей к центру картинки.
  * Основа — референс; стартовая трансформация настроена пользователем, см. README.
- * Зависимостей нет. Очистка: убрать класс project-preview и вложенные слои.
+ * Зависимостей нет. Очистка: ProjectPreview.destroy(), затем убрать класс и слои.
  *****************************************************************************/
 .project-preview {
   --project-preview-unit: 1px;
@@ -258,8 +263,18 @@
   max-width: none;
   display: block;
   translate: 0 0;
-  /* Возврат в начало скрыт: экран гаснет раньше задержанного сброса. */
-  transition: translate 0s linear 600ms;
+  /* При выключении эффекта скриншот сразу возвращается в начало. */
+}
+
+/* Первый проход сохраняет прежний старт; затем цикл одинаково замедляется у обеих границ. */
+@keyframes project-preview-scroll-start {
+  from { translate: 0 0; }
+  to { translate: 0 min(0px, calc(-100% + 100cqh)); }
+}
+
+@keyframes project-preview-scroll {
+  from { translate: 0 0; }
+  to { translate: 0 min(0px, calc(-100% + 100cqh)); }
 }
 
 @media (min-width: 1024px) {
@@ -282,18 +297,21 @@
                 border-radius 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
   }
   .project-preview:hover .project-preview__screenshot {
-    translate: 0 min(0px, calc(-100% + 100cqh));
     /* Прокрутка начинается раньше завершения появления экрана за 750 мс. */
-    transition: translate 12s cubic-bezier(0.25, 0.1, 0.55, 1) 200ms;
+    animation: project-preview-scroll-start 12s cubic-bezier(0.25, 0.1, 0.55, 1) 200ms both,
+               project-preview-scroll 12s cubic-bezier(0.45, 0, 0.55, 1) 12200ms infinite alternate-reverse forwards;
+    transition: none;
   }
 }
 
+.project-preview[data-project-preview-active] .project-preview__veil,
 .project-card__link:focus-visible .project-preview__veil,
 .project-preview:focus-visible .project-preview__veil {
   opacity: 1;
   backdrop-filter: blur(2px) sepia(0.6);
 }
 
+.project-preview[data-project-preview-active] .project-preview__screen,
 .project-card__link:focus-visible .project-preview__screen,
 .project-preview:focus-visible .project-preview__screen {
   opacity: 1;
@@ -304,10 +322,12 @@
               border-radius 0.75s cubic-bezier(0.16, 0.44, 0, 0.97);
 }
 
+.project-preview[data-project-preview-active] .project-preview__screenshot,
 .project-card__link:focus-visible .project-preview__screenshot,
 .project-preview:focus-visible .project-preview__screenshot {
-  translate: 0 min(0px, calc(-100% + 100cqh));
-  transition: translate 12s cubic-bezier(0.25, 0.1, 0.55, 1) 200ms;
+  animation: project-preview-scroll-start 12s cubic-bezier(0.25, 0.1, 0.55, 1) 200ms both,
+             project-preview-scroll 12s cubic-bezier(0.45, 0, 0.55, 1) 12200ms infinite alternate-reverse forwards;
+  transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -322,6 +342,7 @@
     transform: none;
   }
   .project-card__media.project-preview .project-preview__screenshot {
+    animation: none;
     translate: 0 0;
   }
 }

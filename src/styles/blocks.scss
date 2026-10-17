@@ -1211,7 +1211,15 @@
   }
 
   @media (max-width: 959px) {
-    &__title { font-size: 20px; }
+    &__title {
+      margin-top: 15px;
+      font-size: 20px;
+    }
+
+    &.project-card-featured {
+      --project-screen-width: 100%;
+      --project-screen-max-width: 100%;
+    }
 
     &.project-card-featured .project-card__media {
       height: auto;

@@ -339,7 +339,106 @@
 /*****************************************************************************
  * МОДИФИКАЦИЯ 05. ЭКРАН САЙТА ВНУТРИ ПРЕВЬЮ ПРОЕКТА
  * Связанные стили: ./modifications.css, секция «МОДИФИКАЦИЯ 05».
- * Эффект целиком выполняется на CSS: обработчики, таймеры и запуск не нужны.
- * Скриншот — локальный img в project-preview__screen; движение до его конца.
- * Очистка: убрать класс project-preview и его внутренние слои из HTML.
+ * На десктопе — наведение и фокус на CSS; до 959px выбираем одну картинку у центра.
+ * Расстояние между центрами картинки и экрана не больше высоты картинки.
+ * При пересечении зон работает только ближайшая картинка; заголовки не учитываются.
+ * JS меняет только data-project-preview-active на вложенном .project-preview.
+ * Скриншот — локальный img в project-preview__screen; цикл до конца и обратно.
+ * Зависимостей нет; без JS остаются фон и обычная ссылка.
+ * Очистка: window.ProjectPreview.destroy(); запуск: window.ProjectPreview.init().
+ * После добавления карточек повторить destroy/init; повторный init безопасен.
  *****************************************************************************/
+(() => {
+  'use strict';
+  window.ProjectPreview?.destroy();
+  let cleanup = null;
+
+  function init() {
+    if (cleanup) return;
+    const previews = [...document.querySelectorAll('.project-card .project-preview')];
+    if (!previews.length) return;
+
+    const controller = new AbortController();
+    const { signal } = controller;
+    const mobile = matchMedia('(max-width: 959px)');
+    const activeAttribute = 'data-project-preview-active';
+    let active = null;
+    let frame = 0;
+
+    function activate(preview) {
+      if (active === preview) return;
+      active?.removeAttribute(activeAttribute);
+      active = preview;
+      active?.setAttribute(activeAttribute, '');
+    }
+
+    function update() {
+      frame = 0;
+      if (!mobile.matches || document.hidden) {
+        activate(null);
+        return;
+      }
+      const viewportTop = window.visualViewport?.offsetTop || 0;
+      const viewportHeight = window.visualViewport?.height || window.innerHeight;
+      const viewportBottom = viewportTop + viewportHeight;
+      const viewportCenter = viewportTop + viewportHeight / 2;
+      let nearest = null;
+      let nearestDistance = Infinity;
+      previews.forEach((preview) => {
+        const rect = preview.getBoundingClientRect();
+        // Высота до scale(0.95), чтобы анимация сжатия не меняла зону запуска.
+        const height = preview.offsetHeight;
+        if (!height || rect.bottom <= viewportTop || rect.top >= viewportBottom) return;
+        const distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
+        if (distance <= height && (distance < nearestDistance ||
+            (distance === nearestDistance && preview === active))) {
+          nearest = preview;
+          nearestDistance = distance;
+        }
+      });
+      activate(nearest);
+    }
+
+    function schedule() {
+      if (!frame && mobile.matches && !document.hidden) frame = requestAnimationFrame(update);
+    }
+
+    function refresh() {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      activate(null);
+      schedule();
+    }
+
+    previews.forEach((preview) => preview.removeAttribute(activeAttribute));
+    window.addEventListener('scroll', schedule, { signal, passive: true });
+    window.addEventListener('resize', schedule, { signal, passive: true });
+    window.addEventListener('load', schedule, { signal });
+    window.visualViewport?.addEventListener('scroll', schedule, { signal, passive: true });
+    window.visualViewport?.addEventListener('resize', schedule, { signal, passive: true });
+    mobile.addEventListener('change', refresh, { signal });
+    document.addEventListener('visibilitychange', refresh, { signal });
+    const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(schedule) : null;
+    previews.forEach((preview) => observer?.observe(preview));
+    cleanup = () => {
+      controller.abort();
+      observer?.disconnect();
+      cancelAnimationFrame(frame);
+      activate(null);
+      cleanup = null;
+    };
+    refresh();
+  }
+
+  function destroy() {
+    document.removeEventListener('DOMContentLoaded', init);
+    cleanup?.();
+  }
+
+  window.ProjectPreview = { init, destroy };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();

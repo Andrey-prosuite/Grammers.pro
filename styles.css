@@ -1405,7 +1405,12 @@ button {
 }
 @media (max-width: 959px) {
   .project-card__title {
+    margin-top: 15px;
     font-size: 20px;
+  }
+  .project-card.project-card-featured {
+    --project-screen-width: 100%;
+    --project-screen-max-width: 100%;
   }
   .project-card.project-card-featured .project-card__media {
     height: auto;
