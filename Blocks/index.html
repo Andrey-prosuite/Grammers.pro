@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Библиотека блоков — Grammers.pro</title>
+    <script src="../Modifications/page-transition.js?v=20261020-global-curtain-1"></script>
+    <link rel="stylesheet" href="../styles.css?v=20261020-global-curtain-1">
+    <link rel="stylesheet" href="../Blocks/blocks.css?v=20261020-global-curtain-1">
+    <link rel="stylesheet" href="../Modifications/modifications.css?v=20261020-global-curtain-1">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
+    <script defer src="../Modifications/vendor/gsap.min.js"></script>
+    <script defer src="../Modifications/vendor/ScrollTrigger.min.js"></script>
+    <script defer src="../Modifications/modifications.js?v=20261020-global-curtain-1"></script>
+    <script defer src="../Blocks/blocks.js?v=20261020-global-curtain-1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#library-main">Перейти к блокам</a>
+  <header class="block-library__header">
+    <a href="../case.html">Grammers.pro / Страница кейса ↗</a>
+    <nav aria-label="Файлы библиотеки"><a href="./README.md">Структура</a><a href="./AGENTS.md">Инструкция агентам</a><a href="./METHODOLOGY.md">Методика блоков</a><a href="../Modifications/README.md">Модификации ↗</a></nav>
+  </header>
+  <main id="library-main" class="block-library">
+    <div class="block-library__intro">
+      <p class="block-library__eyebrow">Grammers.pro · Библиотека блоков</p>
+      <h1>Основа страницы.<br>Эффекты — по желанию.</h1>
+      <p>Компонент хранится в библиотеке. Его копия с уникальным именем и классами становится экземпляром на странице; индивидуальные правки живут в коде страницы. Модификации подключают нужные эффекты.</p>
+      <nav class="block-library__toc" aria-label="Блоки"><a href="#single-image">01 / Одиночное изображение ↓</a><a href="#horizontal-gallery">02 / Горизонтальная галерея ↓</a><a href="#cookie-notice-component">03 / Cookie ↓</a><a href="#page-curtain">Шторка перехода ↓</a></nav>
+    </div>
+    <section id="single-image" aria-labelledby="single-heading">
+      <div class="block-library__section-head"><p class="block-library__eyebrow">Блок 01</p><h2 id="single-heading">Одиночное изображение</h2><p>Четыре варианта ширины. Зум, параллакс и появление включаются независимо для каждого экземпляра.</p><a class="block-library__file" href="./templates/single-image.html" download>Скачать HTML-шаблоны ↓</a><a class="block-library__file" href="../docs/single-image.md">Настройки и примеры ↗</a><details class="block-library__code"><summary>Разметка блока — все варианты</summary><pre><code>&lt;!-- Вставляется в HTML страницы из корня проекта. Выбрать один вариант. --&gt;
+&lt;!-- 01. По колонке контента; эффекты выключены. --&gt;
+&lt;figure class=&quot;single-image&quot; data-single-image data-image-layout=&quot;content&quot; data-image-zoom=&quot;false&quot; data-image-parallax=&quot;false&quot;&gt;
+  &lt;div class=&quot;single-image__frame&quot; data-image-frame&gt;
+    &lt;img src=&quot;./images/case/brodeks/cover.webp&quot; width=&quot;1622&quot; height=&quot;1005&quot; alt=&quot;Интернет-магазин Brodeks на ноутбуке&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;!-- 02. Поля 40px; увеличение и параллакс со стандартным появлением. --&gt;
+&lt;figure class=&quot;single-image&quot; data-single-image data-image-layout=&quot;inset&quot; data-image-zoom=&quot;true&quot; data-image-parallax=&quot;true&quot; style=&quot;--image-gutter: 40px; --image-ratio: 16 / 9;&quot;&gt;
+  &lt;div class=&quot;single-image__frame&quot; data-image-frame&gt;
+    &lt;img src=&quot;./images/case/brodeks/cover.webp&quot; width=&quot;1622&quot; height=&quot;1005&quot; alt=&quot;Интернет-магазин Brodeks на ноутбуке&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;!-- 03. Во всю ширину экрана; без эффектов. --&gt;
+&lt;figure class=&quot;single-image&quot; data-single-image data-image-layout=&quot;full&quot; data-image-zoom=&quot;false&quot; data-image-parallax=&quot;false&quot;&gt;
+  &lt;div class=&quot;single-image__frame&quot; data-image-frame&gt;
+    &lt;img src=&quot;./images/case/brodeks/clothing-details.webp&quot; width=&quot;1680&quot; height=&quot;828&quot; alt=&quot;Детали профессиональной экипировки&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;!-- 04. На серой поверхности; появление снизу 300px за 1s, параллакс выключен. --&gt;
+&lt;figure class=&quot;single-image&quot; data-single-image data-image-layout=&quot;surface&quot; data-image-zoom=&quot;false&quot; data-image-parallax=&quot;false&quot; data-image-appear=&quot;rise&quot; style=&quot;--image-gutter: 40px;&quot;&gt;
+  &lt;div class=&quot;single-image__frame&quot; data-image-frame&gt;
+    &lt;img src=&quot;./images/case/brodeks/clothing-details.webp&quot; width=&quot;1680&quot; height=&quot;828&quot; alt=&quot;Детали профессиональной экипировки&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+</code></pre></details></div>
+      <div class="block-library__example-head"><h3>Колонка контента</h3><p>content · до 1500 px · без эффектов</p></div>
+<figure class="single-image" data-single-image style="--image-ratio: 16 / 7;" data-image-layout="content" data-image-zoom="false" data-image-parallax="false">
+  <div class="single-image__frame" data-image-frame>
+    <img src="../images/case/brodeks/cover.webp" width="1622" height="1005" alt="Интернет-магазин Brodeks на ноутбуке" loading="lazy" decoding="async">
+  </div>
+</figure>
+      <div class="block-library__example-head"><h3>С отступами от экрана</h3><p>inset · поля 40 px · параллакс + зум</p></div>
+<figure class="single-image" data-single-image data-image-layout="inset" data-image-zoom="true" data-image-parallax="true" style="--image-gutter: 40px; --image-ratio: 16 / 9;">
+  <div class="single-image__frame" data-image-frame>
+    <img src="../images/case/brodeks/cover.webp" width="1622" height="1005" alt="Интернет-магазин Brodeks на ноутбуке" loading="lazy" decoding="async">
+  </div>
+</figure>
+      <div class="block-library__example-head"><h3>Во всю ширину</h3><p>full · без боковых отступов</p></div>
+<figure class="single-image" data-single-image style="--image-ratio: 16 / 7;" data-image-layout="full" data-image-zoom="false" data-image-parallax="false">
+  <div class="single-image__frame" data-image-frame>
+    <img src="../images/case/brodeks/clothing-details.webp" width="1680" height="828" alt="Детали профессиональной экипировки" loading="lazy" decoding="async">
+  </div>
+</figure>
+      <div class="block-library__example-head"><h3>На сером фоне</h3><p>surface · появление 300 px / 1 s · без параллакса</p></div>
+<figure class="single-image" data-single-image data-image-layout="surface" data-image-zoom="false" data-image-parallax="false" data-image-appear="rise" style="--image-gutter: 40px;">
+  <div class="single-image__frame" data-image-frame>
+    <img src="../images/case/brodeks/clothing-details.webp" width="1680" height="828" alt="Детали профессиональной экипировки" loading="lazy" decoding="async">
+  </div>
+</figure>
+    </section>
+    <section id="horizontal-gallery" aria-labelledby="gallery-heading">
+      <div class="block-library__section-head"><p class="block-library__eyebrow">Блок 02</p><h2 id="gallery-heading">Горизонтальная галерея</h2><p>Одна строка изображений без переноса. Во всех режимах можно листать пальцем, тачпадом и перетаскиванием мыши с инерцией.</p><a class="block-library__file" href="./templates/horizontal-gallery.html" download>Скачать HTML-шаблоны ↓</a><a class="block-library__file" href="../docs/horizontal-gallery.md">Настройки и примеры ↗</a><details class="block-library__code"><summary>Разметка блока — все варианты</summary><pre><code>&lt;!-- Вставляется в HTML страницы из корня проекта. Выбрать один режим. --&gt;
+&lt;!-- При повторении заменить ID окна, классы стрелок, селекторы и aria-controls. --&gt;
+
+&lt;section class=&quot;horizontal-gallery&quot; data-horizontal-gallery data-gallery-mode=&quot;static&quot; data-gallery-zoom=&quot;false&quot; style=&quot;--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;&quot; aria-label=&quot;Галерея: static&quot;&gt;
+  &lt;div class=&quot;horizontal-gallery__viewport&quot; id=&quot;example-gallery-static&quot; data-gallery-viewport tabindex=&quot;0&quot; aria-label=&quot;Горизонтальная прокрутка изображений&quot;&gt;
+    &lt;ul class=&quot;horizontal-gallery__track&quot; data-gallery-track&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-home.webp&quot; width=&quot;323&quot; height=&quot;607&quot; alt=&quot;Главная страница Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-categories.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Категории товаров Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-catalog.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Каталог спецодежды Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-brand.webp&quot; width=&quot;323&quot; height=&quot;604&quot; alt=&quot;Страница бренда Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class=&quot;horizontal-gallery&quot; data-horizontal-gallery data-gallery-mode=&quot;linear&quot; data-gallery-zoom=&quot;false&quot; data-gallery-linear-duration=&quot;60&quot; style=&quot;--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;&quot; aria-label=&quot;Галерея: linear&quot;&gt;
+  &lt;div class=&quot;horizontal-gallery__viewport&quot; id=&quot;example-gallery-linear&quot; data-gallery-viewport tabindex=&quot;0&quot; aria-label=&quot;Горизонтальная прокрутка изображений&quot;&gt;
+    &lt;ul class=&quot;horizontal-gallery__track&quot; data-gallery-track&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-home.webp&quot; width=&quot;323&quot; height=&quot;607&quot; alt=&quot;Главная страница Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-categories.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Категории товаров Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-catalog.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Каталог спецодежды Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-brand.webp&quot; width=&quot;323&quot; height=&quot;604&quot; alt=&quot;Страница бренда Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class=&quot;horizontal-gallery&quot; data-horizontal-gallery data-gallery-mode=&quot;scroll&quot; data-gallery-zoom=&quot;false&quot; data-gallery-scroll-duration=&quot;15&quot; style=&quot;--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;&quot; aria-label=&quot;Галерея: scroll&quot;&gt;
+  &lt;div class=&quot;horizontal-gallery__viewport&quot; id=&quot;example-gallery-scroll&quot; data-gallery-viewport tabindex=&quot;0&quot; aria-label=&quot;Горизонтальная прокрутка изображений&quot;&gt;
+    &lt;ul class=&quot;horizontal-gallery__track&quot; data-gallery-track&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-home.webp&quot; width=&quot;323&quot; height=&quot;607&quot; alt=&quot;Главная страница Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-categories.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Категории товаров Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-catalog.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Каталог спецодежды Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-brand.webp&quot; width=&quot;323&quot; height=&quot;604&quot; alt=&quot;Страница бренда Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;nav class=&quot;horizontal-gallery__controls&quot; data-gallery-controls hidden aria-label=&quot;Управление галереей&quot;&gt;
+  &lt;button class=&quot;example-gallery-controls-prev&quot; type=&quot;button&quot; hidden aria-controls=&quot;example-gallery-controls&quot; aria-label=&quot;Предыдущая карточка&quot;&gt;&lt;img src=&quot;./Blocks/images/gallery-arrow-left.svg&quot; width=&quot;70&quot; height=&quot;16&quot; alt=&quot;&quot;&gt;&lt;/button&gt;
+  &lt;button class=&quot;example-gallery-controls-next&quot; type=&quot;button&quot; hidden aria-controls=&quot;example-gallery-controls&quot; aria-label=&quot;Следующая карточка&quot;&gt;&lt;img src=&quot;./Blocks/images/gallery-arrow-right.svg&quot; width=&quot;70&quot; height=&quot;16&quot; alt=&quot;&quot;&gt;&lt;/button&gt;
+&lt;/nav&gt;
+&lt;section class=&quot;horizontal-gallery&quot; data-horizontal-gallery data-gallery-mode=&quot;controls&quot; data-gallery-zoom=&quot;false&quot; data-gallery-prev-selector=&quot;.example-gallery-controls-prev&quot; data-gallery-next-selector=&quot;.example-gallery-controls-next&quot; style=&quot;--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;&quot; aria-label=&quot;Галерея: controls&quot;&gt;
+  &lt;div class=&quot;horizontal-gallery__viewport&quot; id=&quot;example-gallery-controls&quot; data-gallery-viewport tabindex=&quot;0&quot; aria-label=&quot;Горизонтальная прокрутка изображений&quot;&gt;
+    &lt;ul class=&quot;horizontal-gallery__track&quot; data-gallery-track&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-home.webp&quot; width=&quot;323&quot; height=&quot;607&quot; alt=&quot;Главная страница Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-categories.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Категории товаров Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-catalog.webp&quot; width=&quot;323&quot; height=&quot;606&quot; alt=&quot;Каталог спецодежды Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;horizontal-gallery__item&quot; data-gallery-item&gt;
+        &lt;img src=&quot;./images/case/brodeks/mobile-brand.webp&quot; width=&quot;323&quot; height=&quot;604&quot; alt=&quot;Страница бренда Brodeks&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre></details></div>
+      <div class="block-library__example-head"><h3>Статичная</h3><p>static · ручная прокрутка · зум выключен</p></div>
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="static" data-gallery-zoom="false" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: static">
+  <div class="horizontal-gallery__viewport" id="library-gallery-static" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>
+      <div class="block-library__example-head"><h3>Равномерное движение</h3><p>linear · 60 s · справа налево · зум выключен</p></div>
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="linear" data-gallery-zoom="false" data-gallery-linear-duration="60" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: linear">
+  <div class="horizontal-gallery__viewport" id="library-gallery-linear" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>
+      <div class="block-library__example-head"><h3>С реакцией на скролл</h3><p>scroll · 15 s · меняет направление · зум включён</p></div>
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="scroll" data-gallery-zoom="true" data-gallery-scroll-duration="15" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: scroll">
+  <div class="horizontal-gallery__viewport" id="library-gallery-scroll" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>
+      <div class="block-library__example-head"><h3>Со стрелками</h3><p>controls · шаг на одну карточку · внешние кнопки</p></div>
+<nav class="horizontal-gallery__controls" data-gallery-controls hidden aria-label="Управление галереей">
+  <button class="library-gallery-controls-prev" type="button" hidden aria-controls="library-gallery-controls" aria-label="Предыдущая карточка"><img src="../Blocks/images/gallery-arrow-left.svg" width="70" height="16" alt=""></button>
+  <button class="library-gallery-controls-next" type="button" hidden aria-controls="library-gallery-controls" aria-label="Следующая карточка"><img src="../Blocks/images/gallery-arrow-right.svg" width="70" height="16" alt=""></button>
+</nav>
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="controls" data-gallery-zoom="false" data-gallery-prev-selector=".library-gallery-controls-prev" data-gallery-next-selector=".library-gallery-controls-next" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: controls">
+  <div class="horizontal-gallery__viewport" id="library-gallery-controls" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="../images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>
+    </section>
+    <section id="page-curtain" aria-labelledby="curtain-heading">
+      <div class="block-library__section-head">
+        <p class="block-library__eyebrow">Модификация 13 · переход страниц</p>
+        <h2 id="curtain-heading">Две шторки и появление контента</h2>
+        <p>Тёмный слой закрывает уходящую страницу. После загрузки нового HTML он уходит вниз, белая подложка исчезает, а контент поднимается из прозрачности. Этот пример использует рабочий механизм перехода.</p>
+        <div class="block-library__toc"><button class="button" type="button" data-page-transition-preview>Показать шторку здесь</button><a href="../index.html">Переход на главную ↗</a><a href="../cases.html">Переход к кейсам ↗</a></div>
+        <ol class="block-library__steps"><li><strong>Закрытие · 700 мс</strong><br>Графит #1a1a1a опускается сверху. Контент смещается вниз на 20vw и размывается до 15px.</li><li><strong>Ожидание готовности</strong><br>Загружается новый документ. Ожидаются шрифты и важные изображения первого экрана, максимум 5 секунд.</li><li><strong>Открытие · 700 мс</strong><br>Графит уходит вниз. Белый слой исчезает за 500 мс со старта 500 мс.</li><li><strong>Контент · 1000 мс</strong><br>Со старта 350 мс: подъём 300px и прозрачность 0→100%. Общее открытие с появлением — 1350 мс.</li></ol>
+        <p>Пауза зависит от загрузки, а не от искусственного фиксированного ожидания. При уменьшенном движении сохраняются обычные переходы.</p>
+        <a class="block-library__file" href="../docs/page-transition.md">Подключение и подробная схема ↗</a><details class="block-library__code"><summary>Выборка подключения шторки</summary><pre><code>&lt;!-- До CSS в head: --&gt;
+&lt;script src="./Modifications/page-transition.js?v=20261020-global-curtain-1"&gt;&lt;/script&gt;
+&lt;!-- Всё: стили и запуск входят в этот файл. --&gt;
+
+&lt;!-- Проверка на текущей странице без смены адреса: --&gt;
+&lt;button type="button" data-page-transition-preview&gt;Показать шторку&lt;/button&gt;
+
+&lt;!-- Обычная внутренняя ссылка: --&gt;
+&lt;a href="./cases.html"&gt;Кейсы&lt;/a&gt;</code></pre></details>
+      </div>
+    </section>
+    <section id="cookie-notice-component" aria-labelledby="cookie-heading">
+      <div class="block-library__section-head"><p class="block-library__eyebrow">Блок 03</p><h2 id="cookie-heading">Плашка Cookie</h2><p>Белая компактная плашка с кнопкой в стиле шапки. В этом примере подтверждение не записывается; его можно повторять.</p>
+      <div class="block-library__toc"><button class="button" type="button" data-cookie-notice-show="cookie-notice-demo" aria-controls="cookie-notice-demo">Показать плашку Cookie</button></div>
+      <a class="block-library__file" href="./templates/cookie-notice.html" download>Скачать HTML-шаблон ↓</a><a class="block-library__file" href="../docs/cookie-notice.md">Настройки ↗</a></div>
+    </section>
+    <footer class="block-library__footer"><p>Фотографии примеров — общий контент из images/case. В Blocks/images хранятся только элементы интерфейса.</p><a href="./AGENTS.md">Как использовать и пополнять библиотеку ↗</a></footer>
+  </main>
+<aside class="cookie-notice" id="cookie-notice-demo" data-cookie-notice data-cookie-notice-preview aria-labelledby="cookie-notice-demo-title" hidden>
+  <div class="cookie-notice__body">
+    <div class="cookie-notice__header"><img class="cookie-notice__icon" src="../Blocks/images/cookie.svg" width="24" height="24" alt=""><span class="cookie-notice__title" id="cookie-notice-demo-title">Cookies</span></div>
+    <p class="cookie-notice__text">Используя сайт, вы соглашаетесь на cookies согласно <a href="https://grammers.pro/privacy">Политике конфиденциальности</a></p>
+  </div>
+  <button class="button cookie-notice__accept" type="button" data-cookie-notice-accept>Окей</button>
+</aside>
+</body>
+</html>

@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Создаем сайты, которые помогают брендам развиваться в веб">
     <title>Главная by Andrey</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./Modifications/modifications.css">
+    <script src="./Modifications/page-transition.js?v=20261020-global-curtain-1"></script>
+    <link rel="stylesheet" href="./styles.css?v=20261020-global-curtain-1">
+    <link rel="stylesheet" href="./Blocks/blocks.css?v=20261020-global-curtain-1">
+    <link rel="stylesheet" href="./Modifications/modifications.css?v=20261020-global-curtain-1">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
-    <script defer src="./Modifications/modifications.js"></script>
+    <script defer src="./Modifications/vendor/gsap.min.js"></script>
+    <script defer src="./Modifications/vendor/ScrollTrigger.min.js"></script>
+    <script defer src="./Modifications/modifications.js?v=20261020-global-curtain-1"></script>
+    <script defer src="./Blocks/blocks.js?v=20261020-global-curtain-1"></script>
+    <script defer src="./src/scripts/pages/home.js?v=20261020-global-curtain-1"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -29,34 +35,44 @@
   <a class="button site-header__brief" href="#contact">Заполнить бриф</a>
 </header>
     <main id="main">
-<section class="hero hero-home container" aria-labelledby="hero-title">
-  <div class="hero__award">
-    <figure>
-      <img src="./images/awards/developer.svg" width="73" height="73" alt="" fetchpriority="high">
+<section class="hero-home" aria-labelledby="hero-home-title">
+  <h1 class="hero-home__title" id="hero-home-title">Мы - Grammers.<br>Студия разработки сайтов</h1>
+  <p class="hero-home__description">Делаем сайты для производителей и брендов.<br>b2b и b2c</p>
+  <a class="hero-home__announcement" href="./case.html" aria-label="Свежий кейс уже на сайте — Brodeks">
+    <span class="hero-home__announcement-frame">
+      <img class="hero-home__announcement-image" src="./images/home/brodeks-announcement.png" width="1622" height="1005" alt="Интернет-магазин Brodeks на экране ноутбука" fetchpriority="high" decoding="async">
+    </span>
+    <span class="hero-home__announcement-caption">Свежий кейс уже на сайте</span>
+    <img class="hero-home__announcement-arrow" src="./images/home/project-arrow.svg" alt="" aria-hidden="true">
+  </a>
+  <div class="hero-home__award">
+    <figure class="hero-home__award-badge">
+      <img src="./images/awards/developer.svg" width="73" height="63" alt="">
       <figcaption>2023-2024</figcaption>
     </figure>
     <p>Разработчик №1<br>в &quot;Рейтинге рунета&quot; и &quot;CMS-Magazine&quot;<br>(номинация &quot;Разработка на NestJS&quot;)</p>
   </div>
-  <h1 id="hero-title">Мы - Grammers. <br>Студия разработки сайтов</h1>
-  <p class="hero__text">Делаем сайты для производителей и продаж. B2B, E-commerce, бренды.</p>
-  <a class="button hero__cta" href="#contact">Напишите нам</a>
 </section>
-<section class="clients" aria-label="Клиенты студии" tabindex="0">
-  <img src="./images/clients/clients01.png" width="220" height="104" alt="Brodeks" decoding="async">
-  <img src="./images/clients/clients02.png" width="220" height="104" alt="СДЭК" decoding="async">
-  <img src="./images/clients/clients03.png" width="220" height="104" alt="ЭкоНива" decoding="async">
-  <img src="./images/clients/clients04.png" width="220" height="104" alt="iModern" decoding="async">
-  <img src="./images/clients/clients05.png" width="220" height="104" alt="Пензспецавтомаш" decoding="async">
-  <img src="./images/clients/clients06.png" width="220" height="104" alt="УГМК" decoding="async">
-  <img src="./images/clients/clients07.png" width="220" height="104" alt="AG-Technologies" decoding="async">
-  <img src="./images/clients/clients08.png" width="220" height="104" alt="Aliaxis" decoding="async">
-  <img src="./images/clients/clients09.png" width="220" height="104" alt="Technopark Automation" decoding="async">
-  <img src="./images/clients/clients11.png" width="220" height="104" alt="Studio Flor" decoding="async">
-  <img src="./images/clients/clients12.png" width="220" height="104" alt="ItalianPizza" decoding="async">
-  <img src="./images/clients/clients13.png" width="220" height="104" alt="Afinara" decoding="async">
-  <img src="./images/clients/clients15.png" width="220" height="104" alt="ЗСТЭМИ-2" decoding="async">
-  <img src="./images/clients/clients16.png" width="220" height="104" alt="Tesoro" decoding="async">
-  <img src="./images/clients/clients14.png" width="220" height="104" alt="Omnicomm" decoding="async">
+<section class="clients-home" data-clients-home-gallery data-gallery-mode="scroll" data-gallery-scroll-duration="45" data-gallery-zoom="false" aria-label="Клиенты студии">
+  <div class="clients-home__viewport" id="clients-home-gallery" data-gallery-viewport tabindex="0" aria-label="Логотипы клиентов: горизонтальная прокрутка">
+    <ul class="clients-home__track" data-gallery-track>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients01.png" width="220" height="104" alt="Brodeks" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients02.png" width="220" height="104" alt="СДЭК" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients03.png" width="220" height="104" alt="ЭкоНива" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients04.png" width="220" height="104" alt="iModern" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients05.png" width="220" height="104" alt="Пензспецавтомаш" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients06.png" width="220" height="104" alt="УГМК" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients07.png" width="220" height="104" alt="AG-Technologies" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients08.png" width="220" height="104" alt="Aliaxis" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients09.png" width="220" height="104" alt="Technopark Automation" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients11.png" width="220" height="104" alt="Studio Flor" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients12.png" width="220" height="104" alt="ItalianPizza" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients13.png" width="220" height="104" alt="Afinara" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients15.png" width="220" height="104" alt="ЗСТЭМИ-2" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients16.png" width="220" height="104" alt="Tesoro" decoding="async"></li>
+      <li class="clients-home__item" data-gallery-item><img src="./images/clients/clients14.png" width="220" height="104" alt="Omnicomm" decoding="async"></li>
+    </ul>
+  </div>
 </section>
 <section class="approach container">
   <header class="section-heading">
@@ -217,17 +233,19 @@
     <img class="featured-project__phone" src="./images/projects/ag-phone.svg" width="260" height="531" alt="" loading="lazy" decoding="async">
   </figure>
 </section>
-<section class="awards">
-  <h2 class="container">Финалисты профильных премий<br>Workspace Digital Awards и Рейтинг Рунета-2024</h2>
-  <section class="awards__list" aria-label="Награды студии" tabindex="0">
-    <img src="./images/awards/nagr01.svg" width="350" height="350" alt="1 место Рейтинг Рунета 2023 — разработка на NestJS" loading="lazy" decoding="async">
-    <img src="./images/awards/nagr02.svg" width="350" height="350" alt="9 место Рейтинг Рунета 2023 — разработка сайтов в Екатеринбурге" loading="lazy" decoding="async">
-    <img src="./images/awards/nagr03.svg" width="350" height="350" alt="1 место Рейтинг Рунета 2024 — разработка на NestJS" loading="lazy" decoding="async">
-    <img src="./images/awards/nagr04.svg" width="350" height="350" alt="2 место Рейтинг Рунета 2024 — разработка интернет-магазинов на Битрикс в Екатеринбурге" loading="lazy" decoding="async">
-    <img src="./images/awards/nagr05.svg" width="350" height="350" alt="Рейтинг Рунета — награда студии" loading="lazy" decoding="async">
-    <img src="./images/awards/nagr06.svg" width="350" height="350" alt="Workspace Digital Awards — финалист" loading="lazy" decoding="async">
-    <img src="./images/awards/nagr07.svg" width="350" height="350" alt="Workspace Digital Awards — награда студии" loading="lazy" decoding="async">
-  </section>
+<section class="awards-home" data-awards-home-gallery data-gallery-mode="scroll" data-gallery-scroll-duration="45" data-gallery-zoom="false" aria-labelledby="awards-home-title">
+  <h2 class="container" id="awards-home-title">Финалисты профильных премий<br>Workspace Digital Awards и Рейтинг Рунета-2024</h2>
+  <div class="awards-home__viewport" id="awards-home-gallery" data-gallery-viewport tabindex="0" aria-label="Награды студии: горизонтальная прокрутка">
+    <ul class="awards-home__track" data-gallery-track>
+      <li class="awards-home__item" data-gallery-item><img src="./images/awards/nagr01.svg" width="350" height="350" alt="1 место Рейтинг Рунета 2023 — разработка на NestJS" loading="lazy" decoding="async"></li>
+      <li class="awards-home__item" data-gallery-item><img src="./images/awards/nagr02.svg" width="350" height="350" alt="9 место Рейтинг Рунета 2023 — разработка сайтов в Екатеринбурге" loading="lazy" decoding="async"></li>
+      <li class="awards-home__item" data-gallery-item><img src="./images/awards/nagr03.svg" width="350" height="350" alt="1 место Рейтинг Рунета 2024 — разработка на NestJS" loading="lazy" decoding="async"></li>
+      <li class="awards-home__item" data-gallery-item><img src="./images/awards/nagr04.svg" width="350" height="350" alt="2 место Рейтинг Рунета 2024 — разработка интернет-магазинов на Битрикс в Екатеринбурге" loading="lazy" decoding="async"></li>
+      <li class="awards-home__item" data-gallery-item><img src="./images/awards/nagr05.svg" width="350" height="350" alt="Рейтинг Рунета — награда студии" loading="lazy" decoding="async"></li>
+      <li class="awards-home__item" data-gallery-item><img src="./images/awards/nagr06.svg" width="350" height="350" alt="Workspace Digital Awards — финалист" loading="lazy" decoding="async"></li>
+      <li class="awards-home__item" data-gallery-item><img src="./images/awards/nagr07.svg" width="350" height="350" alt="Workspace Digital Awards — награда студии" loading="lazy" decoding="async"></li>
+    </ul>
+  </div>
 </section>
 <section class="credentials container">
   <header class="section-heading">
@@ -337,5 +355,13 @@
   </div>
   <img class="site-footer__wordmark" src="./images/brand/wordmark.svg" width="1682" height="261" alt="Grammers" loading="lazy" decoding="async">
 </footer>
-  </body>
+  <aside class="cookie-notice-home" id="cookie-notice-home" data-cookie-notice-home aria-labelledby="cookie-notice-home-title" hidden>
+  <div class="cookie-notice-home__body">
+    <div class="cookie-notice-home__header"><img class="cookie-notice-home__icon" src="./Blocks/images/cookie.svg" width="24" height="24" alt=""><span class="cookie-notice-home__title" id="cookie-notice-home-title">Cookies</span></div>
+    <p class="cookie-notice-home__text">Используя сайт, вы соглашаетесь на cookies согласно <a href="https://grammers.pro/privacy">Политике конфиденциальности</a></p>
+  </div>
+  <button class="button cookie-notice-home__accept" type="button" data-cookie-notice-accept>Окей</button>
+</aside>
+
+</body>
 </html>

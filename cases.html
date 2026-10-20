@@ -6,10 +6,16 @@
     <meta name="description" content="Создаем сайты, которые помогают брендам развиваться в веб">
     <title>Сделано в граммерс</title>
     <link rel="canonical" href="https://grammers.pro/cases">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./Modifications/modifications.css">
+    <script src="./Modifications/page-transition.js?v=20261020-global-curtain-1"></script>
+    <link rel="stylesheet" href="./styles.css?v=20261020-global-curtain-1">
+    <link rel="stylesheet" href="./Blocks/blocks.css?v=20261020-global-curtain-1">
+    <link rel="stylesheet" href="./Modifications/modifications.css?v=20261020-global-curtain-1">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
-    <script defer src="./Modifications/modifications.js"></script>
+    <script defer src="./Modifications/vendor/gsap.min.js"></script>
+    <script defer src="./Modifications/vendor/ScrollTrigger.min.js"></script>
+    <script defer src="./Modifications/modifications.js?v=20261020-global-curtain-1"></script>
+    <script defer src="./Blocks/blocks.js?v=20261020-global-curtain-1"></script>
+    <script defer src="./src/scripts/pages/cases.js?v=20261020-global-curtain-1"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -253,5 +259,13 @@
     <a class="site-footer__social" href="https://dzen.ru/grammers" aria-label="Дзен"><img src="./images/brand/dzen.svg" width="38" height="38" alt="" loading="lazy"></a>
   </div>
 </footer>
-  </body>
+  <aside class="cookie-notice-cases" id="cookie-notice-cases" data-cookie-notice-cases aria-labelledby="cookie-notice-cases-title" hidden>
+  <div class="cookie-notice-cases__body">
+    <div class="cookie-notice-cases__header"><img class="cookie-notice-cases__icon" src="./Blocks/images/cookie.svg" width="24" height="24" alt=""><span class="cookie-notice-cases__title" id="cookie-notice-cases-title">Cookies</span></div>
+    <p class="cookie-notice-cases__text">Используя сайт, вы соглашаетесь на cookies согласно <a href="https://grammers.pro/privacy">Политике конфиденциальности</a></p>
+  </div>
+  <button class="button cookie-notice-cases__accept" type="button" data-cookie-notice-accept>Окей</button>
+</aside>
+
+</body>
 </html>

@@ -1,1 +1,4 @@
 *.cmd text eol=crlf
+
+# Оригинальные файлы библиотек сохраняем без изменения форматирования и лицензий.
+Modifications/vendor/*.min.js -whitespace

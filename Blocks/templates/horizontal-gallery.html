@@ -1,0 +1,82 @@
+<!-- Вставляется в HTML страницы из корня проекта. Выбрать один режим. -->
+<!-- При повторении заменить ID окна, классы стрелок, селекторы и aria-controls. -->
+
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="static" data-gallery-zoom="false" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: static">
+  <div class="horizontal-gallery__viewport" id="example-gallery-static" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="linear" data-gallery-zoom="false" data-gallery-linear-duration="60" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: linear">
+  <div class="horizontal-gallery__viewport" id="example-gallery-linear" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="scroll" data-gallery-zoom="false" data-gallery-scroll-duration="15" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: scroll">
+  <div class="horizontal-gallery__viewport" id="example-gallery-scroll" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>
+
+<nav class="horizontal-gallery__controls" data-gallery-controls hidden aria-label="Управление галереей">
+  <button class="example-gallery-controls-prev" type="button" hidden aria-controls="example-gallery-controls" aria-label="Предыдущая карточка"><img src="./Blocks/images/gallery-arrow-left.svg" width="70" height="16" alt=""></button>
+  <button class="example-gallery-controls-next" type="button" hidden aria-controls="example-gallery-controls" aria-label="Следующая карточка"><img src="./Blocks/images/gallery-arrow-right.svg" width="70" height="16" alt=""></button>
+</nav>
+<section class="horizontal-gallery" data-horizontal-gallery data-gallery-mode="controls" data-gallery-zoom="false" data-gallery-prev-selector=".example-gallery-controls-prev" data-gallery-next-selector=".example-gallery-controls-next" style="--gallery-gap: 24px; --gallery-padding: 40px; --gallery-radius: 16px;" aria-label="Галерея: controls">
+  <div class="horizontal-gallery__viewport" id="example-gallery-controls" data-gallery-viewport tabindex="0" aria-label="Горизонтальная прокрутка изображений">
+    <ul class="horizontal-gallery__track" data-gallery-track>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-home.webp" width="323" height="607" alt="Главная страница Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-categories.webp" width="323" height="606" alt="Категории товаров Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-catalog.webp" width="323" height="606" alt="Каталог спецодежды Brodeks" loading="lazy" decoding="async">
+      </li>
+      <li class="horizontal-gallery__item" data-gallery-item>
+        <img src="./images/case/brodeks/mobile-brand.webp" width="323" height="604" alt="Страница бренда Brodeks" loading="lazy" decoding="async">
+      </li>
+    </ul>
+  </div>
+</section>

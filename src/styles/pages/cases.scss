@@ -1,0 +1,70 @@
+/*****************************************************************************
+ * ЭКЗЕМПЛЯР: УВЕДОМЛЕНИЕ COOKIE CASES — cookie-notice
+ * Разметка: cases.html; код: src/scripts/pages/cases.js. База: компонент Cookie.
+ * Появление/скрытие: 900/600мс, translateY 120%; кнопка в стиле шапки.
+ *****************************************************************************/
+.cookie-notice-cases {
+  --cookie-left: .9375rem;
+  --cookie-padding: 15px;
+  --cookie-padding-right: 20px;
+  position: fixed;
+  z-index: 100;
+  left: var(--cookie-left);
+  bottom: .8125rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: .9375rem;
+  width: 21.5625rem;
+  max-width: calc(100vw - 2 * var(--cookie-left));
+  max-height: calc(100svh - 30px);
+  overflow: auto;
+  padding: var(--cookie-padding) var(--cookie-padding-right) var(--cookie-padding) var(--cookie-padding);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 4px 32px rgb(0 0 0 / .06);
+  &[hidden] { display: none; }
+  &__body { display: flex; flex-direction: column; gap: .9375rem; min-width: 0; }
+  &__header { display: flex; align-items: center; gap: 10px; }
+  &__icon { flex: none; width: 20px; height: 20px; }
+  &__title { font-size: 15px; font-weight: 600; letter-spacing: -.03em; line-height: 1.25; }
+  &__text { color: rgb(14 14 14 / .6); font-size: 15px; line-height: 1.4; }
+  &__text a { border-bottom: 1px solid currentColor; }
+  &__accept { justify-self: start; min-height: 59px; padding-inline: 26px; border-radius: 18px; width: fit-content; }
+  @media (min-width: 375px) {
+    --cookie-left: calc(.63931rem + 1.27226vw);
+    left: var(--cookie-left); bottom: calc(.31155rem + 2.1374vw); gap: calc(.63931rem + 1.27226vw); width: calc(12.13979rem + 40.20356vw);
+  }
+  @media (min-width: 768px) {
+    --cookie-left: 1.25rem; --cookie-padding: 20px; --cookie-padding-right: 24px;
+    align-items: center; grid-template-columns: minmax(0, 1fr) auto;
+    bottom: calc(1.1875rem + .3125vw); gap: calc(.875rem + .78125vw); width: calc(25.25rem + 12.89063vw);
+    &__title, &__text { font-size: calc(.84375rem + .19531vw); }
+  }
+  @media (min-width: 1280px) {
+    --cookie-left: calc(.25rem + 1.25vw); --cookie-padding: 1.875vw; --cookie-padding-right: 2.1875vw;
+    bottom: calc(-1.5625rem + 3.75vw); gap: calc(-1.5rem + 3.75vw); width: calc(14.5625rem + 26.25vw); border-radius: 1.5625vw;
+    &__body { gap: calc(-1.5625rem + 3.125vw); }
+    &__header { gap: .78125vw; }
+    &__icon { width: calc(.25rem + 1.25vw); height: calc(.25rem + 1.25vw); }
+    &__title { font-size: 1.25vw; }
+    &__text { font-size: 16px; }
+  }
+  @media (min-width: 1440px) {
+    --cookie-left: calc(-.125rem + 1.66667vw); --cookie-padding: 1.6666666667vw; --cookie-padding-right: 2.2222222222vw;
+    bottom: calc(1.625rem + .20833vw); gap: 1.875rem; width: calc(14.9375rem + 25.83333vw); border-radius: 1.3888888888vw;
+    &__body { gap: 1.25rem; }
+    &__header { gap: .6944444444vw; }
+    &__title { font-size: calc(.75rem + .41667vw); }
+    &__text { font-size: calc(.625rem + .41667vw); }
+  }
+  @media (min-width: 1921px) {
+    --cookie-left: 1.5625vw; --cookie-padding: 1.5625vw; --cookie-padding-right: 2.0833333333vw;
+    bottom: 1.5625vw; gap: 1.5625vw; width: 38.28125vw; border-radius: 1.0416666667vw;
+    &__body { gap: 1.0416666667vw; }
+    &__header { gap: .5208333333vw; }
+    &__icon { width: 1.4583333333vw; height: 1.4583333333vw; }
+    &__title { font-size: 1.0416666667vw; }
+    &__text { font-size: .9375vw; }
+  }
+}

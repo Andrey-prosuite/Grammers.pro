@@ -1,0 +1,28 @@
+<!-- Вставляется в HTML страницы из корня проекта. Выбрать один вариант. -->
+<!-- 01. По колонке контента; эффекты выключены. -->
+<figure class="single-image" data-single-image data-image-layout="content" data-image-zoom="false" data-image-parallax="false">
+  <div class="single-image__frame" data-image-frame>
+    <img src="./images/case/brodeks/cover.webp" width="1622" height="1005" alt="Интернет-магазин Brodeks на ноутбуке" loading="lazy" decoding="async">
+  </div>
+</figure>
+
+<!-- 02. Поля 40px; увеличение и параллакс со стандартным появлением. -->
+<figure class="single-image" data-single-image data-image-layout="inset" data-image-zoom="true" data-image-parallax="true" style="--image-gutter: 40px; --image-ratio: 16 / 9;">
+  <div class="single-image__frame" data-image-frame>
+    <img src="./images/case/brodeks/cover.webp" width="1622" height="1005" alt="Интернет-магазин Brodeks на ноутбуке" loading="lazy" decoding="async">
+  </div>
+</figure>
+
+<!-- 03. Во всю ширину экрана; без эффектов. -->
+<figure class="single-image" data-single-image data-image-layout="full" data-image-zoom="false" data-image-parallax="false">
+  <div class="single-image__frame" data-image-frame>
+    <img src="./images/case/brodeks/clothing-details.webp" width="1680" height="828" alt="Детали профессиональной экипировки" loading="lazy" decoding="async">
+  </div>
+</figure>
+
+<!-- 04. На серой поверхности; появление снизу 300px за 1s, параллакс выключен. -->
+<figure class="single-image" data-single-image data-image-layout="surface" data-image-zoom="false" data-image-parallax="false" data-image-appear="rise" style="--image-gutter: 40px;">
+  <div class="single-image__frame" data-image-frame>
+    <img src="./images/case/brodeks/clothing-details.webp" width="1680" height="828" alt="Детали профессиональной экипировки" loading="lazy" decoding="async">
+  </div>
+</figure>

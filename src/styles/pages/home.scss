@@ -1,0 +1,403 @@
+/*****************************************************************************
+ * ЭКЗЕМПЛЯР: ХИРО ГЛАВНОЙ — hero-home
+ * Разметка: index.html; локальные медиа: images/home, знак: images/awards.
+ * Сетка в обычном потоке; отдельного JS и скрывающей модификации нет.
+ *****************************************************************************/
+.hero-home {
+  --hero-home-unit: min(1px, .0520833333vw);
+  --hero-home-background: transparent;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(447 * var(--hero-home-unit));
+  grid-template-areas: 'title announcement' 'description award';
+  column-gap: calc(160 * var(--hero-home-unit));
+  row-gap: calc(56 * var(--hero-home-unit));
+  min-height: calc(773 * var(--hero-home-unit));
+  padding-top: calc(53 * var(--hero-home-unit));
+  padding-bottom: calc(114 * var(--hero-home-unit));
+  padding-left: max(calc(127.05 * var(--hero-home-unit)), calc((100% - 1920px) / 2 + 127.05px));
+  padding-right: max(calc(82 * var(--hero-home-unit)), calc((100% - 1920px) / 2 + 82px));
+  background: var(--hero-home-background);
+
+  &__title {
+    grid-area: title;
+    max-width: calc(865.42 * var(--hero-home-unit));
+    margin-top: calc(9 * var(--hero-home-unit));
+    font-size: calc(110 * var(--hero-home-unit));
+    font-weight: 500;
+    line-height: .9;
+    letter-spacing: calc(-6 * var(--hero-home-unit));
+  }
+  &__description {
+    grid-area: description;
+    max-width: calc(570.65 * var(--hero-home-unit));
+    margin-left: calc(8.78 * var(--hero-home-unit));
+    font-size: calc(42 * var(--hero-home-unit));
+    line-height: 1.15;
+    letter-spacing: -.4px;
+  }
+  &__announcement {
+    grid-area: announcement;
+    position: relative;
+    align-self: start;
+    display: block;
+    width: 100%;
+    aspect-ratio: 447 / 271;
+    border-radius: calc(34 * var(--hero-home-unit));
+    color: #fff;
+
+    &:focus-visible {
+      outline-offset: 6px;
+    }
+  }
+  &__announcement-frame {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    border-radius: inherit;
+    transition: all .75s cubic-bezier(.16, .44, 0, .97);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 66.893%, rgb(0 0 0 / 68%));
+      pointer-events: none;
+    }
+  }
+  &__announcement:focus-visible &__announcement-frame { transform: scale(.95); }
+  @media (hover: hover) and (pointer: fine) {
+    &__announcement:hover &__announcement-frame { transform: scale(.95); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &__announcement-frame { transition: none; }
+  }
+  &__announcement-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__announcement-caption {
+    position: absolute;
+    z-index: 1;
+    bottom: calc(35.65 * var(--hero-home-unit));
+    left: calc(34.7 * var(--hero-home-unit));
+    max-width: calc(100% - 40px);
+    font-size: calc(20 * var(--hero-home-unit));
+    font-weight: 500;
+    line-height: .95;
+    letter-spacing: calc(-1 * var(--hero-home-unit));
+  }
+  &__announcement-arrow {
+    position: absolute;
+    z-index: 1;
+    top: calc(14.83 * var(--hero-home-unit));
+    right: calc(17.13 * var(--hero-home-unit));
+    max-width: none;
+    transform-origin: top right;
+  }
+  &__award {
+    grid-area: award;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: calc(20 * var(--hero-home-unit));
+    margin-top: calc(22.8 * var(--hero-home-unit));
+    margin-left: calc(-28.05 * var(--hero-home-unit));
+    font-size: calc(15 * var(--hero-home-unit));
+    font-weight: 700;
+    line-height: 1.45;
+
+    p {
+      max-width: 285px;
+    }
+  }
+  &__award-badge {
+    flex: 0 0 calc(112 * var(--hero-home-unit));
+    text-align: center;
+
+    img {
+      width: calc(73 * var(--hero-home-unit));
+      margin-inline: auto;
+    }
+  }
+
+  @media (min-width: 960px) and (max-width: 1599px) {
+    &__announcement-arrow { transform: scale(.75); }
+  }
+  @media (min-width: 960px) and (max-width: 1199px) {
+    column-gap: 48px;
+    &__announcement-arrow { transform: scale(.6); }
+    &__announcement-caption { font-size: 14px; }
+    &__award { font-size: 11px; }
+  }
+  @media (max-width: 959px) {
+    --hero-home-unit: 1px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .8fr);
+    grid-template-areas: 'title title' 'description announcement' 'award announcement';
+    gap: 32px;
+    min-height: 0;
+    padding: 48px var(--page-gutter) 56px;
+
+    &__title {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(56px, 9.3vw, 84px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+    &__description {
+      margin: 0;
+      font-size: clamp(25px, 3.3vw, 32px);
+    }
+    &__announcement {
+      border-radius: 25px;
+    }
+    &__announcement-caption {
+      bottom: 20px;
+      left: 20px;
+      font-size: 17px;
+      letter-spacing: -.5px;
+    }
+    &__announcement-arrow { transform: scale(.8); }
+    &__award {
+      align-self: end;
+      gap: 14px;
+      margin: 0;
+      font-size: 12px;
+    }
+    &__award-badge { flex-basis: 74px; }
+    &__award-badge img { width: 60px; }
+  }
+  @media (max-width: 639px) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'title' 'description' 'announcement' 'award';
+    gap: 28px;
+    padding-block: 36px 44px;
+
+    &__title {
+      font-size: clamp(42px, 10.7vw, 66px);
+    }
+    &__description {
+      max-width: 440px;
+      font-size: clamp(24px, 6vw, 30px);
+    }
+    &__announcement {
+      max-width: 447px;
+      margin-top: 8px;
+    }
+    &__award {
+      justify-self: start;
+      margin-top: 8px;
+    }
+  }
+}
+
+/*****************************************************************************
+ * ЭКЗЕМПЛЯР: УВЕДОМЛЕНИЕ COOKIE HOME — cookie-notice
+ * Разметка: index.html; код: src/scripts/pages/home.js. База: компонент Cookie.
+ * Появление/скрытие: 900/600мс, translateY 120%; кнопка в стиле шапки.
+ *****************************************************************************/
+.cookie-notice-home {
+  --cookie-left: .9375rem;
+  --cookie-padding: 15px;
+  --cookie-padding-right: 20px;
+  position: fixed;
+  z-index: 100;
+  left: var(--cookie-left);
+  bottom: .8125rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: .9375rem;
+  width: 21.5625rem;
+  max-width: calc(100vw - 2 * var(--cookie-left));
+  max-height: calc(100svh - 30px);
+  overflow: auto;
+  padding: var(--cookie-padding) var(--cookie-padding-right) var(--cookie-padding) var(--cookie-padding);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 4px 32px rgb(0 0 0 / .06);
+  &[hidden] { display: none; }
+  &__body { display: flex; flex-direction: column; gap: .9375rem; min-width: 0; }
+  &__header { display: flex; align-items: center; gap: 10px; }
+  &__icon { flex: none; width: 20px; height: 20px; }
+  &__title { font-size: 15px; font-weight: 600; letter-spacing: -.03em; line-height: 1.25; }
+  &__text { color: rgb(14 14 14 / .6); font-size: 15px; line-height: 1.4; }
+  &__text a { border-bottom: 1px solid currentColor; }
+  &__accept { justify-self: start; min-height: 59px; padding-inline: 26px; border-radius: 18px; width: fit-content; }
+  @media (min-width: 375px) {
+    --cookie-left: calc(.63931rem + 1.27226vw);
+    left: var(--cookie-left); bottom: calc(.31155rem + 2.1374vw); gap: calc(.63931rem + 1.27226vw); width: calc(12.13979rem + 40.20356vw);
+  }
+  @media (min-width: 768px) {
+    --cookie-left: 1.25rem; --cookie-padding: 20px; --cookie-padding-right: 24px;
+    align-items: center; grid-template-columns: minmax(0, 1fr) auto;
+    bottom: calc(1.1875rem + .3125vw); gap: calc(.875rem + .78125vw); width: calc(25.25rem + 12.89063vw);
+    &__title, &__text { font-size: calc(.84375rem + .19531vw); }
+  }
+  @media (min-width: 1280px) {
+    --cookie-left: calc(.25rem + 1.25vw); --cookie-padding: 1.875vw; --cookie-padding-right: 2.1875vw;
+    bottom: calc(-1.5625rem + 3.75vw); gap: calc(-1.5rem + 3.75vw); width: calc(14.5625rem + 26.25vw); border-radius: 1.5625vw;
+    &__body { gap: calc(-1.5625rem + 3.125vw); }
+    &__header { gap: .78125vw; }
+    &__icon { width: calc(.25rem + 1.25vw); height: calc(.25rem + 1.25vw); }
+    &__title { font-size: 1.25vw; }
+    &__text { font-size: 16px; }
+  }
+  @media (min-width: 1440px) {
+    --cookie-left: calc(-.125rem + 1.66667vw); --cookie-padding: 1.6666666667vw; --cookie-padding-right: 2.2222222222vw;
+    bottom: calc(1.625rem + .20833vw); gap: 1.875rem; width: calc(14.9375rem + 25.83333vw); border-radius: 1.3888888888vw;
+    &__body { gap: 1.25rem; }
+    &__header { gap: .6944444444vw; }
+    &__title { font-size: calc(.75rem + .41667vw); }
+    &__text { font-size: calc(.625rem + .41667vw); }
+  }
+  @media (min-width: 1921px) {
+    --cookie-left: 1.5625vw; --cookie-padding: 1.5625vw; --cookie-padding-right: 2.0833333333vw;
+    bottom: 1.5625vw; gap: 1.5625vw; width: 38.28125vw; border-radius: 1.0416666667vw;
+    &__body { gap: 1.0416666667vw; }
+    &__header { gap: .5208333333vw; }
+    &__icon { width: 1.4583333333vw; height: 1.4583333333vw; }
+    &__title { font-size: 1.0416666667vw; }
+    &__text { font-size: .9375vw; }
+  }
+}
+
+/*****************************************************************************
+ * ЭКЗЕМПЛЯР: ГАЛЕРЕЯ ЛОГОТИПОВ ГЛАВНОЙ — clients-home
+ * База: компонент horizontal-gallery; разметка: index.html.
+ * Свой контроллер HomeClientsGallery; движение — общий ScrollReel.
+ *****************************************************************************/
+.clients-home {
+  --gallery-gap: 32px;
+  --gallery-padding: var(--page-gutter);
+  --gallery-card-width: 220px;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  padding-bottom: 60px;
+
+  &__viewport {
+    width: 100%;
+    container-type: inline-size;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scroll-padding-inline: var(--gallery-padding);
+    scroll-snap-type: x mandatory;
+  }
+  &__track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--gallery-gap);
+    width: max-content;
+    min-width: 100%;
+    margin: 0;
+    padding: 0 var(--gallery-padding);
+    list-style: none;
+  }
+  &__item {
+    flex: 0 0 auto;
+    width: var(--gallery-card-width);
+    min-width: 0;
+    margin: 0;
+    scroll-snap-align: start;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  &[data-gallery-ready] &__viewport {
+    scrollbar-width: none;
+    scroll-snap-type: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+  &:is([data-gallery-dragging], [data-gallery-animating], [data-reel-ready]) &__viewport {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+  @media (pointer: fine) {
+    &[data-gallery-ready] &__viewport { cursor: grab; }
+    &[data-gallery-dragging] &__viewport { cursor: grabbing; user-select: none; }
+  }
+  @media (max-width: 959px) {
+    --gallery-gap: 16px;
+    &__item { width: calc(100cqw - var(--gallery-padding) - var(--gallery-gap) - 20px); }
+  }
+  @media (max-width: 639px) { padding-bottom: 30px; }
+}
+
+/*****************************************************************************
+ * ЭКЗЕМПЛЯР: ГАЛЕРЕЯ НАГРАД ГЛАВНОЙ — awards-home
+ * База: экземпляр clients-home; разметка: index.html.
+ * Свой контроллер HomeAwardsGallery; движение — общий ScrollReel.
+ *****************************************************************************/
+.awards-home {
+  --gallery-gap: 15px;
+  --gallery-padding: var(--page-gutter);
+  --gallery-card-width: 350px;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  padding-top: 180px;
+
+  &__viewport {
+    margin-top: 60px;
+    width: 100%;
+    container-type: inline-size;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scroll-padding-inline: var(--gallery-padding);
+    scroll-snap-type: x mandatory;
+  }
+  &__track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--gallery-gap);
+    width: max-content;
+    min-width: 100%;
+    margin: 0;
+    padding: 0 var(--gallery-padding);
+    list-style: none;
+  }
+  &__item {
+    flex: 0 0 auto;
+    width: var(--gallery-card-width);
+    min-width: 0;
+    margin: 0;
+    scroll-snap-align: start;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  &[data-gallery-ready] &__viewport {
+    scrollbar-width: none;
+    scroll-snap-type: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+  &:is([data-gallery-dragging], [data-gallery-animating], [data-reel-ready]) &__viewport {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+  @media (pointer: fine) {
+    &[data-gallery-ready] &__viewport { cursor: grab; }
+    &[data-gallery-dragging] &__viewport { cursor: grabbing; user-select: none; }
+  }
+  @media (max-width: 959px) {
+    --gallery-gap: 16px;
+    padding-top: var(--section-space);
+    &__viewport { margin-top: 30px; }
+    &__item { width: calc(100cqw - var(--gallery-padding) - var(--gallery-gap) - 20px); }
+  }
+}
