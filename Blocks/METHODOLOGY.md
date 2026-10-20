@@ -66,3 +66,9 @@ clients-home — независимый экземпляр исходного к
 ## Галерея наград главной
 
 awards-home создана из существующего экземпляра clients-home по указанию пользователя; независимые классы/data-awards-home-gallery и API HomeAwardsGallery. HTML index.html, SCSS/JS страницы home, общий ScrollReel. [Инструкция](../docs/home-awards-gallery.md).
+
+## Текстовые компоненты и экземпляры Brodeks
+
+Новая brodeks.html использует независимые копии последних экземпляров case.html: text-summary-brodeks-story, text-tasks-brodeks-story-tasks/results и text-feature-brodeks-story-{место}. Стили pages/brodeks-story.scss; cookie-notice-brodeks-story с отдельным BrodeksStoryCookieNotice в pages/brodeks-story.js. [Карта, настройки и пустые кадры](../docs/brodeks-story.md).
+
+Компоненты04–06 text-summary/text-tasks/text-feature установлены как независимые экземпляры text-summary-brodeks/text-tasks-brodeks/text-feature-brodeks в case.html после изображения «Юзабилити сайта». Стили скопированы в src/styles/pages/brodeks.scss с уникальными селекторами; общего класса компонента у экземпляров нет. Собственный JS не требуется, общий TextReveal подключён data-метками. Не копировать этот эффект в страницу. [Состав, частичные варианты и карта экземпляров](../docs/text-blocks.md).

@@ -1,5 +1,7 @@
 # Библиотека блоков
 
+Новая страница [Brodeks](../brodeks.html) использует независимые копии последних текстовых экземпляров. [Карта и параметры](../docs/brodeks-story.md).
+
 Обязательное различие: **компонент** хранится в библиотеке, **экземпляр** — отдельная копия в коде страницы. [Методика и обязательный выбор источника](METHODOLOGY.md). Общие CSS/JS ниже относятся к компонентам и каталогу; экземпляры получают свои классы, стили и контроллеры страницы.
 
 Блок — первичная структура страницы: разметка, оформление и собственное управление. Модификация — независимый эффект, который подключается к библиотечному или произвольному блоку на странице. Сначала выбрать блок, затем его опции и нужные модификации.
@@ -15,6 +17,9 @@
 | 01 | Одиночное изображение | [single-image.html](templates/single-image.html) | [Опции и примеры](../docs/single-image.md): content / inset / full / surface; зум, параллакс, появление |
 | 02 | Горизонтальная галерея | [horizontal-gallery.html](templates/horizontal-gallery.html) | [Опции и примеры](../docs/horizontal-gallery.md): static / linear / scroll / controls; скорость, стрелки, зазор, зум |
 | 03 | Плашка Cookie | [cookie-notice.html](templates/cookie-notice.html) | [Опции, хранение и экземпляры](../docs/cookie-notice.md) |
+| 04 | Заголовок и описание | [text-summary.html](templates/text-summary.html) | [Состав, настройки и появление](../docs/text-blocks.md) |
+| 05 | Заголовок и задачи | [text-tasks.html](templates/text-tasks.html) | [Список и необязательные части](../docs/text-blocks.md) |
+| 06 | Крупный заголовок и узкая колонка | [text-feature.html](templates/text-feature.html) | [Адаптивность и экземпляры](../docs/text-blocks.md) |
 
 ## Устройство
 
@@ -31,6 +36,9 @@ Blocks/
     single-image.html               четыре варианта разметки
     horizontal-gallery.html         четыре режима разметки
     cookie-notice.html               компонент уведомления
+    text-summary.html               заголовок и описание
+    text-tasks.html                 заголовок и задачи
+    text-feature.html               крупный заголовок и узкая колонка
   images/
     README.md                       разделение интерфейса и контента
     gallery-arrow-left.svg          элемент управления
@@ -47,7 +55,7 @@ Blocks/
 
 Страница подключает `styles.css`, затем `Blocks/blocks.css` и `Modifications/modifications.css`. Скрипты defer: согласованный SmoothScroll, локальные GSAP/ScrollTrigger, `Modifications/modifications.js`, затем `Blocks/blocks.js`. Подробный пример — в [AGENTS.md](AGENTS.md). Только для статичных блоков достаточно базовых стилей; JS улучшает управление и подключает выбранные эффекты.
 
-`npm run styles` собирает оба CSS. `npm run build` собирает три страницы сайта и каталог, сохраняя обычные локальные скрипты. `node --test tests/horizontal-gallery-input.test.cjs` проверяет контроллер галереи. После изменений обновить этот каталог, инструкции, профильные docs, собрать и проверить desktop/mobile. Коммит и push — только по команде пользователя.
+`npm run styles` собирает оба CSS. `npm run build` собирает четыре страницы сайта и каталог, сохраняя обычные локальные скрипты. `node --test tests/horizontal-gallery-input.test.cjs` проверяет контроллер галереи. После изменений обновить этот каталог, инструкции, профильные docs, собрать и проверить desktop/mobile. Коммит и push — только по команде пользователя.
 
 [Рабочая выборка шторки](index.html#page-curtain) показывает последовательность на месте и переходы между настоящими страницами. [Механизм и тайминги](../docs/page-transition.md). Вся шторка — один page-transition.js до CSS, без атрибутов body и списка страниц; прямой вход и обновление тоже анимированы.
 

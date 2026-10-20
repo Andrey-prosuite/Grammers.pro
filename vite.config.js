@@ -5,7 +5,7 @@ import { basename, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const modificationsScript = './Modifications/modifications.js';
-const modificationsVersion = '20261020-global-curtain-1';
+const modificationsVersion = '20261021-brodeks-story-1';
 const animationScripts = ['gsap.min.js', 'ScrollTrigger.min.js'];
 const projectRoot = fileURLToPath(new URL('.', import.meta.url));
 
@@ -15,7 +15,7 @@ export default defineConfig({
   preview: { host: '127.0.0.1', port: 4181, strictPort: true },
   build: {
     rollupOptions: {
-      input: { home: 'index.html', cases: 'cases.html', caseDetail: 'case.html', blockLibrary: 'Blocks/index.html' },
+      input: { home: 'index.html', cases: 'cases.html', caseDetail: 'case.html', brodeksStory: 'brodeks.html', blockLibrary: 'Blocks/index.html' },
     },
   },
   plugins: [liveStyles(), {
@@ -25,7 +25,7 @@ export default defineConfig({
     transformIndexHtml: {
       order: 'pre',
       handler: (html) => html
-        .replace(/<script defer src="\.\/src\/scripts\/pages\/(?:home|cases|brodeks)\.js(?:\?[^"]*)?"><\/script>/g, '')
+        .replace(/<script defer src="\.\/src\/scripts\/pages\/(?:home|cases|brodeks|brodeks-story)\.js(?:\?[^"]*)?"><\/script>/g, '')
         .replace(/<script src="(?:\.\/|\.\.\/)Modifications\/page-transition\.js(?:\?[^"]*)?"><\/script>/g, '')
         .replace(/<script defer src="(?:\.\/|\.\.\/)(?:Modifications\/modifications|Blocks\/blocks)\.js(?:\?[^\"]*)?"><\/script>/g, '')
         .replace(/<script defer src="(?:\.\/|\.\.\/)Modifications\/vendor\/(?:gsap|ScrollTrigger)\.min\.js"><\/script>/g, ''),
@@ -35,7 +35,7 @@ export default defineConfig({
       handler(_, bundle) {
         const viewerAssets = new Map();
         // Служебный каталог содержит реальные ссылки на инструкции и шаблоны.
-        const libraryFiles = ['Blocks/README.md', 'Blocks/AGENTS.md', 'Blocks/METHODOLOGY.md', 'Blocks/templates/single-image.html', 'Blocks/templates/horizontal-gallery.html', 'Blocks/templates/cookie-notice.html', 'Blocks/images/README.md', 'Modifications/README.md', 'Modifications/AGENTS.md', 'AGENTS.md', 'README.md'];
+        const libraryFiles = ['Blocks/README.md', 'Blocks/AGENTS.md', 'Blocks/METHODOLOGY.md', 'Blocks/templates/single-image.html', 'Blocks/templates/horizontal-gallery.html', 'Blocks/templates/cookie-notice.html', 'Blocks/templates/text-summary.html', 'Blocks/templates/text-tasks.html', 'Blocks/templates/text-feature.html', 'Blocks/images/README.md', 'Modifications/README.md', 'Modifications/AGENTS.md', 'AGENTS.md', 'README.md'];
         for (const name of readdirSync(new URL('./docs/', import.meta.url))) {
           if (name.endsWith('.md')) libraryFiles.push(`docs/${name}`);
         }
@@ -51,7 +51,7 @@ export default defineConfig({
           fileName: 'Modifications/modifications.js',
           source: readFileSync(new URL(modificationsScript, import.meta.url), 'utf8'),
         });
-        for (const name of ['home', 'cases', 'brodeks']) this.emitFile({ type: 'asset', fileName: `src/scripts/pages/${name}.js`, source: readFileSync(new URL(`./src/scripts/pages/${name}.js`, import.meta.url)) });
+        for (const name of ['home', 'cases', 'brodeks', 'brodeks-story']) this.emitFile({ type: 'asset', fileName: `src/scripts/pages/${name}.js`, source: readFileSync(new URL(`./src/scripts/pages/${name}.js`, import.meta.url)) });
         this.emitFile({ type: 'asset', fileName: 'Modifications/page-transition.js', source: readFileSync(new URL('./Modifications/page-transition.js', import.meta.url)) });
         this.emitFile({ type: 'asset', fileName: 'Blocks/blocks.js', source: readFileSync(new URL('./Blocks/blocks.js', import.meta.url), 'utf8') });
         // В сборку возвращается тот же локальный скрипт, без внешних запросов.
@@ -74,7 +74,7 @@ export default defineConfig({
             const prefix = asset.fileName.startsWith('Blocks/') ? '../' : './';
             const libraries = animationScripts.map((name) => `<script defer src="${prefix}Modifications/vendor/${name}"></script>`).join('\n  ');
             const withBoot = html.replace('</title>', `</title>\n  <script src="${prefix}Modifications/page-transition.js?v=${modificationsVersion}"></script>`);
-            const pageScript = ({ 'index.html': 'home', 'cases.html': 'cases', 'case.html': 'brodeks' })[asset.fileName];
+            const pageScript = ({ 'index.html': 'home', 'cases.html': 'cases', 'case.html': 'brodeks', 'brodeks.html': 'brodeks-story' })[asset.fileName];
             const instanceScript = pageScript ? `<script defer src="./src/scripts/pages/${pageScript}.js?v=${modificationsVersion}"></script>` : '';
             asset.source = withBoot.replace('</head>', `  ${libraries}\n  <script defer src="${prefix}Modifications/modifications.js?v=${modificationsVersion}"></script>\n  <script defer src="${prefix}Blocks/blocks.js?v=${modificationsVersion}"></script>\n  ${instanceScript}\n  </head>`);
           }

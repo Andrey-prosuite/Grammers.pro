@@ -1,5 +1,7 @@
 # Инструкция агентам: библиотека блоков
 
+Новая brodeks.html собрана из независимых копий последних текстовых экземпляров case.html; компоненты04–06 не менялись. Состав, классы, настройки, доступность и очистка: [docs/brodeks-story.md](../docs/brodeks-story.md).
+
 ## Обязательная методика компонентов и экземпляров
 
 Сначала прочитать [METHODOLOGY.md](METHODOLOGY.md). Компонент — исходник в библиотеке; экземпляр — его независимая копия с уникальными именами/классами, разметкой в HTML страницы, CSS/JS в коде страницы. При просьбе использовать существующий блок спросить, брать существующий экземпляр или исходный компонент, если источник ещё не назван. Индивидуальные правки выполнять в экземпляре; компонент не менять автоматически. Параметры и зависимости эффектов остаются в библиотеке модификаций.
@@ -23,13 +25,13 @@
 В корневом HTML, один раз на страницу, с текущей общей версией ресурсов:
 
 ```html
-<link rel="stylesheet" href="./styles.css?v=20261020-curtain-gutter-1">
-<link rel="stylesheet" href="./Blocks/blocks.css?v=20261020-curtain-gutter-1">
-<link rel="stylesheet" href="./Modifications/modifications.css?v=20261020-curtain-gutter-1">
+<link rel="stylesheet" href="./styles.css?v=20261021-brodeks-story-1">
+<link rel="stylesheet" href="./Blocks/blocks.css?v=20261021-brodeks-story-1">
+<link rel="stylesheet" href="./Modifications/modifications.css?v=20261021-brodeks-story-1">
 <script defer src="./Modifications/vendor/gsap.min.js"></script>
 <script defer src="./Modifications/vendor/ScrollTrigger.min.js"></script>
-<script defer src="./Modifications/modifications.js?v=20261020-curtain-gutter-1"></script>
-<script defer src="./Blocks/blocks.js?v=20261020-curtain-gutter-1"></script>
+<script defer src="./Modifications/modifications.js?v=20261021-brodeks-story-1"></script>
+<script defer src="./Blocks/blocks.js?v=20261021-brodeks-story-1"></script>
 ```
 
 Перед этими скриптами также сохранять согласованный SmoothScroll с CDN и SRI из head действующей страницы. Здесь сокращённый пример локальных подключений, а не замена всего head. Все исходные страницы, включая каталог, уже подключены. Для вложенных страниц исправить относительные пути. Vite копирует оба обычных JS и локальные библиотеки, подключает их в том же порядке. Без модификаций статичные изображения и ручная галерея доступны; без GSAP галерея сохраняет управление, без JS — нативный скролл. Эффекты не должны скрывать контент навсегда.
@@ -118,3 +120,9 @@ hero-home находится на главной; стили в src/styles/pages
 clients-home на главной создан из исходного horizontal-gallery: отдельные классы/корневая метка/API HomeClientsGallery, CSS/JS страницы. scroll45s, zoom false, без стрелок. Не добавлять data-horizontal-gallery и не менять компонент ради этого экземпляра. [Настройки и очистка](../docs/home-clients-gallery.md).
 
 Галерея наград awards-home — независимая копия clients-home, API HomeAwardsGallery. Семь прежних SVG и заголовок сохранены; scroll45s, zoom false, desktop350px/gap15px. [Настройки и очистка](../docs/home-awards-gallery.md).
+
+## 04–06. Текстовые компоненты
+
+text-summary, text-tasks, text-feature: [полное руководство](../docs/text-blocks.md), шаблоны templates/text-*.html, секции04–06 общих SCSS/JS. Общая ось до1500px, поля через --page-gutter, до1023px одна колонка; до639px уменьшенные шрифты/номера. CSS-опции --text-content-width, --text-space-before/after, --text-column-gap; значения и брейкпоинты в руководстве. Части можно удалять целиком: единственный ребёнок занимает всю сетку; убрать неверный aria-labelledby при удалении заголовка. Пустых обёрток не оставлять.
+
+Нет своего контроллера и изображений интерфейса. data-text-reveal на корне и data-text-reveal-item на описании/абзацах/пунктах включают общий TextReveal14: opacity0→1,3s cubic-bezier(.19,1,.22,1), один раз при top bottom; заголовки статичны. Задержки списка0/.1/.2…s, явная опция data-text-reveal-delay в секундах; root=false отключает эффект. Нужны GSAP/ScrollTrigger; без них/JS и при reduced motion текст виден. Очистка TextReveal.destroy/init; не дублировать эффект в blocks.js или JS страницы. Три независимых экземпляра Brodeks стоят после #case-usability-image, уникальные классы с -brodeks, HTML case.html, CSS pages/brodeks.scss; исходники библиотеки от них не зависят. Проверка node --test tests/text-reveal.test.cjs.

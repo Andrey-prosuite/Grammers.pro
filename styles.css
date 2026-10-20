@@ -3671,3 +3671,714 @@ button {
     font-size: 0.9375vw;
   }
 }
+
+/*****************************************************************************
+ * БЛОК СТРАНИЦЫ BRODEKS: ДВА ИЗОБРАЖЕНИЯ — brodeks-image-pair
+ * Разметка: case.html; самостоятельный блок, не компонент библиотеки.
+ * photo-zoom и photo-parallax подключаются независимо на каждом кадре.
+ *****************************************************************************/
+.brodeks-image-pair {
+  --brodeks-image-pair-gutter: 40px;
+  --brodeks-image-pair-gap: 20px;
+  --brodeks-image-pair-ratio: 4 / 3;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--brodeks-image-pair-gap);
+  width: calc(100% - 2 * var(--brodeks-image-pair-gutter));
+  max-width: none;
+  margin: 120px auto 0;
+}
+.brodeks-image-pair__frame {
+  position: relative;
+  display: block;
+  min-width: 0;
+  aspect-ratio: var(--brodeks-image-pair-ratio);
+  overflow: hidden;
+}
+.brodeks-image-pair__frame > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  .brodeks-image-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 639px) {
+  .brodeks-image-pair {
+    margin-top: 60px;
+  }
+}
+
+/*****************************************************************************
+ * ЭКЗЕМПЛЯРЫ BRODEKS: ТРИ ТЕКСТОВЫХ БЛОКА — text-summary-brodeks / text-tasks-brodeks / text-feature-brodeks
+ * Разметка: case.html; база: три текстовых компонента Blocks. Собственный JS не требуется.
+ * Появление: общая модификация TextReveal, секция 14 Modifications.
+ *****************************************************************************/
+.text-summary-brodeks, .text-tasks-brodeks, .text-feature-brodeks {
+  --text-content-width: var(--case-content-width);
+  width: min(100% - 2 * var(--page-gutter), var(--text-content-width));
+  min-width: 0;
+  margin-inline: auto;
+  padding-block: var(--text-space-before, 0px) var(--text-space-after, 0px);
+  color: #000;
+  overflow-wrap: break-word;
+}
+
+.text-summary-brodeks, .text-tasks-brodeks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: var(--text-column-gap, clamp(24px, 3.2vw, 52px));
+}
+.text-summary-brodeks__title, .text-tasks-brodeks__title {
+  min-width: 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 39px;
+  letter-spacing: normal;
+}
+.text-summary-brodeks__body, .text-tasks-brodeks__body {
+  min-width: 0;
+}
+.text-summary-brodeks > :only-child, .text-tasks-brodeks > :only-child {
+  grid-column: 1/-1;
+}
+
+.text-summary-brodeks {
+  --text-space-before: 90px;
+}
+.text-summary-brodeks__body {
+  display: grid;
+  gap: 24px;
+  font-size: 27px;
+  line-height: 35px;
+}
+
+.text-tasks-brodeks {
+  --text-space-before: 75px;
+  --text-space-after: 120px;
+}
+.text-tasks-brodeks__body {
+  display: grid;
+  gap: 42px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+.text-tasks-brodeks__intro {
+  line-height: 1.23;
+}
+
+.text-feature-brodeks {
+  --text-space-before: 49px;
+  --text-space-after: 120px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 27.3%);
+  column-gap: var(--text-column-gap, clamp(40px, 16%, 240px));
+}
+.text-feature-brodeks__title {
+  min-width: 0;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: -1px;
+}
+.text-feature-brodeks__body {
+  display: grid;
+  gap: 56px;
+  min-width: 0;
+  font-size: 20px;
+  line-height: 1.23;
+}
+.text-feature-brodeks > :only-child {
+  grid-column: 1/-1;
+}
+
+.text-tasks-brodeks__list, .text-feature-brodeks__list {
+  display: grid;
+  gap: 42px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: text-block-item;
+}
+.text-tasks-brodeks__list > li, .text-feature-brodeks__list > li {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+  min-height: 67px;
+  margin: 0;
+  counter-increment: text-block-item;
+}
+.text-tasks-brodeks__list > li[value="1"], .text-feature-brodeks__list > li[value="1"] {
+  counter-set: text-block-item 1;
+}
+.text-tasks-brodeks__list > li::before, .text-feature-brodeks__list > li::before {
+  content: counter(text-block-item);
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 67px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 35px;
+}
+
+.text-feature-brodeks__list {
+  gap: 23px;
+}
+
+.text-feature-brodeks__list > li {
+  align-items: center;
+  min-height: 80px;
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .text-feature-brodeks {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+}
+@media (max-width: 1023px) {
+  .text-summary-brodeks, .text-tasks-brodeks, .text-feature-brodeks {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+  .text-feature-brodeks__body {
+    gap: 32px;
+  }
+}
+@media (max-width: 639px) {
+  .text-summary-brodeks, .text-tasks-brodeks, .text-feature-brodeks {
+    --text-space-before: 48px;
+    --text-space-after: 0px;
+  }
+  .text-summary-brodeks__title, .text-tasks-brodeks__title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .text-summary-brodeks__body {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+  .text-feature-brodeks__title {
+    font-size: 32px;
+    letter-spacing: -0.5px;
+  }
+  .text-tasks-brodeks__body, .text-feature-brodeks__body {
+    gap: 28px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .text-tasks-brodeks__list, .text-feature-brodeks__list {
+    gap: 24px;
+  }
+  .text-tasks-brodeks__list > li, .text-feature-brodeks__list > li {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 48px;
+    align-items: start;
+  }
+  .text-tasks-brodeks__list > li::before, .text-feature-brodeks__list > li::before {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+/*****************************************************************************
+ * ЭКЗЕМПЛЯР: УВЕДОМЛЕНИЕ COOKIE BRODEKS — cookie-notice
+ * Разметка: brodeks.html; код: src/scripts/pages/brodeks-story.js. База: компонент Cookie.
+ * Появление/скрытие: 900/600мс, translateY 120%; кнопка в стиле шапки.
+ *****************************************************************************/
+.cookie-notice-brodeks-story {
+  --cookie-left: .9375rem;
+  --cookie-padding: 15px;
+  --cookie-padding-right: 20px;
+  position: fixed;
+  z-index: 100;
+  left: var(--cookie-left);
+  bottom: 0.8125rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 0.9375rem;
+  width: 21.5625rem;
+  max-width: calc(100vw - 2 * var(--cookie-left));
+  max-height: calc(100svh - 30px);
+  overflow: auto;
+  padding: var(--cookie-padding) var(--cookie-padding-right) var(--cookie-padding) var(--cookie-padding);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06);
+}
+.cookie-notice-brodeks-story[hidden] {
+  display: none;
+}
+.cookie-notice-brodeks-story__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+  min-width: 0;
+}
+.cookie-notice-brodeks-story__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cookie-notice-brodeks-story__icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.cookie-notice-brodeks-story__title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+.cookie-notice-brodeks-story__text {
+  color: rgba(14, 14, 14, 0.6);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.cookie-notice-brodeks-story__text a {
+  border-bottom: 1px solid currentColor;
+}
+.cookie-notice-brodeks-story__accept {
+  justify-self: start;
+  min-height: 59px;
+  padding-inline: 26px;
+  border-radius: 18px;
+  width: fit-content;
+}
+@media (min-width: 375px) {
+  .cookie-notice-brodeks-story {
+    --cookie-left: calc(.63931rem + 1.27226vw);
+    left: var(--cookie-left);
+    bottom: calc(0.31155rem + 2.1374vw);
+    gap: calc(0.63931rem + 1.27226vw);
+    width: calc(12.13979rem + 40.20356vw);
+  }
+}
+@media (min-width: 768px) {
+  .cookie-notice-brodeks-story {
+    --cookie-left: 1.25rem;
+    --cookie-padding: 20px;
+    --cookie-padding-right: 24px;
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) auto;
+    bottom: calc(1.1875rem + 0.3125vw);
+    gap: calc(0.875rem + 0.78125vw);
+    width: calc(25.25rem + 12.89063vw);
+  }
+  .cookie-notice-brodeks-story__title, .cookie-notice-brodeks-story__text {
+    font-size: calc(0.84375rem + 0.19531vw);
+  }
+}
+@media (min-width: 1280px) {
+  .cookie-notice-brodeks-story {
+    --cookie-left: calc(.25rem + 1.25vw);
+    --cookie-padding: 1.875vw;
+    --cookie-padding-right: 2.1875vw;
+    bottom: calc(-1.5625rem + 3.75vw);
+    gap: calc(-1.5rem + 3.75vw);
+    width: calc(14.5625rem + 26.25vw);
+    border-radius: 1.5625vw;
+  }
+  .cookie-notice-brodeks-story__body {
+    gap: calc(-1.5625rem + 3.125vw);
+  }
+  .cookie-notice-brodeks-story__header {
+    gap: 0.78125vw;
+  }
+  .cookie-notice-brodeks-story__icon {
+    width: calc(0.25rem + 1.25vw);
+    height: calc(0.25rem + 1.25vw);
+  }
+  .cookie-notice-brodeks-story__title {
+    font-size: 1.25vw;
+  }
+  .cookie-notice-brodeks-story__text {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1440px) {
+  .cookie-notice-brodeks-story {
+    --cookie-left: calc(-.125rem + 1.66667vw);
+    --cookie-padding: 1.6666666667vw;
+    --cookie-padding-right: 2.2222222222vw;
+    bottom: calc(1.625rem + 0.20833vw);
+    gap: 1.875rem;
+    width: calc(14.9375rem + 25.83333vw);
+    border-radius: 1.3888888888vw;
+  }
+  .cookie-notice-brodeks-story__body {
+    gap: 1.25rem;
+  }
+  .cookie-notice-brodeks-story__header {
+    gap: 0.6944444444vw;
+  }
+  .cookie-notice-brodeks-story__title {
+    font-size: calc(0.75rem + 0.41667vw);
+  }
+  .cookie-notice-brodeks-story__text {
+    font-size: calc(0.625rem + 0.41667vw);
+  }
+}
+@media (min-width: 1921px) {
+  .cookie-notice-brodeks-story {
+    --cookie-left: 1.5625vw;
+    --cookie-padding: 1.5625vw;
+    --cookie-padding-right: 2.0833333333vw;
+    bottom: 1.5625vw;
+    gap: 1.5625vw;
+    width: 38.28125vw;
+    border-radius: 1.0416666667vw;
+  }
+  .cookie-notice-brodeks-story__body {
+    gap: 1.0416666667vw;
+  }
+  .cookie-notice-brodeks-story__header {
+    gap: 0.5208333333vw;
+  }
+  .cookie-notice-brodeks-story__icon {
+    width: 1.4583333333vw;
+    height: 1.4583333333vw;
+  }
+  .cookie-notice-brodeks-story__title {
+    font-size: 1.0416666667vw;
+  }
+  .cookie-notice-brodeks-story__text {
+    font-size: 0.9375vw;
+  }
+}
+
+/*****************************************************************************
+ * ЭКЗЕМПЛЯРЫ НОВОГО BRODEKS: КЛИЕНТ, ЗАДАЧИ И СМЫСЛОВЫЕ РАЗДЕЛЫ
+ * Разметка: brodeks.html; база: последние текстовые экземпляры case.html.
+ * Приватные заготовки ниже принадлежат только новой странице. Собственный JS не требуется.
+ * Появление: общая модификация TextReveal, секция 14 Modifications.
+ *****************************************************************************/
+.text-summary-brodeks-story, .text-tasks-brodeks-story-results, .text-tasks-brodeks-story-tasks, .text-feature-brodeks-story-contact, .text-feature-brodeks-story-result, .text-feature-brodeks-story-awards, .text-feature-brodeks-story-mobile, .text-feature-brodeks-story-development, .text-feature-brodeks-story-selection, .text-feature-brodeks-story-purchase, .text-feature-brodeks-story-details, .text-feature-brodeks-story-brand, .text-feature-brodeks-story-visual, .text-feature-brodeks-story-seo, .text-feature-brodeks-story-prototypes {
+  --text-content-width: var(--case-content-width);
+  width: min(100% - 2 * var(--page-gutter), var(--text-content-width));
+  min-width: 0;
+  margin-inline: auto;
+  padding-block: var(--text-space-before, 0px) var(--text-space-after, 0px);
+  color: #000;
+  overflow-wrap: break-word;
+}
+
+/*****************************************************************************
+ * СТРАНИЦА BRODEKS: ВСТУПЛЕНИЕ И ПУСТЫЕ МЕДИАКАДРЫ
+ * Серые кадры декоративные, без изображений, ссылок и обработчиков.
+ * Пропорции задаются явно по варианту композиции; на мобильном пары идут в одну колонку.
+ *****************************************************************************/
+.brodeks-story {
+  padding-bottom: 80px;
+}
+.brodeks-story__contact {
+  justify-self: start;
+  width: fit-content;
+  padding: 20px 28px;
+}
+
+.brodeks-story-hero {
+  width: min(100% - 2 * var(--page-gutter), var(--case-content-width));
+  margin: 48px auto 80px;
+}
+.brodeks-story-hero__breadcrumbs {
+  width: min(100% - 2 * var(--page-gutter), var(--case-content-width));
+  margin: 50px auto 0;
+  font-size: 15px;
+  color: var(--color-muted);
+}
+.brodeks-story-hero__breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.brodeks-story-hero__breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 12px;
+  color: var(--color-border);
+}
+.brodeks-story-hero__breadcrumbs a:hover {
+  color: var(--color-text);
+}
+.brodeks-story-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+.brodeks-story-hero__meta a {
+  text-underline-offset: 5px;
+  text-decoration: underline;
+}
+.brodeks-story-hero__title {
+  max-width: 1350px;
+  font-size: clamp(44px, 4.5vw, 76px);
+  font-weight: 700;
+  line-height: 1.07;
+  letter-spacing: -0.035em;
+  overflow-wrap: break-word;
+}
+.brodeks-story-hero__lead {
+  width: min(100%, 790px);
+  margin: 40px 0 0 auto;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.3;
+}
+@media (max-width: 639px) {
+  .brodeks-story-hero {
+    margin-block: 32px 48px;
+  }
+  .brodeks-story-hero__breadcrumbs {
+    margin-top: 30px;
+    font-size: 13px;
+  }
+  .brodeks-story-hero__meta {
+    margin-bottom: 24px;
+    font-size: 16px;
+  }
+  .brodeks-story-hero__title {
+    font-size: clamp(34px, 7.5vw, 46px);
+  }
+  .brodeks-story-hero__lead {
+    margin-top: 28px;
+    font-size: 22px;
+  }
+}
+
+.brodeks-story-media {
+  width: calc(100% - 2 * var(--page-gutter));
+  max-width: var(--case-content-width);
+  margin: 0 auto 80px;
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.brodeks-story-media__frame {
+  min-width: 0;
+  aspect-ratio: 16/9;
+  background: #e8e8e8;
+  border-radius: 20px;
+}
+.brodeks-story-media.brodeks-story-media-cover {
+  max-width: none;
+  margin-bottom: 0;
+}
+.brodeks-story-media.brodeks-story-media-cover .brodeks-story-media__frame {
+  aspect-ratio: 16/8;
+}
+.brodeks-story-media.brodeks-story-media-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.brodeks-story-media.brodeks-story-media-pair .brodeks-story-media__frame {
+  aspect-ratio: 4/3;
+}
+.brodeks-story-media.brodeks-story-media-phones {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.brodeks-story-media.brodeks-story-media-phones .brodeks-story-media__frame {
+  aspect-ratio: 9/18;
+}
+@media (max-width: 639px) {
+  .brodeks-story-media {
+    margin-bottom: 12px;
+    margin-top: 40px;
+    gap: 16px;
+  }
+  .brodeks-story-media__frame {
+    border-radius: 12px;
+  }
+  .brodeks-story-media.brodeks-story-media-cover {
+    margin-top: 0;
+  }
+  .brodeks-story-media.brodeks-story-media-cover .brodeks-story-media__frame {
+    aspect-ratio: 4/3;
+  }
+  .brodeks-story-media.brodeks-story-media-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .brodeks-story-media.brodeks-story-media-phones {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.text-summary-brodeks-story, .text-tasks-brodeks-story-results, .text-tasks-brodeks-story-tasks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: var(--text-column-gap, clamp(24px, 3.2vw, 52px));
+}
+.text-summary-brodeks-story__title, .text-tasks-brodeks-story-results__title, .text-tasks-brodeks-story-tasks__title {
+  min-width: 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 39px;
+  letter-spacing: normal;
+}
+.text-summary-brodeks-story__body, .text-tasks-brodeks-story-results__body, .text-tasks-brodeks-story-tasks__body {
+  min-width: 0;
+}
+.text-summary-brodeks-story > :only-child, .text-tasks-brodeks-story-results > :only-child, .text-tasks-brodeks-story-tasks > :only-child {
+  grid-column: 1/-1;
+}
+
+.text-summary-brodeks-story {
+  --text-space-before: 90px;
+}
+.text-summary-brodeks-story__body {
+  display: grid;
+  gap: 24px;
+  font-size: 27px;
+  line-height: 35px;
+}
+
+.text-tasks-brodeks-story-results, .text-tasks-brodeks-story-tasks {
+  --text-space-before: 75px;
+  --text-space-after: 120px;
+}
+.text-tasks-brodeks-story-results__body, .text-tasks-brodeks-story-tasks__body {
+  display: grid;
+  gap: 42px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+.text-tasks-brodeks-story-results__intro, .text-tasks-brodeks-story-tasks__intro {
+  line-height: 1.23;
+}
+
+.text-feature-brodeks-story-contact, .text-feature-brodeks-story-result, .text-feature-brodeks-story-awards, .text-feature-brodeks-story-mobile, .text-feature-brodeks-story-development, .text-feature-brodeks-story-selection, .text-feature-brodeks-story-purchase, .text-feature-brodeks-story-details, .text-feature-brodeks-story-brand, .text-feature-brodeks-story-visual, .text-feature-brodeks-story-seo, .text-feature-brodeks-story-prototypes {
+  --text-space-before: 49px;
+  --text-space-after: 120px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 27.3%);
+  column-gap: var(--text-column-gap, clamp(40px, 16%, 240px));
+}
+.text-feature-brodeks-story-contact__title, .text-feature-brodeks-story-result__title, .text-feature-brodeks-story-awards__title, .text-feature-brodeks-story-mobile__title, .text-feature-brodeks-story-development__title, .text-feature-brodeks-story-selection__title, .text-feature-brodeks-story-purchase__title, .text-feature-brodeks-story-details__title, .text-feature-brodeks-story-brand__title, .text-feature-brodeks-story-visual__title, .text-feature-brodeks-story-seo__title, .text-feature-brodeks-story-prototypes__title {
+  min-width: 0;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: -1px;
+}
+.text-feature-brodeks-story-contact__body, .text-feature-brodeks-story-result__body, .text-feature-brodeks-story-awards__body, .text-feature-brodeks-story-mobile__body, .text-feature-brodeks-story-development__body, .text-feature-brodeks-story-selection__body, .text-feature-brodeks-story-purchase__body, .text-feature-brodeks-story-details__body, .text-feature-brodeks-story-brand__body, .text-feature-brodeks-story-visual__body, .text-feature-brodeks-story-seo__body, .text-feature-brodeks-story-prototypes__body {
+  display: grid;
+  gap: 56px;
+  min-width: 0;
+  font-size: 20px;
+  line-height: 1.23;
+}
+.text-feature-brodeks-story-contact > :only-child, .text-feature-brodeks-story-result > :only-child, .text-feature-brodeks-story-awards > :only-child, .text-feature-brodeks-story-mobile > :only-child, .text-feature-brodeks-story-development > :only-child, .text-feature-brodeks-story-selection > :only-child, .text-feature-brodeks-story-purchase > :only-child, .text-feature-brodeks-story-details > :only-child, .text-feature-brodeks-story-brand > :only-child, .text-feature-brodeks-story-visual > :only-child, .text-feature-brodeks-story-seo > :only-child, .text-feature-brodeks-story-prototypes > :only-child {
+  grid-column: 1/-1;
+}
+
+.text-tasks-brodeks-story-results__list, .text-tasks-brodeks-story-tasks__list, .text-feature-brodeks-story-contact__list, .text-feature-brodeks-story-result__list, .text-feature-brodeks-story-awards__list, .text-feature-brodeks-story-mobile__list, .text-feature-brodeks-story-development__list, .text-feature-brodeks-story-selection__list, .text-feature-brodeks-story-purchase__list, .text-feature-brodeks-story-details__list, .text-feature-brodeks-story-brand__list, .text-feature-brodeks-story-visual__list, .text-feature-brodeks-story-seo__list, .text-feature-brodeks-story-prototypes__list {
+  display: grid;
+  gap: 42px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: text-block-item;
+}
+.text-tasks-brodeks-story-results__list > li, .text-tasks-brodeks-story-tasks__list > li, .text-feature-brodeks-story-contact__list > li, .text-feature-brodeks-story-result__list > li, .text-feature-brodeks-story-awards__list > li, .text-feature-brodeks-story-mobile__list > li, .text-feature-brodeks-story-development__list > li, .text-feature-brodeks-story-selection__list > li, .text-feature-brodeks-story-purchase__list > li, .text-feature-brodeks-story-details__list > li, .text-feature-brodeks-story-brand__list > li, .text-feature-brodeks-story-visual__list > li, .text-feature-brodeks-story-seo__list > li, .text-feature-brodeks-story-prototypes__list > li {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+  min-height: 67px;
+  margin: 0;
+  counter-increment: text-block-item;
+}
+.text-tasks-brodeks-story-results__list > li[value="1"], .text-tasks-brodeks-story-tasks__list > li[value="1"], .text-feature-brodeks-story-contact__list > li[value="1"], .text-feature-brodeks-story-result__list > li[value="1"], .text-feature-brodeks-story-awards__list > li[value="1"], .text-feature-brodeks-story-mobile__list > li[value="1"], .text-feature-brodeks-story-development__list > li[value="1"], .text-feature-brodeks-story-selection__list > li[value="1"], .text-feature-brodeks-story-purchase__list > li[value="1"], .text-feature-brodeks-story-details__list > li[value="1"], .text-feature-brodeks-story-brand__list > li[value="1"], .text-feature-brodeks-story-visual__list > li[value="1"], .text-feature-brodeks-story-seo__list > li[value="1"], .text-feature-brodeks-story-prototypes__list > li[value="1"] {
+  counter-set: text-block-item 1;
+}
+.text-tasks-brodeks-story-results__list > li::before, .text-tasks-brodeks-story-tasks__list > li::before, .text-feature-brodeks-story-contact__list > li::before, .text-feature-brodeks-story-result__list > li::before, .text-feature-brodeks-story-awards__list > li::before, .text-feature-brodeks-story-mobile__list > li::before, .text-feature-brodeks-story-development__list > li::before, .text-feature-brodeks-story-selection__list > li::before, .text-feature-brodeks-story-purchase__list > li::before, .text-feature-brodeks-story-details__list > li::before, .text-feature-brodeks-story-brand__list > li::before, .text-feature-brodeks-story-visual__list > li::before, .text-feature-brodeks-story-seo__list > li::before, .text-feature-brodeks-story-prototypes__list > li::before {
+  content: counter(text-block-item);
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 67px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 35px;
+}
+
+.text-feature-brodeks-story-contact__list, .text-feature-brodeks-story-result__list, .text-feature-brodeks-story-awards__list, .text-feature-brodeks-story-mobile__list, .text-feature-brodeks-story-development__list, .text-feature-brodeks-story-selection__list, .text-feature-brodeks-story-purchase__list, .text-feature-brodeks-story-details__list, .text-feature-brodeks-story-brand__list, .text-feature-brodeks-story-visual__list, .text-feature-brodeks-story-seo__list, .text-feature-brodeks-story-prototypes__list {
+  gap: 23px;
+}
+
+.text-feature-brodeks-story-contact__list > li, .text-feature-brodeks-story-result__list > li, .text-feature-brodeks-story-awards__list > li, .text-feature-brodeks-story-mobile__list > li, .text-feature-brodeks-story-development__list > li, .text-feature-brodeks-story-selection__list > li, .text-feature-brodeks-story-purchase__list > li, .text-feature-brodeks-story-details__list > li, .text-feature-brodeks-story-brand__list > li, .text-feature-brodeks-story-visual__list > li, .text-feature-brodeks-story-seo__list > li, .text-feature-brodeks-story-prototypes__list > li {
+  align-items: center;
+  min-height: 80px;
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .text-feature-brodeks-story-contact, .text-feature-brodeks-story-result, .text-feature-brodeks-story-awards, .text-feature-brodeks-story-mobile, .text-feature-brodeks-story-development, .text-feature-brodeks-story-selection, .text-feature-brodeks-story-purchase, .text-feature-brodeks-story-details, .text-feature-brodeks-story-brand, .text-feature-brodeks-story-visual, .text-feature-brodeks-story-seo, .text-feature-brodeks-story-prototypes {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+}
+@media (max-width: 1023px) {
+  .text-summary-brodeks-story, .text-tasks-brodeks-story-results, .text-tasks-brodeks-story-tasks, .text-feature-brodeks-story-contact, .text-feature-brodeks-story-result, .text-feature-brodeks-story-awards, .text-feature-brodeks-story-mobile, .text-feature-brodeks-story-development, .text-feature-brodeks-story-selection, .text-feature-brodeks-story-purchase, .text-feature-brodeks-story-details, .text-feature-brodeks-story-brand, .text-feature-brodeks-story-visual, .text-feature-brodeks-story-seo, .text-feature-brodeks-story-prototypes {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+  .text-feature-brodeks-story-contact__body, .text-feature-brodeks-story-result__body, .text-feature-brodeks-story-awards__body, .text-feature-brodeks-story-mobile__body, .text-feature-brodeks-story-development__body, .text-feature-brodeks-story-selection__body, .text-feature-brodeks-story-purchase__body, .text-feature-brodeks-story-details__body, .text-feature-brodeks-story-brand__body, .text-feature-brodeks-story-visual__body, .text-feature-brodeks-story-seo__body, .text-feature-brodeks-story-prototypes__body {
+    gap: 32px;
+  }
+}
+@media (max-width: 639px) {
+  .text-summary-brodeks-story, .text-tasks-brodeks-story-results, .text-tasks-brodeks-story-tasks, .text-feature-brodeks-story-contact, .text-feature-brodeks-story-result, .text-feature-brodeks-story-awards, .text-feature-brodeks-story-mobile, .text-feature-brodeks-story-development, .text-feature-brodeks-story-selection, .text-feature-brodeks-story-purchase, .text-feature-brodeks-story-details, .text-feature-brodeks-story-brand, .text-feature-brodeks-story-visual, .text-feature-brodeks-story-seo, .text-feature-brodeks-story-prototypes {
+    --text-space-before: 48px;
+    --text-space-after: 0px;
+  }
+  .text-summary-brodeks-story__title, .text-tasks-brodeks-story-results__title, .text-tasks-brodeks-story-tasks__title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .text-summary-brodeks-story__body {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+  .text-feature-brodeks-story-contact__title, .text-feature-brodeks-story-result__title, .text-feature-brodeks-story-awards__title, .text-feature-brodeks-story-mobile__title, .text-feature-brodeks-story-development__title, .text-feature-brodeks-story-selection__title, .text-feature-brodeks-story-purchase__title, .text-feature-brodeks-story-details__title, .text-feature-brodeks-story-brand__title, .text-feature-brodeks-story-visual__title, .text-feature-brodeks-story-seo__title, .text-feature-brodeks-story-prototypes__title {
+    font-size: 32px;
+    letter-spacing: -0.5px;
+  }
+  .text-tasks-brodeks-story-results__body, .text-tasks-brodeks-story-tasks__body, .text-feature-brodeks-story-contact__body, .text-feature-brodeks-story-result__body, .text-feature-brodeks-story-awards__body, .text-feature-brodeks-story-mobile__body, .text-feature-brodeks-story-development__body, .text-feature-brodeks-story-selection__body, .text-feature-brodeks-story-purchase__body, .text-feature-brodeks-story-details__body, .text-feature-brodeks-story-brand__body, .text-feature-brodeks-story-visual__body, .text-feature-brodeks-story-seo__body, .text-feature-brodeks-story-prototypes__body {
+    gap: 28px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .text-tasks-brodeks-story-results__list, .text-tasks-brodeks-story-tasks__list, .text-feature-brodeks-story-contact__list, .text-feature-brodeks-story-result__list, .text-feature-brodeks-story-awards__list, .text-feature-brodeks-story-mobile__list, .text-feature-brodeks-story-development__list, .text-feature-brodeks-story-selection__list, .text-feature-brodeks-story-purchase__list, .text-feature-brodeks-story-details__list, .text-feature-brodeks-story-brand__list, .text-feature-brodeks-story-visual__list, .text-feature-brodeks-story-seo__list, .text-feature-brodeks-story-prototypes__list {
+    gap: 24px;
+  }
+  .text-tasks-brodeks-story-results__list > li, .text-tasks-brodeks-story-tasks__list > li, .text-feature-brodeks-story-contact__list > li, .text-feature-brodeks-story-result__list > li, .text-feature-brodeks-story-awards__list > li, .text-feature-brodeks-story-mobile__list > li, .text-feature-brodeks-story-development__list > li, .text-feature-brodeks-story-selection__list > li, .text-feature-brodeks-story-purchase__list > li, .text-feature-brodeks-story-details__list > li, .text-feature-brodeks-story-brand__list > li, .text-feature-brodeks-story-visual__list > li, .text-feature-brodeks-story-seo__list > li, .text-feature-brodeks-story-prototypes__list > li {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 48px;
+    align-items: start;
+  }
+  .text-tasks-brodeks-story-results__list > li::before, .text-tasks-brodeks-story-tasks__list > li::before, .text-feature-brodeks-story-contact__list > li::before, .text-feature-brodeks-story-result__list > li::before, .text-feature-brodeks-story-awards__list > li::before, .text-feature-brodeks-story-mobile__list > li::before, .text-feature-brodeks-story-development__list > li::before, .text-feature-brodeks-story-selection__list > li::before, .text-feature-brodeks-story-purchase__list > li::before, .text-feature-brodeks-story-details__list > li::before, .text-feature-brodeks-story-brand__list > li::before, .text-feature-brodeks-story-visual__list > li::before, .text-feature-brodeks-story-seo__list > li::before, .text-feature-brodeks-story-prototypes__list > li::before {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 1;
+  }
+}

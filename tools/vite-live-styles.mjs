@@ -47,7 +47,7 @@ export function liveStyles() {
       server.watcher.on('change', change).on('add', change).on('unlink', change);
       // Старые закладки на собранные страницы ведут к живым исходным страницам.
       server.middlewares.use((req, res, next) => {
-        if (/^\/dist\/(?:index|cases|case|Blocks\/index)\.html(?:\?|$)/.test(req.url || '')) {
+        if (/^\/dist\/(?:index|cases|case|brodeks|Blocks\/index)\.html(?:\?|$)/.test(req.url || '')) {
           res.writeHead(302, { Location: req.url.replace(/^\/dist\//, '/') }); res.end(); return;
         }
         next();

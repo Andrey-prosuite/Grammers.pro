@@ -155,3 +155,94 @@
     &__text { font-size: .9375vw; }
   }
 }
+
+/*****************************************************************************
+ * БЛОКИ 04–06. ТЕКСТОВЫЕ КОМПОНЕНТЫ — text-summary / text-tasks / text-feature
+ * Шаблоны: templates/text-*.html; собственный JS не требуется.
+ * Появление: общая модификация TextReveal, секция 14 Modifications.
+ *****************************************************************************/
+.text-summary, .text-tasks, .text-feature {
+  --text-content-width: var(--case-content-width);
+  width: min(calc(100% - 2 * var(--page-gutter)), var(--text-content-width));
+  min-width: 0;
+  margin-inline: auto;
+  padding-block: var(--text-space-before, 0px) var(--text-space-after, 0px);
+  color: #000;
+  overflow-wrap: break-word;
+}
+.text-summary, .text-tasks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: var(--text-column-gap, clamp(24px, 3.2vw, 52px));
+
+  &__title { min-width: 0; font-size: 34px; font-weight: 700; line-height: 39px; letter-spacing: normal; }
+  &__body { min-width: 0; }
+  > :only-child { grid-column: 1 / -1; }
+}
+.text-summary {
+  --text-space-before: 90px;
+  &__body { display: grid; gap: 24px; font-size: 27px; line-height: 35px; }
+}
+.text-tasks {
+  --text-space-before: 75px;
+  --text-space-after: 120px;
+  &__body { display: grid; gap: 42px; font-size: 20px; line-height: 1.4; }
+  &__intro { line-height: 1.23; }
+}
+.text-feature {
+  --text-space-before: 49px;
+  --text-space-after: 120px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 27.3%);
+  column-gap: var(--text-column-gap, clamp(40px, 16%, 240px));
+
+  &__title { min-width: 0; font-size: 44px; font-weight: 700; line-height: 1.17; letter-spacing: -1px; }
+  &__body { display: grid; gap: 56px; min-width: 0; font-size: 20px; line-height: 1.23; }
+  > :only-child { grid-column: 1 / -1; }
+}
+.text-tasks, .text-feature {
+  &__list { display: grid; gap: 42px; min-width: 0; margin: 0; padding: 0; list-style: none; counter-reset: text-block-item; }
+  &__list > li {
+    display: grid;
+    grid-template-columns: 66px minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+    min-height: 67px;
+    margin: 0;
+    counter-increment: text-block-item;
+    &[value="1"] { counter-set: text-block-item 1; }
+    &::before {
+      content: counter(text-block-item);
+      display: grid;
+      place-items: center;
+      width: 66px;
+      height: 67px;
+      border-radius: 50%;
+      background: #f7f7f7;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 35px;
+    }
+  }
+}
+.text-feature__list { gap: 23px; }
+.text-feature__list > li { align-items: center; min-height: 80px; }
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .text-feature { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 40px; }
+}
+@media (max-width: 1023px) {
+  .text-summary, .text-tasks, .text-feature { grid-template-columns: minmax(0, 1fr); row-gap: 24px; }
+  .text-feature__body { gap: 32px; }
+}
+@media (max-width: 639px) {
+  .text-summary, .text-tasks, .text-feature { --text-space-before: 48px; --text-space-after: 0px; }
+  .text-summary__title, .text-tasks__title { font-size: 28px; line-height: 1.2; }
+  .text-summary__body { font-size: 22px; line-height: 1.45; }
+  .text-feature__title { font-size: 32px; letter-spacing: -.5px; }
+  .text-tasks__body, .text-feature__body { gap: 28px; font-size: 18px; line-height: 1.4; }
+  .text-tasks__list, .text-feature__list { gap: 24px; }
+  .text-tasks__list > li, .text-feature__list > li {
+    grid-template-columns: 48px minmax(0, 1fr); gap: 18px; min-height: 48px; align-items: start;
+    &::before { width: 48px; height: 48px; font-size: 18px; line-height: 1; }
+  }
+}

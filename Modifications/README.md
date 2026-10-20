@@ -34,6 +34,7 @@
 | 10 | Следующий кейс | data-case-next и внутренние метки | data-reel-scroll-duration; CaseNext.init/destroy |
 | 11/12 | Перенесены в библиотеку блоков | [horizontal-gallery](../Blocks/README.md) | Контроллер Blocks/blocks.js; здесь только ссылки, без второй реализации |
 | 13 | Переход страниц | один page-transition.js в head до CSS | PageTransition.init/destroy/preview; [схема](../docs/page-transition.md) |
+| 14 | Появление текстов | data-text-reveal + data-text-reveal-item | data-text-reveal-delay, TextReveal.init/destroy; [инструкция](../docs/text-blocks.md) |
 
 ## Текущие решения
 

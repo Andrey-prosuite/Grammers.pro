@@ -1,5 +1,9 @@
 # Правила работы над Grammers.pro
 
+Подтверждённый продуктовый контекст Impeccable — [PRODUCT.md](PRODUCT.md): аудитория производителей/брендов B2B/B2C, обращения как цель сайта, кейсы как отраслевые посадочные. Поддерживать его при изменении этих договорённостей; технические правила остаются здесь. В .impeccable/config.json пользователь выбрал buildPath=code (начинать новые страницы сразу с кода); это настройка процесса, а не свойство продукта. Конфигурация live подготовлена без внедрения скриптов; cspChecked=false до проверки доступным движком.
+
+Новая редакция Brodeks находится отдельно в brodeks.html; case.html сохранена. Источник — последние текстовые экземпляры case.html, по указанию пользователя. Независимые классы text-summary-brodeks-story, text-tasks-brodeks-story-tasks/results, text-feature-brodeks-story-{место}; SCSS pages/brodeks-story.scss. Cookie — data-cookie-notice-brodeks-story и BrodeksStoryCookieNotice в pages/brodeks-story.js. Серые медиакадры статичны и декоративны, общий TextReveal14 подключён явно. Vite собирает четыре страницы сайта и каталог. [Подключения, настройки, адаптив, очистка и карта](docs/brodeks-story.md).
+
 Для продолжения в новом чате прочитать `docs/HANDOFF.md`: там контекст пользователя, состояние реализации и нерешённая проблема доступа к оригиналу.
 
 ## Ведение этого файла
@@ -158,3 +162,7 @@ Cookie: компонент03 в Blocks и экземпляры home/cases/brodek
 Второй блок — clients-home, независимый экземпляр исходного horizontal-gallery. CSS/JS в файлах страницы home, API HomeClientsGallery, корень data-clients-home-gallery. Режим scroll45s, zoom false; все15 логотипов сохранены. Не добавлять корневую метку общего контроллера. [Инструкция](docs/home-clients-gallery.md). Анонс хиро именуется hero-home__announcement; сжимается только вложенный frame, подпись и круг неподвижны.
 
 Галерея наград главной — awards-home, независимая копия clients-home по указанию пользователя. Свой корень data-awards-home-gallery и API HomeAwardsGallery, SCSS/JS страницы home; scroll45s,7 прежних SVG и заголовок сохранены. [Инструкция](docs/home-awards-gallery.md).
+
+Самостоятельный блок Brodeks brodeks-image-pair — третьим после вступления и обложки. Две большие картинки, поля40px/gap20px, без max-width1500px; до767px одна колонка. HTML case.html, SCSS страницы brodeks.scss; собственный JS не нужен, общие photo-zoom/photo-parallax на каждом кадре. Не добавлять в библиотеку компонентов. [Инструкция](docs/brodeks-image-pair.md).
+
+Текстовые компоненты04–06: text-summary, text-tasks, text-feature в Blocks, три независимых экземпляра с добавкой -brodeks в case.html непосредственно после #case-usability-image. Общая колонка до1500px, необязательные части удаляются без заглушек, до1023px одна колонка. Стили экземпляров pages/brodeks.scss, собственного JS нет; общий TextReveal14 включает fade3s без смещения, заголовки статичны, список с задержками0/.1/.2…s. Настройки, доступность, очистка и карта: [текстовые блоки](docs/text-blocks.md).

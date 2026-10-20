@@ -347,3 +347,9 @@
   window.CookieNotice = { init, destroy, show };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
+
+/*****************************************************************************
+ * БЛОКИ 04–06. ТЕКСТОВЫЕ КОМПОНЕНТЫ
+ * Разметка: templates/text-summary.html, text-tasks.html, text-feature.html.
+ * Собственного контроллера нет; появление — TextReveal, модификация 14.
+ *****************************************************************************/

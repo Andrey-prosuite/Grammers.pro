@@ -1281,3 +1281,71 @@ window.ScrollReel = (() => {
  * Единственное подключение в head до CSS; стили и контроллер в одном файле.
  * Не создавать второй контроллер здесь. Инструкция: ../docs/page-transition.md.
  *****************************************************************************/
+
+/*****************************************************************************
+ * МОДИФИКАЦИЯ 14. ПОЯВЛЕНИЕ ТЕКСТОВ — text-reveal
+ * Стили: modifications.css, секция 14. Контент без JS остаётся видимым.
+ * Корень data-text-reveal; цели data-text-reveal-item; заголовки статичны.
+ * Прозрачность 0→1 за 3с, cubic-bezier(.19,1,.22,1), один раз при входе.
+ * Строки списка получают задержки 0/.1/.2с; data-text-reveal-delay — явная замена.
+ * Зависимости GSAP/ScrollTrigger; reduced motion отключает появление.
+ * Очистка и повторный запуск: TextReveal.destroy()/init().
+ *****************************************************************************/
+(() => {
+  let cleanup, waiting = false;
+  // Точная кривая кубического Безье без дополнительного плагина.
+  function ease(progress) {
+    if (progress <= 0 || progress >= 1) return progress;
+    let low = 0, high = 1, t = progress;
+    for (let i = 0; i < 20; i++) {
+      const x = 3 * (1 - t) ** 2 * t * .19 + 3 * (1 - t) * t ** 2 * .22 + t ** 3;
+      if (x < progress) low = t; else high = t;
+      t = (low + high) / 2;
+    }
+    return 1 - (1 - t) ** 3;
+  }
+  function init() {
+    if (cleanup || !window.gsap || !window.ScrollTrigger) return;
+    const roots = [...document.querySelectorAll('[data-text-reveal]')].filter(root => root.getAttribute('data-text-reveal') !== 'false');
+    if (!roots.length) return;
+    if (document.documentElement.hasAttribute('data-page-transition-busy') || document.documentElement.hasAttribute('data-page-transition-pending')) {
+      if (!waiting) { waiting = true; document.addEventListener('page-transition:ready', init, { once: true }); }
+      return;
+    }
+    waiting = false;
+    document.removeEventListener('page-transition:ready', init);
+    const { gsap, ScrollTrigger } = window;
+    const targets = roots.flatMap(root => [...root.querySelectorAll('[data-text-reveal-item]')].filter(target => target.closest('[data-text-reveal]') === root));
+    const saved = new Map(targets.map(target => [target, ['opacity', 'visibility'].map(name => [name, target.style.getPropertyValue(name), target.style.getPropertyPriority(name)])]));
+    const restore = target => saved.get(target).forEach(([name, value, priority]) => {
+      if (value) target.style.setProperty(name, value, priority); else target.style.removeProperty(name);
+    });
+    gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia();
+    cleanup = () => { media.revert(); targets.forEach(restore); cleanup = null; };
+    try {
+      media.add('(prefers-reduced-motion: no-preference)', () => {
+        targets.forEach(target => {
+          const configured = target.getAttribute('data-text-reveal-delay');
+          const sequence = target.matches('li') ? [...target.parentElement.children].filter(item => item.hasAttribute('data-text-reveal-item')).indexOf(target) * .1 : 0;
+          const delay = configured === null ? sequence : Number(configured);
+          gsap.fromTo(target, { autoAlpha: 0 }, {
+            autoAlpha: 1, duration: 3, delay: Number.isFinite(delay) && delay >= 0 ? delay : sequence, ease,
+            scrollTrigger: { trigger: target, start: 'top bottom', once: true },
+            onComplete: () => restore(target),
+          });
+        });
+      });
+    } catch {
+      // Если создание анимаций не удалось, возвращаем доступный обычный текст.
+      cleanup();
+    }
+  }
+  function destroy() {
+    document.removeEventListener('DOMContentLoaded', init);
+    document.removeEventListener('page-transition:ready', init);
+    waiting = false; cleanup?.();
+  }
+  window.TextReveal = { init, destroy };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
+})();

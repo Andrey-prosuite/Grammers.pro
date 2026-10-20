@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Библиотека блоков — Grammers.pro</title>
-    <script src="../Modifications/page-transition.js?v=20261020-global-curtain-1"></script>
-    <link rel="stylesheet" href="../styles.css?v=20261020-global-curtain-1">
-    <link rel="stylesheet" href="../Blocks/blocks.css?v=20261020-global-curtain-1">
-    <link rel="stylesheet" href="../Modifications/modifications.css?v=20261020-global-curtain-1">
+    <script src="../Modifications/page-transition.js?v=20261021-brodeks-story-1"></script>
+    <link rel="stylesheet" href="../styles.css?v=20261021-brodeks-story-1">
+    <link rel="stylesheet" href="../Blocks/blocks.css?v=20261021-brodeks-story-1">
+    <link rel="stylesheet" href="../Modifications/modifications.css?v=20261021-brodeks-story-1">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
     <script defer src="../Modifications/vendor/gsap.min.js"></script>
     <script defer src="../Modifications/vendor/ScrollTrigger.min.js"></script>
-    <script defer src="../Modifications/modifications.js?v=20261020-global-curtain-1"></script>
-    <script defer src="../Blocks/blocks.js?v=20261020-global-curtain-1"></script>
+    <script defer src="../Modifications/modifications.js?v=20261021-brodeks-story-1"></script>
+    <script defer src="../Blocks/blocks.js?v=20261021-brodeks-story-1"></script>
 </head>
 <body>
   <a class="skip-link" href="#library-main">Перейти к блокам</a>
@@ -26,7 +26,7 @@
       <p class="block-library__eyebrow">Grammers.pro · Библиотека блоков</p>
       <h1>Основа страницы.<br>Эффекты — по желанию.</h1>
       <p>Компонент хранится в библиотеке. Его копия с уникальным именем и классами становится экземпляром на странице; индивидуальные правки живут в коде страницы. Модификации подключают нужные эффекты.</p>
-      <nav class="block-library__toc" aria-label="Блоки"><a href="#single-image">01 / Одиночное изображение ↓</a><a href="#horizontal-gallery">02 / Горизонтальная галерея ↓</a><a href="#cookie-notice-component">03 / Cookie ↓</a><a href="#page-curtain">Шторка перехода ↓</a></nav>
+      <nav class="block-library__toc" aria-label="Блоки"><a href="#single-image">01 / Одиночное изображение ↓</a><a href="#horizontal-gallery">02 / Горизонтальная галерея ↓</a><a href="#cookie-notice-component">03 / Cookie ↓</a><a href="#text-blocks">04–06 / Текстовые блоки ↓</a><a href="#page-curtain">Шторка перехода ↓</a></nav>
     </div>
     <section id="single-image" aria-labelledby="single-heading">
       <div class="block-library__section-head"><p class="block-library__eyebrow">Блок 01</p><h2 id="single-heading">Одиночное изображение</h2><p>Четыре варианта ширины. Зум, параллакс и появление включаются независимо для каждого экземпляра.</p><a class="block-library__file" href="./templates/single-image.html" download>Скачать HTML-шаблоны ↓</a><a class="block-library__file" href="../docs/single-image.md">Настройки и примеры ↗</a><details class="block-library__code"><summary>Разметка блока — все варианты</summary><pre><code>&lt;!-- Вставляется в HTML страницы из корня проекта. Выбрать один вариант. --&gt;
@@ -248,6 +248,42 @@
   </div>
 </section>
     </section>
+    <section id="text-blocks" aria-labelledby="text-blocks-heading">
+      <div class="block-library__section-head">
+        <p class="block-library__eyebrow">Блоки 04–06</p><h2 id="text-blocks-heading">Три текстовых компонента</h2>
+        <p>Одна колонка контента, три композиции. Заголовок, описание, вводный текст и список можно убирать без пустых элементов. Ниже — максимальный состав.</p>
+        <a class="block-library__file" href="../docs/text-blocks.md">Настройки, адаптивность и экземпляры ↗</a>
+        <a class="block-library__file" href="./templates/text-summary.html" download>text-summary: HTML ↓</a>
+        <a class="block-library__file" href="./templates/text-tasks.html" download>text-tasks: HTML ↓</a>
+        <a class="block-library__file" href="./templates/text-feature.html" download>text-feature: HTML ↓</a>
+      </div>
+<section class="text-summary" data-text-reveal aria-labelledby="text-summary-title">
+  <h2 class="text-summary__title" id="text-summary-title">Клиент</h2>
+  <div class="text-summary__body" data-text-reveal-item><p>Berkano — производитель дизайнерской мебели и предметов интерьера из пластика, эксклюзивных изделий для экстерьеров и зонирования общественных пространств. В компании производится полный цикл разработки — от идеи до готового продукта. Все материалы, использующиеся при производстве, перерабатываются.</p></div>
+</section>
+<section class="text-tasks" data-text-reveal aria-labelledby="text-tasks-title">
+  <h2 class="text-tasks__title" id="text-tasks-title">Перед нами стояли задачи</h2>
+  <div class="text-tasks__body">
+    <p class="text-tasks__intro" data-text-reveal-item>Расчет происходит на лету — данные мгновенно отображаются в интерфейсе.</p>
+    <ol class="text-tasks__list" role="list">
+      <li data-text-reveal-item>Запустить эффективный бизнес-инструмент для оптовых покупателей и оптимизировать бизнес-процессы.</li>
+      <li value="1" data-text-reveal-item>Запустить эффективный бизнес-инструмент для оптовых покупателей и оптимизировать бизнес-процессы.</li>
+      <li value="1" data-text-reveal-item>Запустить эффективный бизнес-инструмент для оптовых покупателей и оптимизировать бизнес-процессы.</li>
+    </ol>
+  </div>
+</section>
+<section class="text-feature" data-text-reveal aria-labelledby="text-feature-title">
+  <h2 class="text-feature__title" id="text-feature-title">Добавили калькуляторы популярных розничных продуктов. Пользователи сразу могут увидеть выгоду от вклада и оценить нагрузку по кредиту.</h2>
+  <div class="text-feature__body">
+    <p class="text-feature__intro" data-text-reveal-item>Расчет происходит на лету — данные мгновенно отображаются в интерфейсе.</p>
+    <ol class="text-feature__list" role="list">
+      <li data-text-reveal-item>Запустить эффективный бизнес-инструмент для оптовых покупателей и оптимизировать бизнес-процессы.</li>
+      <li data-text-reveal-item>Разработать комплексную стратегию продвижения нового товара по всей России.</li>
+      <li data-text-reveal-item>Загрузить производство новым видом продукции.</li>
+    </ol>
+  </div>
+</section>
+    </section>
     <section id="page-curtain" aria-labelledby="curtain-heading">
       <div class="block-library__section-head">
         <p class="block-library__eyebrow">Модификация 13 · переход страниц</p>
@@ -257,7 +293,7 @@
         <ol class="block-library__steps"><li><strong>Закрытие · 700 мс</strong><br>Графит #1a1a1a опускается сверху. Контент смещается вниз на 20vw и размывается до 15px.</li><li><strong>Ожидание готовности</strong><br>Загружается новый документ. Ожидаются шрифты и важные изображения первого экрана, максимум 5 секунд.</li><li><strong>Открытие · 700 мс</strong><br>Графит уходит вниз. Белый слой исчезает за 500 мс со старта 500 мс.</li><li><strong>Контент · 1000 мс</strong><br>Со старта 350 мс: подъём 300px и прозрачность 0→100%. Общее открытие с появлением — 1350 мс.</li></ol>
         <p>Пауза зависит от загрузки, а не от искусственного фиксированного ожидания. При уменьшенном движении сохраняются обычные переходы.</p>
         <a class="block-library__file" href="../docs/page-transition.md">Подключение и подробная схема ↗</a><details class="block-library__code"><summary>Выборка подключения шторки</summary><pre><code>&lt;!-- До CSS в head: --&gt;
-&lt;script src="./Modifications/page-transition.js?v=20261020-global-curtain-1"&gt;&lt;/script&gt;
+&lt;script src="./Modifications/page-transition.js?v=20261021-brodeks-story-1"&gt;&lt;/script&gt;
 &lt;!-- Всё: стили и запуск входят в этот файл. --&gt;
 
 &lt;!-- Проверка на текущей странице без смены адреса: --&gt;
